@@ -1,13 +1,11 @@
 <?php
 /*
 Plugin Name: Simple Job Manager
-Plugin URI: https://profiles.wordpress.org/
-Description: Simple job management this plugin 
+Description: Simple jobs management plugin based
 Author: Rdm
-Version: 1.2.1
+Version: 1.0.0
 Text Domain: simple-job-managment
 Domain Path: /languages
-Author URI: https://profiles.wordpress.org/
 */
 
 add_action('plugins_loaded', 'rdm_load_textdomain');
