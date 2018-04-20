@@ -48,7 +48,7 @@ class Rdm_Purchase_Table_Metabox {
 		//get items for existing purchase that have "is_Job=yes"
 		add_action( 'wp_ajax_get_Jobs_items_on_purchase_ajax', array( $this, 'get_Jobs_items_on_purchase_ajax'));		
 		
-		//Get all jobs if a supplier is associated with purchase.
+		//Get all jobs if a  is associated with purchase.
 		add_action( 'wp_ajax_get_and_check_Jobs_checkbox_list_ajax', array( $this, 'get_and_check_Jobs_checkbox_list_ajax'));		
 		
 		//save purchase total,vat,discount
@@ -276,7 +276,7 @@ class Rdm_Purchase_Table_Metabox {
 		
 		$purchaseID = (int) $_POST['purchaseID'];
 	
-		//Get all items for existing INVOICE
+		//Get all items for existing PURCHASE
 		if($_POST['purchaseAction']=='getItemsForPurchase'){
 
 		
@@ -288,7 +288,7 @@ class Rdm_Purchase_Table_Metabox {
 		
 		}
 		
-		//Add new item to INVOICE
+		//Add new item to PURCHASE
 		if($_POST['purchaseAction']=='addItemToPurchase'){
 
 			//itemData is in URL form ... convert to array
@@ -314,7 +314,7 @@ class Rdm_Purchase_Table_Metabox {
 		
 		}	
 
-		//update existing item of INVOICE
+		//update existing item of PURCHASE
 		if($_POST['purchaseAction']=='updateExistingItemOnPurchase'){
 		
 			$purchaseID 	= $_POST['purchaseID'];
@@ -350,7 +350,7 @@ class Rdm_Purchase_Table_Metabox {
 		} //end update existing item	
 		
 		
-		//remove existing item from INVOICE
+		//remove existing item from PURCHASE
 		if($_POST['purchaseAction']=='removeExistingItemFromPurchase'){
 		
 			$purchaseID 	= $_POST['purchaseID'];
@@ -782,7 +782,7 @@ class Rdm_Purchase_Table_Metabox {
 									<tr>
 										<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_purchases_supplier_field_id"><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_supplier_label',__('Supplier','simple-job-managment'));?> </label>
+												<label for="rdm_jobs_purchases_supplier_field_id"><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_supplier_label',__('Supplier user','simple-job-managment'));?> </label>
 											</div>
 		
 											<select class="at-posts-select" name="rdm_jobs_purchases_supplier_field_id" id="rdm_jobs_purchases_supplier_field_id">
@@ -817,11 +817,36 @@ class Rdm_Purchase_Table_Metabox {
 															echo '<option value="'.$results_single_supplier->ID.'" '.$selected.'> '.$results_single_supplier->post_title.' </option>';
 														}														
 													}
+												
 												?>
 											</select>
 										</td>
 										
-									
+										<!-- ==============================
+										= IT WORKS - Select the supplier user to email 
+										==================================-->
+										<p>
+											<label for="rdm_supplier" class="prfx-row-title"><?php _e( 'Email to Supplier: ', 'simple-job-managment' )?></label><br>
+											<select name="rdm_supplier" id="rdm_supplier">
+												<?php $args = array(
+													'role__in'	=>	'seller'
+												);
+
+												$users = get_users($args);
+												//$i = 0;
+												// Array of WP_User objects.
+												foreach ( $users as $user ) {
+													echo "<option value='".$user->user_email."' "; //<--here
+													if (isset($rdm_stored_meta['rdm_supplier']))
+														echo selected($rdm_stored_meta['rdm_supplier'][0], $user->user_email ); //<-- and here
+													echo ">" . esc_html( $user->display_name ) . "</option>";
+												}
+												?>
+											
+											</select>
+
+											</p>
+
 										<td class="at-field" valign="top">
 											<div class="at-label">
 												<label for="rdm_jobs_purchases_Job_field_id">Related to job </label>
@@ -834,17 +859,17 @@ class Rdm_Purchase_Table_Metabox {
 										
 										
 										
-										<td class="at-field" valign="top">
+						<!-- 				<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_purchases_Job_list"><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_related_to_Job_label',__('Related to job','simple-job-managment'));?></label>
+												<label for="rdm_jobs_purchases_Job_list"><?php //echo apply_filters('albwppm_purchase_cpt_single_purchase_related_to_Job_label',__('Related to job','simple-job-managment'));?></label>
 											</div>
 
 											<span  id="rdm_jobs_purchases_Job_list" ></span>
 											
-										</td>										
+										</td>	 -->									
 										
 										
-									
+									<!-- 
 										<td class="at-field" valign="top">
 											<div class="at-label">
 												<label for="rdm_jobs_purchases_task_field_id">Related to task </label>
@@ -852,11 +877,11 @@ class Rdm_Purchase_Table_Metabox {
 
 											<span  id="rdm_jobs_purchases_task_field_id" ></span>
 											
-										</td>
+										</td> -->
 									
 
 									</tr>
-									
+				
 									<tr>
 										<td class="at-field" valign="top" colspan="3">
 											<div id="PersonTableContainer"></div>
@@ -959,7 +984,7 @@ class Rdm_Purchase_Table_Metabox {
 												
 										</td>
 									</tr>
-									
+
 									<tr>
 										<td class="at-field" valign="top" colspan="3">
 											
@@ -1043,9 +1068,6 @@ class Rdm_Purchase_Table_Metabox {
 		<?php
 	} //end render_metabox_content 
 	
-	
-	
-
 
 	/*
 	* Template helper
@@ -1336,12 +1358,11 @@ class Rdm_Purchase_Table_Metabox {
 		
 		//save purchase base64 data into DB
 		update_post_meta($purchase_id,'rdm_jobs_purchases_pdf_base64',$pdf_as_base64);
-		
 		//$dompdf->stream("sample.pdf", array('Attachment'=>'0'));
 		die($pdf_as_base64 );	
 	}
 	
-	
+
 	/*
 	* Check and return if we have a purchase PDF base64 data in DB
 	*/
@@ -1393,37 +1414,6 @@ class Rdm_Purchase_Table_Metabox {
 		}
 
 	}
-
-	/*
-	* Email Purchase
-	*/
-
-	public function rdm_job_submit_purchase_wp_mail_filter(){
-		
-		if(isset($_POST['post_ID'])){
-			if($_POST['post_ID'] <= 0){
-				return;
-			}else{
-				$purchase_id = (int)$_POST['post_ID'];
-			}
-		}
-		
-		if(isset($_POST['rdm_jobs_submit_purchase_to_supplier'])){
-
-			function sendMail() {
-				if($_POST['send']) {
-					$sendto = esc_attr( get_option('custom_mail_to') );
-					$sendfrom =  esc_attr( get_option('custom_mail_from') );
-					$sendsub = esc_attr( get_option('custom_mail_sub') );
-					$sendmess = esc_attr( get_option('custom_mail_message') );
-					$headers = "From: Wordpress <" . $sendfrom . ">";
-					wp_mail($sendto, $sendsub, $sendmess, $headers);
-				}
-			}
-
-		}
-	}
-
 } //end class
 
 //Start it all 

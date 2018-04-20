@@ -1,0 +1,62 @@
+
+/* SEND AN EMAIL AFTER POST PURHCASE HAS BEEN PUBLISHED */
+function rdm_notify_supplier($post_id)  {
+    // a conditional to check that this is a new post
+    if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
+    
+        $user_email_address = $_POST['rdm_supplier'];
+    
+        // create the from details 
+        $headers[] = 'From: RDM <info@rdmgregg.co.uk>';
+        // lets cc in the head just because we can 
+        $headers[] = '';
+
+        // separate the users array    
+        $send_to = $user_email_address;
+        // Subject of the message
+        $subject		=	'New purchase order from $rdm_purchase_department';
+        // concatenate a message together
+        $message = 'Please find attached a copy of your purchase order!! ';
+        // and finally send the email
+        wp_mail($send_to, $subject, $message, $headers );
+        return $post_ID;
+        }
+    }
+
+
+/*
+	* Email Purchase to Admin 
+	*/
+	function rdm_after_purchase_created_notify_admin($post_id) {
+		// no action if post type is not 'rdm_purchase'
+		if (get_post_type( $post_id ) != 'rdm_purchase') {
+		
+			return;
+		}
+		
+		//if is a revision do not send an email
+		
+		 if(wp_is_post_revision($post_id)) {
+			
+		return;
+		} 
+		
+		
+		if (get_post_status( $post_id ) != 'publish') { 
+			return;
+		} 
+
+
+		// Email headings 
+		
+		$subject		=	'New purchase order sent to supplier.';
+		$message		=	'Here is a copy of your purchase order' . '?Download PDF link?'; 
+		$headers[]		=	'From: RDM Gregg purchases <info@rdmgregg.co.uk> ';
+		$attachments	=	'';
+		
+		// Send email
+        
+		$to   =   get_option( 'admin_email' );
+			wp_mail( $to, $subject, $message, $headers, $attachments );
+		
+        }

@@ -373,8 +373,8 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 										=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_name',__('Invoice','simple-job-managment'));
-		$columns['rdm_jobs_invoice_total'] 			=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_total',__('Total','simple-job-managment'));
+		$columns['title'] 								=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_name',__('Invoice','simple-job-managment'));
+		$columns['rdm_jobs_invoice_total'] 				=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_total',__('Total','simple-job-managment'));
 		$columns['rdm_jobs_invoice_status'] 			=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_status',__('Status','simple-job-managment'));
 		$columns['rdm_jobs_invoice_for_client'] 		=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_client_name',__('Client','simple-job-managment'));
 
@@ -500,6 +500,16 @@ $GLOBALS['kari'] = Rdm_Job_Management::get_instance();
 //Options page helper class 
 require_once('include/settings.options.class.php');
 
+							
+// After purchase has been submitted send an email to the admin
+// see purchases.tables.metabox and submit.purchase files
+include( plugin_dir_path(__FILE__) . 'include/submit.purchase.to.admin.php');
+add_action('publish_rdm_purchase', 'rdm_after_purchase_created_notify_admin');
 
-
-
+// After purchase has been submitted send an email to the selected supplier
+// see purchases.tables.metabox (line 825) and submit.purchase files 
+// https://codex.wordpress.org/Plugin_API/Action_Reference/publish_post
+include( plugin_dir_path(__FILE__) . 'include/submit.purchase.to.supplier.php');
+add_action('publish_rdm_purchase', 'rdm_notify_supplier');
+										
+							
