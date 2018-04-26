@@ -1,12 +1,12 @@
-.postbox .at-field input.albwppm_text_input,
-.postbox .at-field textarea.albwppm_textarea_input{
+.postbox .at-field input.rdm_text_input,
+.postbox .at-field textarea.rdm_textarea_input{
 	box-shadow: none;
 	padding: 7px;
 	font-size: 16px;
 }
 
 
-table.albwppm_table_for_grouped_fields td.at-field{
+table.rdm_table_for_grouped_fields td.at-field{
 	padding-left:0;
 	padding-right:0;
 	padding-bottom:15px;
@@ -226,7 +226,7 @@ table.reports_overview div.breakdown_container div.unpaid_title{
 	text-align: left;
 }
 
-table.albwppm_reports_Job_page  a.table_header_text_link span{
+table.rdm_reports_Job_page  a.table_header_text_link span{
 	color:#555;
 	cursor:default;
 }

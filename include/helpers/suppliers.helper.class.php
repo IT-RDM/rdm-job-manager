@@ -392,7 +392,7 @@ class Rdm_Jobs_Suppliers_Helpers{
 		$results_all_suppliers = $query_all_suppliers->query($default_args);			
 		$suppliers_found = sizeof($results_all_suppliers); 
 		
-		echo  apply_filters('albwppm_reports_suppliers_page_found_suppliers_title' , sprintf( _n( '<h3>Found  %s supplier </h3>', '<h3>Found  %s suppliers </h3>', $suppliers_found, 'simple-job-managment' ), $suppliers_found ));
+		echo  apply_filters('rdm_reports_suppliers_page_found_suppliers_title' , sprintf( _n( '<h3>Found  %s supplier </h3>', '<h3>Found  %s suppliers </h3>', $suppliers_found, 'simple-job-managment' ), $suppliers_found ));
 
 		
 		//if we have at least one supplier ... show the table

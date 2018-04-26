@@ -4,10 +4,7 @@
 function rdm_notify_supplier($ID, $post )  {    
     
         $user_email_address = $_POST['rdm_supplier'];
-    
-        
-        
-        
+      
         // Purchase author
         $author = $post->post_author; /* Post author ID. */
         
@@ -40,7 +37,3 @@ function rdm_notify_supplier($ID, $post )  {
         wp_mail($send_to, $subject, $message, $headers, $attachments );
         return $post_ID;
 }
-
-   
-        
-    

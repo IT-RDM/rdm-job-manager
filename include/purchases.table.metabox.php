@@ -68,7 +68,8 @@ class Rdm_Purchase_Table_Metabox {
 		
 		// Submit Purchase order to supplier
 		// Add filter and see function on line 1401
-		//add_filter('wp_mail','rdm_job_submit_purchase_wp_mail_filter');
+		//add_action('init', array($this, 'rdm_job_purchase_pdf_email'));
+		//add_filter('wp_mail', 'rdm_notify_supplier');
 	}
 	
 	
@@ -79,21 +80,21 @@ class Rdm_Purchase_Table_Metabox {
 	function localize_scripts(){
 		
 		$translation_array = array(
-			'table_purchase_add_record_title' => apply_filters('albwppm_table_purchase_add_record_title',__('Add new item','simple-job-managment')),
-			'table_purchase_line_total'		 => apply_filters('albwppm_table_purchase_line_total_title',__('Line total','simple-job-managment')),
-			'table_purchase_line_quantity'	 => apply_filters('albwppm_table_purchase_line_quantity_title',__('Quantity','simple-job-managment')),
-			'table_purchase_line_price'	 	 => apply_filters('albwppm_table_purchase_line_price_title',__('Unit Price','simple-job-managment')),
-			'table_purchase_line_item'	 	 => apply_filters('albwppm_table_purchase_line_item_title',__('Item','simple-job-managment')),
-			'table_purchase_items_on_purchase_title'	 	 => apply_filters('albwppm_table_purchase_items_on_purchase_title',__('Items on purchase','simple-job-managment')),
-			'table_purchase_save_new_item_button_title'	 	 => apply_filters('albwppm_table_purchase_save_new_item_button_title',__('Save','simple-job-managment')),
-			'table_purchase_cancel_new_item_button_title'	 	 => apply_filters('albwppm_table_purchase_cancel_new_item_button_title',__('Cancel','simple-job-managment')),
-			'table_purchase_edit_item_popup_title'	 	 => apply_filters('albwppm_table_purchase_edit_item_popup_title',__('Edit item','simple-job-managment')),
-			'table_purchase_delete_item_popup_title_are_you_sure'	 	 => apply_filters('albwppm_table_purchase_delete_item_popup_title_are_you_sure',__('Are you sure','simple-job-managment')),
-			'table_purchase_delete_item_confirmation_text'	 	 => apply_filters('albwppm_table_purchase_delete_item_confirmation_text',__('This item will be deleted','simple-job-managment')),
-			'table_purchase_delete_item_button_text'	 	 => apply_filters('albwppm_table_purchase_delete_item_button_text',__('Delete','simple-job-managment')),
-			'table_purchase_no_data_available'	 	 => apply_filters('albwppm_table_purchase_no_data_available',__('No data available','simple-job-managment')),
-			'table_purchase_loading_records'	 	 => apply_filters('albwppm_table_purchase_loading_records',__('Loading records','simple-job-managment')),
-			'table_purchase_no_items_on_purchase'	 	 => apply_filters('albwppm_table_purchase_no_items_on_purchase',__('No items on purchase','simple-job-managment')),
+			'table_purchase_add_record_title' => apply_filters('rdm_table_purchase_add_record_title',__('Add new item','simple-job-managment')),
+			'table_purchase_line_total'		 => apply_filters('rdm_table_purchase_line_total_title',__('Line total','simple-job-managment')),
+			'table_purchase_line_quantity'	 => apply_filters('rdm_table_purchase_line_quantity_title',__('Quantity','simple-job-managment')),
+			'table_purchase_line_price'	 	 => apply_filters('rdm_table_purchase_line_price_title',__('Unit Price','simple-job-managment')),
+			'table_purchase_line_item'	 	 => apply_filters('rdm_table_purchase_line_item_title',__('Item','simple-job-managment')),
+			'table_purchase_items_on_purchase_title'	 	 => apply_filters('rdm_table_purchase_items_on_purchase_title',__('Items on purchase','simple-job-managment')),
+			'table_purchase_save_new_item_button_title'	 	 => apply_filters('rdm_table_purchase_save_new_item_button_title',__('Save','simple-job-managment')),
+			'table_purchase_cancel_new_item_button_title'	 	 => apply_filters('rdm_table_purchase_cancel_new_item_button_title',__('Cancel','simple-job-managment')),
+			'table_purchase_edit_item_popup_title'	 	 => apply_filters('rdm_table_purchase_edit_item_popup_title',__('Edit item','simple-job-managment')),
+			'table_purchase_delete_item_popup_title_are_you_sure'	 	 => apply_filters('rdm_table_purchase_delete_item_popup_title_are_you_sure',__('Are you sure','simple-job-managment')),
+			'table_purchase_delete_item_confirmation_text'	 	 => apply_filters('rdm_table_purchase_delete_item_confirmation_text',__('This item will be deleted','simple-job-managment')),
+			'table_purchase_delete_item_button_text'	 	 => apply_filters('rdm_table_purchase_delete_item_button_text',__('Delete','simple-job-managment')),
+			'table_purchase_no_data_available'	 	 => apply_filters('rdm_table_purchase_no_data_available',__('No data available','simple-job-managment')),
+			'table_purchase_loading_records'	 	 => apply_filters('rdm_table_purchase_loading_records',__('Loading records','simple-job-managment')),
+			'table_purchase_no_items_on_purchase'	 	 => apply_filters('rdm_table_purchase_no_items_on_purchase',__('No items on purchase','simple-job-managment')),
 		);
 
 		wp_localize_script( 'rdm-job-purchase-page', 'albwppm', $translation_array );
@@ -743,16 +744,16 @@ class Rdm_Purchase_Table_Metabox {
 									
 									<tr>
 										<td class="at-field" style="vertical-align: top;" >
-											<div><?php echo apply_filters('albwppm_purchase_cpt_single_private_notes_label',__('Purchase Private Notes','simple-job-managment')); ?></div>
+											<div><?php echo apply_filters('rdm_purchase_cpt_single_private_notes_label',__('Purchase Private Notes','simple-job-managment')); ?></div>
 											<textarea name="purchase_specific_personal_notes" id="purchase_specific_personal_notes" style="width:100%" rows="5"><?php echo $purchase_personal_note;?></textarea>
 										</td>
 
 										<td class="at-field" style="vertical-align: top;" colspan="2" >
-											<div> <?php echo apply_filters('albwppm_purchase_cpt_single_public_notes_label',__('Purchase public notes (visible on purchase)','simple-job-managment'));?> </div>
+											<div> <?php echo apply_filters('rdm_purchase_cpt_single_public_notes_label',__('Purchase public notes (visible on purchase)','simple-job-managment'));?> </div>
 											<textarea name="purchase_specific_public_notes" id="purchase_specific_public_notes" style="width:100%"  rows="5"><?php echo $purchase_specific_terms; ?></textarea>
 											<div>
 												
-												<input type="checkbox" name="rdm_show_general_purchase_terms_also" id="rdm_show_general_purchase_terms_also" <?php echo $purchase_show_default_terms;?> ><?php echo apply_filters('albwppm_purchase_cpt_single_show_general_terms_also_label',__('Show general terms also','simple-job-managment'));?>
+												<input type="checkbox" name="rdm_show_general_purchase_terms_also" id="rdm_show_general_purchase_terms_also" <?php echo $purchase_show_default_terms;?> ><?php echo apply_filters('rdm_purchase_cpt_single_show_general_terms_also_label',__('Show general terms also','simple-job-managment'));?>
 											</div>
 										</td>										
 
@@ -760,21 +761,21 @@ class Rdm_Purchase_Table_Metabox {
 
 									<tr>
 										<td class="at-field" style="vertical-align: top;" >
-											<div> <?php echo apply_filters('albwppm_purchase_cpt_single_purchase_status_label',__('Purchase status','simple-job-managment'));?> </div>
+											<div> <?php echo apply_filters('rdm_purchase_cpt_single_purchase_status_label',__('Purchase status','simple-job-managment'));?> </div>
 											<select class="at-posts-select" name="rdm_jobs_purchases_status_field_id" id="rdm_jobs_purchases_status_field_id">
-												<option value="unpaid" 		<?php selected($purchase_status,'unpaid');?> ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_status_unpaid_dropdown_option_text',__('Unpaid','simple-job-managment'));?></option>
-												<option value="paid"  		<?php selected($purchase_status,'paid');?> ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_status_paid_dropdown_option_text',__('Paid','simple-job-managment'));?></option>
-												<option value="overdue" 	<?php selected($purchase_status,'overdue');?> ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_status_overdue_dropdown_option_text',__('Overdue','simple-job-managment'));?></option>
-												<option value="cancelled"  	<?php selected($purchase_status,'cancelled');?> ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_status_cancelled_dropdown_option_text',__('Cancelled','simple-job-managment'));?></option>
+												<option value="unpaid" 		<?php selected($purchase_status,'unpaid');?> ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_status_unpaid_dropdown_option_text',__('Unpaid','simple-job-managment'));?></option>
+												<option value="paid"  		<?php selected($purchase_status,'paid');?> ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_status_paid_dropdown_option_text',__('Paid','simple-job-managment'));?></option>
+												<option value="overdue" 	<?php selected($purchase_status,'overdue');?> ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_status_overdue_dropdown_option_text',__('Overdue','simple-job-managment'));?></option>
+												<option value="cancelled"  	<?php selected($purchase_status,'cancelled');?> ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_status_cancelled_dropdown_option_text',__('Cancelled','simple-job-managment'));?></option>
 											</select>
 										</td>
 										
 										<td class="at-field"  style="vertical-align: top;" >
-											<div><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_to_be_paid_by_date_label',__('To be paid by date','simple-job-managment'));?></div>
+											<div><?php echo apply_filters('rdm_purchase_cpt_single_purchase_to_be_paid_by_date_label',__('To be paid by date','simple-job-managment'));?></div>
 											<input type="text" name="rdm_purchase_to_be_paid_by_date_field_id" id="rdm_purchase_to_be_paid_by_date_field_id" rel="d MM, yy" value="<?php echo $purchase_to_be_paid_on;?>" size="30">
 										</td>			
 										<td class="at-field"  style="vertical-align: top;" >
-											<div> <?php echo apply_filters('albwppm_purchase_cpt_single_purchase_paid_date_label',__('Paid Date','simple-job-managment'));?> </div>
+											<div> <?php echo apply_filters('rdm_purchase_cpt_single_purchase_paid_date_label',__('Paid Date','simple-job-managment'));?> </div>
 											<input type="text" name="rdm_purchase_paid_date_field_id" id="rdm_purchase_paid_date_field_id"  value="<?php echo $purchase_paid_on;?>" size="30">
 										</td>											
 									</tr>
@@ -782,11 +783,11 @@ class Rdm_Purchase_Table_Metabox {
 									<tr>
 										<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_purchases_supplier_field_id"><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_supplier_label',__('Supplier user','simple-job-managment'));?> </label>
+												<label for="rdm_jobs_purchases_supplier_field_id"><?php echo apply_filters('rdm_purchase_cpt_single_purchase_supplier_label',__('Supplier user','simple-job-managment'));?> </label>
 											</div>
 		
 											<select class="at-posts-select" name="rdm_jobs_purchases_supplier_field_id" id="rdm_jobs_purchases_supplier_field_id">
-												<option value="-1"><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_supplier_no_supplier_selected_option_text',__('No supplier selected','simple-job-managment'));?></option>
+												<option value="-1"><?php echo apply_filters('rdm_purchase_cpt_single_purchase_supplier_no_supplier_selected_option_text',__('No supplier selected','simple-job-managment'));?></option>
 												<?php
 													//get all suppliers
 													$get_all_suppliers_params =	array(
@@ -861,7 +862,7 @@ class Rdm_Purchase_Table_Metabox {
 										
 						<!-- 				<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_purchases_Job_list"><?php //echo apply_filters('albwppm_purchase_cpt_single_purchase_related_to_Job_label',__('Related to job','simple-job-managment'));?></label>
+												<label for="rdm_jobs_purchases_Job_list"><?php //echo apply_filters('rdm_purchase_cpt_single_purchase_related_to_Job_label',__('Related to job','simple-job-managment'));?></label>
 											</div>
 
 											<span  id="rdm_jobs_purchases_Job_list" ></span>
@@ -893,16 +894,16 @@ class Rdm_Purchase_Table_Metabox {
 										<td class="at-field" valign="top" >
 										
 											<div>
-												<div class="rdm_discount_title"><span > <?php echo apply_filters('albwppm_purchase_cpt_single_purchase_discount_label',__('Discount','simple-job-managment'));?> </span> </div>
+												<div class="rdm_discount_title"><span > <?php echo apply_filters('rdm_purchase_cpt_single_purchase_discount_label',__('Discount','simple-job-managment'));?> </span> </div>
 												
 												<div class="rdm_discount_form">
 												
 													<input type="text" name="purchase_discount_value" class="rdm_purchase_discount_fields" id="purchase_discount_value"  value="<?php echo Rdm_Purchase_Table_Metabox::get_vat_or_discount('discountValue') ;?>">
 												
 													<select name="purchase_discount_type" id="purchase_discount_type"  class="rdm_purchase_discount_fields" >
-														<option value="none" 	<?php selected( Rdm_Purchase_Table_Metabox::get_vat_or_discount('discountType') ,'0' );?> ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_discount_none_option_text',__('None','simple-job-managment'));?></option>
-														<option value="percent" <?php selected( Rdm_Purchase_Table_Metabox::get_vat_or_discount('discountType') , 'percent');?> ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_discount_percent_option_text',__('Percent','simple-job-managment'));?></option>
-														<option value="amount" 	<?php selected( Rdm_Purchase_Table_Metabox::get_vat_or_discount('discountType') , 'amount' );?> ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_discount_amount_option_text',__('Amount','simple-job-managment'));?></option>
+														<option value="none" 	<?php selected( Rdm_Purchase_Table_Metabox::get_vat_or_discount('discountType') ,'0' );?> ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_discount_none_option_text',__('None','simple-job-managment'));?></option>
+														<option value="percent" <?php selected( Rdm_Purchase_Table_Metabox::get_vat_or_discount('discountType') , 'percent');?> ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_discount_percent_option_text',__('Percent','simple-job-managment'));?></option>
+														<option value="amount" 	<?php selected( Rdm_Purchase_Table_Metabox::get_vat_or_discount('discountType') , 'amount' );?> ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_discount_amount_option_text',__('Amount','simple-job-managment'));?></option>
 													</select>
 													
 												</div>
@@ -912,7 +913,7 @@ class Rdm_Purchase_Table_Metabox {
 											
 											<div>
 												<div class="rdm_vat_title">
-													<span ><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_vat_label',__('VAT','simple-job-managment'));?> </span>    
+													<span ><?php echo apply_filters('rdm_purchase_cpt_single_purchase_vat_label',__('VAT','simple-job-managment'));?> </span>    
 												</div>
 
 												<div class="rdm_vat_form">
@@ -924,7 +925,7 @@ class Rdm_Purchase_Table_Metabox {
 											</div>
 											
 											<div style="display:none">
-												<p><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_total_label',__('VAT','simple-job-managment'));?> <span id="totalPurchaseCost">0</span> </p>
+												<p><?php echo apply_filters('rdm_purchase_cpt_single_purchase_total_label',__('VAT','simple-job-managment'));?> <span id="totalPurchaseCost">0</span> </p>
 											</div>
 											
 										</td>
@@ -934,7 +935,7 @@ class Rdm_Purchase_Table_Metabox {
 										<td class="at-field" colspan="3" valign="top" style="vertical-align: top;">
 												<div>
 													<div class="rdm_vat_title">
-														<span > <?php echo apply_filters('albwppm_purchase_cpt_single_purchase_currency_label',__('Currency','simple-job-managment'));?> </span>    
+														<span > <?php echo apply_filters('rdm_purchase_cpt_single_purchase_currency_label',__('Currency','simple-job-managment'));?> </span>    
 													</div>
 													<div class="rdm_vat_form">
 														<input type="text" name="purchase_currency"  class="rdm_purchase_discount_fields" id="purchase_currency"  value="<?php echo $purchase_currency ;?>"> 
@@ -943,12 +944,12 @@ class Rdm_Purchase_Table_Metabox {
 												</div>
 												<div>
 													<div class="rdm_vat_title">
-														<span > <?php echo apply_filters('albwppm_purchase_cpt_single_purchase_currency_position_label',__('Currency Position','simple-job-managment'));?> </span>    
+														<span > <?php echo apply_filters('rdm_purchase_cpt_single_purchase_currency_position_label',__('Currency Position','simple-job-managment'));?> </span>    
 													</div>
 													<div class="rdm_vat_form">
 														<select  name="purchase_currency_position" id="purchase_currency_position">
-															<option <?php selected( $purchase_currency_position, 'left'); ?>   value="left"><?php  echo apply_filters('albwppm_purchase_cpt_single_purchase_currency_position_left_of_price_option_text',__('Left of price','simple-job-managment'));?> </option >
-															<option  <?php selected(  $purchase_currency_position, 'right'); ?>    value="right"><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_currency_position_right_of_price_option_text',__('Right of price','simple-job-managment'));?> </option>
+															<option <?php selected( $purchase_currency_position, 'left'); ?>   value="left"><?php  echo apply_filters('rdm_purchase_cpt_single_purchase_currency_position_left_of_price_option_text',__('Left of price','simple-job-managment'));?> </option >
+															<option  <?php selected(  $purchase_currency_position, 'right'); ?>    value="right"><?php echo apply_filters('rdm_purchase_cpt_single_purchase_currency_position_right_of_price_option_text',__('Right of price','simple-job-managment'));?> </option>
 													</select>
 													</div>
 													<div class="rdm_clear"></div>
@@ -961,24 +962,24 @@ class Rdm_Purchase_Table_Metabox {
 									
 									<tr>
 										<td class="at-field" valign="top" colspan="4">
-												<input type="button" value="<?php echo apply_filters('albwppm_purchase_cpt_single_purchase_apply_vat_discount_button_text',__('1. Apply VAT and discount','simple-job-managment'));?>" class="button button-primary button-large rdm_purchase_page_buttons" id="rdm_apply_vat_btn">
+												<input type="button" value="<?php echo apply_filters('rdm_purchase_cpt_single_purchase_apply_vat_discount_button_text',__('1. Apply VAT and discount','simple-job-managment'));?>" class="button button-primary button-large rdm_purchase_page_buttons" id="rdm_apply_vat_btn">
 												
-												<input type="button" id="rdm_preview_purchase" value="<?php echo apply_filters('albwppm_purchase_cpt_single_purchase_generate_purchase_button_text',__('Generate Purchase','simple-job-managment')) ?>" class="button button-primary button-large rdm_purchase_page_buttons">
+												<input type="button" id="rdm_preview_purchase" value="<?php echo apply_filters('rdm_purchase_cpt_single_purchase_generate_purchase_button_text',__(' Generate Purchase','simple-job-managment')) ?>" class="button button-primary button-large rdm_purchase_page_buttons">
 												
 												
 												<form method="post">
-													<input type="submit" id="rdm_jobs_download_purchase" name="rdm_jobs_download_purchase" value="<?php echo apply_filters('albwppm_purchase_cpt_single_purchase_download_purchase_button_text',__('3.Download Purchase','simple-job-managment'));?>" class="button button-primary button-large rdm_purchase_page_buttons">
+													<input type="submit" id="rdm_jobs_download_purchase" name="rdm_jobs_download_purchase" value="<?php echo apply_filters('rdm_purchase_cpt_single_purchase_download_purchase_button_text',__('3.Download Purchase','simple-job-managment'));?>" class="button button-primary button-large rdm_purchase_page_buttons">
 												</form>
 
 												<form method="post" action="">
-													<input type="submit" id="rdm_jobs_submit_purchase_to_supplier" name="rdm_jobs_submit_purchase_to_supplier" value="<?php echo apply_filters('albwppm_purchase_cpt_single_purchase_submit_purchase_button_text',__('4.Send Purchase','simple-job-managment'));?>" class="button button-primary button-large rdm_purchase_page_buttons">
+													<input type="submit" id="rdm_jobs_submit_purchase" name="rdm_jobs_submit_purchase" value="<?php echo apply_filters('rdm_purchase_cpt_single_purchase_submit_purchase_button_text',__('4.Send Purchase','simple-job-managment'));?>" class="button button-primary button-large rdm_purchase_page_buttons">
 												</form>
 												
 												
 												<span class="rdm_apply_vat_loader rdm_loading_ajax"><?php echo __('Loading','simple-job-managment') ?></span>
 												
 												
-												<?php do_action('albwppm_before_purchase_preview'); ?>
+												<?php do_action('rdm_before_purchase_preview'); ?>
 												
 												<div id="htmlForPdf"></div> 
 												
@@ -989,7 +990,7 @@ class Rdm_Purchase_Table_Metabox {
 										<td class="at-field" valign="top" colspan="3">
 											
 											
-												<span class="purchase_preview_text"><?php echo apply_filters('albwppm_purchase_cpt_single_purchase_pdf_purchase_preview_label',__('PDF Purchase Preview','simple-job-managment'));?></span>
+												<span class="purchase_preview_text"><?php echo apply_filters('rdm_purchase_cpt_single_purchase_pdf_purchase_preview_label',__('PDF Purchase Preview','simple-job-managment'));?></span>
 											
 												<div id="rdm_pdf_preview_in_browser"></div> 
 											
@@ -1103,7 +1104,7 @@ class Rdm_Purchase_Table_Metabox {
 	*/
 	public function get_supplier_info($purchaseID,$what){
 	
-		$no_supplier_found = apply_filters('albwppm_purchase_cpt_single_purchase_no_supplier_found_label',__('No Supplier Found','simple-job-managment'));
+		$no_supplier_found = apply_filters('rdm_purchase_cpt_single_purchase_no_supplier_found_label',__('No Supplier Found','simple-job-managment'));
 	
 		$supplier_id = get_post_meta($purchaseID,'rdm_jobs_purchases_supplier_field_id',true);
 		
@@ -1183,7 +1184,7 @@ class Rdm_Purchase_Table_Metabox {
 		
 		}
 		
-		return apply_filters('albwppm_purchase_cpt_single_purchase_format_price_and_currency',$this->get_currency($purchase_id) . ' ' . $price, $this->get_currency($purchase_id) , $price);
+		return apply_filters('rdm_purchase_cpt_single_purchase_format_price_and_currency',$this->get_currency($purchase_id) . ' ' . $price, $this->get_currency($purchase_id) , $price);
 	}
 	
 	/*
@@ -1404,7 +1405,7 @@ class Rdm_Purchase_Table_Metabox {
 			
 			if($saved_pdf_base64){
 
-				$filename= apply_filters('albwppm_download_pdf_file_name', 'Purchase_'.$purchase_id.'.pdf' ,$purchase_id);
+				$filename= apply_filters('rdm_download_pdf_file_name', 'Purchase_'.$purchase_id.'.pdf' ,$purchase_id);
 				header('Content-type: application/pdf');
 				header('Content-disposition: attachment; filename="'.$filename.'"');
 				echo base64_decode($saved_pdf_base64); 
@@ -1417,7 +1418,7 @@ class Rdm_Purchase_Table_Metabox {
 
 /* 
 * Notify Supplier
-*/
+
 	public function rdm_job_purchase_pdf_email() {
 		
 		if(isset($_POST['post_ID'])){
@@ -1439,12 +1440,12 @@ class Rdm_Purchase_Table_Metabox {
 			$filename	=	apply_filters('rdm_submit_pdf_file_name', 'Purchase_'.$purchase_id.'.pdf' ,$purchase_id);
 			header('Content-type: application/pdf');
 			header('Content-disposition: attachment; filename="'.$filename.'"');
-			echo base64_decode($saved_pdf_base64); 
-			exit();
-		}
-
+			$attachment = base64_decode($saved_pdf_base64); 
+		//include( plugin_dir_path(__FILE__) . 'include/submit.purchase.to.supplier.php');
+}
+		
 	}
-	}
+	}*/
 
 } //end class
 

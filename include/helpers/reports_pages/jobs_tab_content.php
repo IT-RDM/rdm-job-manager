@@ -1,14 +1,14 @@
 <div class="wrap" style="background-color: #fff;padding: 20px;">
 	<h1><?php echo __('Jobs Tab','simple-job-managment') ?></h1>
 
-		<?php do_action('albwppm_Jobs_report_page_before_form_table'); ?>
+		<?php do_action('rdm_Jobs_report_page_before_form_table'); ?>
 	
 		<table class="form-table rdm_jobs_reports_page">
 
 			<tr valign="top">
 				<td class="rdm_jobs_report_Jobs_tab_form">
 				
-					<?php do_action('albwppm_Jobs_report_page_before_form'); ?>
+					<?php do_action('rdm_Jobs_report_page_before_form'); ?>
 				
 					<form method="post" >
 
@@ -61,7 +61,7 @@
 						
 					</form>
 					
-					<?php do_action('albwppm_Jobs_report_page_after_form'); ?>
+					<?php do_action('rdm_Jobs_report_page_after_form'); ?>
 					
 				</td>
 			</tr>
@@ -69,7 +69,7 @@
 		</table>
 		
 		
-		<?php do_action('albwppm_Jobs_report_page_before_report_table'); ?>
+		<?php do_action('rdm_Jobs_report_page_before_report_table'); ?>
 		
 		<table>
 			<tr>
@@ -79,7 +79,7 @@
 			</tr>
 		</table>
 		
-		<?php do_action('albwppm_Jobs_report_page_after_report_table'); ?>
+		<?php do_action('rdm_Jobs_report_page_after_report_table'); ?>
 
 		
 </div>

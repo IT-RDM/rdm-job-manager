@@ -322,14 +322,14 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 					=	apply_filters('albwppm_Jobs_cpt_list_post_table_header_Job_text',__('Job','simple-job-managment'));
-		$columns['deadline'] 				=	apply_filters('albwppm_Jobs_cpt_list_post_table_header_deadline_text',__('Deadline','simple-job-managment'));
-		$columns['status'] 	 				=	apply_filters('albwppm_Jobs_cpt_list_post_table_header_status_text',__('Status','simple-job-managment'));
-		$columns['get_tasks_for_Job'] 	=	apply_filters('albwppm_Jobs_cpt_list_post_table_header_tasks_text',__('Tasks','simple-job-managment'));
-		$columns['client']	 				=	apply_filters('albwppm_Jobs_cpt_list_post_table_header_client_text',__('Client','simple-job-managment'));
-		$columns['earnings'] 				=	apply_filters('albwppm_Jobs_cpt_list_post_table_header_earning_text',__('Earning','simple-job-managment'));
+		$columns['title'] 					=	apply_filters('rdm_Jobs_cpt_list_post_table_header_Job_text',__('Job','simple-job-managment'));
+		$columns['deadline'] 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_deadline_text',__('Deadline','simple-job-managment'));
+		$columns['status'] 	 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_status_text',__('Status','simple-job-managment'));
+		$columns['get_tasks_for_Job'] 	=	apply_filters('rdm_Jobs_cpt_list_post_table_header_tasks_text',__('Tasks','simple-job-managment'));
+		$columns['client']	 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_client_text',__('Client','simple-job-managment'));
+		$columns['earnings'] 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_earning_text',__('Earning','simple-job-managment'));
 
-		return apply_filters('albwppm_Jobs_cpt_list_post_table_header_array',$columns);
+		return apply_filters('rdm_Jobs_cpt_list_post_table_header_array',$columns);
 		
 		
 	}
@@ -339,12 +339,12 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 				= 	apply_filters('albwppm_task_cpt_list_post_table_header_task_title_text',__('Task','simple-job-managment'));
-		$columns['task_deadline'] 		= 	apply_filters('albwppm_task_cpt_list_post_table_header_task_deadline_text',__('Task Deadline','simple-job-managment'));
-		$columns['task_status'] 		= 	apply_filters('albwppm_task_cpt_list_post_table_header_task_status_text',__('Task Status','simple-job-managment'));
-		$columns['task_for_Job']	= 	apply_filters('albwppm_task_cpt_list_post_table_header_task_Job_text',__('Job','simple-job-managment'));
+		$columns['title'] 				= 	apply_filters('rdm_task_cpt_list_post_table_header_task_title_text',__('Task','simple-job-managment'));
+		$columns['task_deadline'] 		= 	apply_filters('rdm_task_cpt_list_post_table_header_task_deadline_text',__('Task Deadline','simple-job-managment'));
+		$columns['task_status'] 		= 	apply_filters('rdm_task_cpt_list_post_table_header_task_status_text',__('Task Status','simple-job-managment'));
+		$columns['task_for_Job']	= 	apply_filters('rdm_task_cpt_list_post_table_header_task_Job_text',__('Job','simple-job-managment'));
 		
-		return apply_filters('albwppm_tasks_cpt_list_post_table_header_array',$columns);
+		return apply_filters('rdm_tasks_cpt_list_post_table_header_array',$columns);
 
 	}
 	
@@ -354,12 +354,12 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);	
 	
-		$columns['title'] 								=	apply_filters('albwppm_clients_cpt_list_post_table_header_client_name',__('Client','simple-job-managment'));
-		$columns['rdm_jobs_client_Jobs'] 	=	apply_filters('albwppm_clients_cpt_list_post_table_header_Jobs',__('Jobs','simple-job-managment'));
-		$columns['rdm_jobs_client_invoices'] 	=	apply_filters('albwppm_clients_cpt_list_post_table_header_invoices',__('Invoices','simple-job-managment'));
-		$columns['rdm_jobs_client_reviews'] 	=	apply_filters('albwppm_clients_cpt_list_post_table_header_reviews',__('Reviews','simple-job-managment'));		
+		$columns['title'] 								=	apply_filters('rdm_clients_cpt_list_post_table_header_client_name',__('Client','simple-job-managment'));
+		$columns['rdm_jobs_client_Jobs'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_Jobs',__('Jobs','simple-job-managment'));
+		$columns['rdm_jobs_client_invoices'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_invoices',__('Invoices','simple-job-managment'));
+		$columns['rdm_jobs_client_reviews'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_reviews',__('Reviews','simple-job-managment'));		
 		
-		return apply_filters('albwppm_clients_cpt_list_post_table_header_array',$columns);
+		return apply_filters('rdm_clients_cpt_list_post_table_header_array',$columns);
 
 	}
 	
@@ -373,10 +373,10 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 								=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_name',__('Invoice','simple-job-managment'));
-		$columns['rdm_jobs_invoice_total'] 				=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_total',__('Total','simple-job-managment'));
-		$columns['rdm_jobs_invoice_status'] 			=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_status',__('Status','simple-job-managment'));
-		$columns['rdm_jobs_invoice_for_client'] 		=	apply_filters('albwppm_invoice_cpt_list_post_table_header_invoice_client_name',__('Client','simple-job-managment'));
+		$columns['title'] 								=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_name',__('Invoice','simple-job-managment'));
+		$columns['rdm_jobs_invoice_total'] 				=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_total',__('Total','simple-job-managment'));
+		$columns['rdm_jobs_invoice_status'] 			=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_status',__('Status','simple-job-managment'));
+		$columns['rdm_jobs_invoice_for_client'] 		=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_client_name',__('Client','simple-job-managment'));
 
 		return $columns;	
 	}
@@ -387,12 +387,12 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);	
 	
-		$columns['title'] 								=	apply_filters('albwppm_suppliers_cpt_list_post_table_header_supplier_name',__('Supplier','simple-job-managment'));
-		$columns['rdm_jobs_supplier_Jobs'] 	=	apply_filters('albwppm_suppliers_cpt_list_post_table_header_Jobs',__('Jobs','simple-job-managment'));
-		$columns['rdm_jobs_supplier_purchases'] 	=	apply_filters('albwppm_suppliers_cpt_list_post_table_header_purchases',__('Purchases','simple-job-managment'));
-		$columns['rdm_jobs_supplier_reviews'] 	=	apply_filters('albwppm_suppliers_cpt_list_post_table_header_reviews',__('Reviews','simple-job-managment'));		
+		$columns['title'] 								=	apply_filters('rdm_suppliers_cpt_list_post_table_header_supplier_name',__('Supplier','simple-job-managment'));
+		$columns['rdm_jobs_supplier_Jobs'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_Jobs',__('Jobs','simple-job-managment'));
+		$columns['rdm_jobs_supplier_purchases'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_purchases',__('Purchases','simple-job-managment'));
+		$columns['rdm_jobs_supplier_reviews'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_reviews',__('Reviews','simple-job-managment'));		
 		
-		return apply_filters('albwppm_suppliers_cpt_list_post_table_header_array',$columns);
+		return apply_filters('rdm_suppliers_cpt_list_post_table_header_array',$columns);
 
 	}
 
@@ -405,10 +405,10 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 										=	apply_filters('albwppm_purchase_cpt_list_post_table_header_purchase_name',__('Purchase','simple-job-managment'));
-		$columns['rdm_jobs_purchase_total'] 			=	apply_filters('albwppm_purchase_cpt_list_post_table_header_purchase_total',__('Total','simple-job-managment'));
-		$columns['rdm_jobs_purchase_status'] 			=	apply_filters('albwppm_purchase_cpt_list_post_table_header_purchase_status',__('Status','simple-job-managment'));
-		$columns['rdm_jobs_purchase_for_supplier'] 		=	apply_filters('albwppm_purchase_cpt_list_post_table_header_purchase_client_name',__('Supplier','simple-job-managment'));
+		$columns['title'] 										=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_name',__('Purchase','simple-job-managment'));
+		$columns['rdm_jobs_purchase_total'] 			=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_total',__('Total','simple-job-managment'));
+		$columns['rdm_jobs_purchase_status'] 			=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_status',__('Status','simple-job-managment'));
+		$columns['rdm_jobs_purchase_for_supplier'] 		=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_client_name',__('Supplier','simple-job-managment'));
 
 		return $columns;	
 	}
@@ -509,7 +509,7 @@ add_action('publish_rdm_purchase', 'rdm_after_purchase_created_notify_admin');
 // After purchase has been submitted send an email to the selected supplier
 // see purchases.tables.metabox (line 825) and submit.purchase files 
 // https://codex.wordpress.org/Plugin_API/Action_Reference/publish_post
-include( plugin_dir_path(__FILE__) . 'include/submit.purchase.to.supplier.php');
+//include( plugin_dir_path(__FILE__) . 'include/submit.purchase.to.supplier.php');
 add_action('publish_rdm_purchase', 'rdm_notify_supplier');
 										
 							

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	$list_all_suppliers_info_config = array(
 		'id'             	=> 	'all_suppliers_meta_box',          // meta box id, unique per meta box
-		'title'          	=> 	apply_filters('albwppm_purchases_cpt_purchase_infos_metabox_title',__('Prepare Purchases','simple-job-managment')), // meta box title
+		'title'          	=> 	apply_filters('rdm_purchases_cpt_purchase_infos_metabox_title',__('Prepare Purchases','simple-job-managment')), // meta box title
 		'pages'          	=> 	array('rdm_purchase'),      // post types, accept custom post types as well, default is array('post'); optional
 		'context'        	=> 	'normal',            // where the meta box appear: normal (default), advanced, side; optional
 		'priority'       	=> 	'high',            // order of meta box: high (default), low; optional
@@ -34,8 +34,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'args' 		=> 	array('orderby' => 'title', 'order' => 'ASC')
 										),
 										array(
-											'name'			=>	apply_filters('albwppm_purchases_cpt_purchase_infos_metabox_send_to_supplier_label',__('Send to supplier','simple-job-managment')),
-											'emptylabel'	=>	apply_filters('albwppm_purchases_cpt_purchase_infos_metabox_send_to_supplier_no_supplier_selected_option',__('No supplier selected','simple-job-managment')),
+											'name'			=>	apply_filters('rdm_purchases_cpt_purchase_infos_metabox_send_to_supplier_label',__('Send to supplier','simple-job-managment')),
+											'emptylabel'	=>	apply_filters('rdm_purchases_cpt_purchase_infos_metabox_send_to_supplier_no_supplier_selected_option',__('No supplier selected','simple-job-managment')),
 											'group' 		=> 'start'
 										)
 									);
@@ -46,8 +46,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'args' 			=>	array('orderby' => 'title', 'order' => 'DESC')
 										),
 										array(
-											'name'			=>	apply_filters('albwppm_purchases_cpt_purchase_infos_metabox_related_to_Job_label',__('Related to job','simple-job-managment')),
-											'emptylabel'	=>	apply_filters('albwppm_purchases_cpt_purchase_infos_metabox_related_to_Job_no_Job_selected',__('No job selected','simple-job-managment')),
+											'name'			=>	apply_filters('rdm_purchases_cpt_purchase_infos_metabox_related_to_Job_label',__('Related to job','simple-job-managment')),
+											'emptylabel'	=>	apply_filters('rdm_purchases_cpt_purchase_infos_metabox_related_to_Job_no_Job_selected',__('No job selected','simple-job-managment')),
 										)
 									);
 	
@@ -57,8 +57,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'args' 		=> array('orderby' => 'title', 'order' => 'DESC')
 										),
 										array(
-											'name'			=>	apply_filters('albwppm_purchases_cpt_purchase_infos_metabox_related_to_task_label',__('Related to task','simple-job-managment')),
-											'emptylabel'	=>	apply_filters('albwppm_purchases_cpt_purchase_infos_metabox_related_to_Job_no_task_selected',__('No task selected','simple-job-managment')),
+											'name'			=>	apply_filters('rdm_purchases_cpt_purchase_infos_metabox_related_to_task_label',__('Related to task','simple-job-managment')),
+											'emptylabel'	=>	apply_filters('rdm_purchases_cpt_purchase_infos_metabox_related_to_Job_no_task_selected',__('No task selected','simple-job-managment')),
 											'group' 		=>	'end'
 										)
 									);	

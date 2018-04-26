@@ -39,9 +39,9 @@ switch ( $column ) {
 			for($i=0;$i<$supplier_review;$i++){
 				$total_stars.='<span style="color:rgb(255, 174, 10);font-size: 18px;">&#9733;</span>';
 			}
-			echo apply_filters('albwppm_supplier_reviews_star_icons',$total_stars,$supplier_review);
+			echo apply_filters('rdm_supplier_reviews_star_icons',$total_stars,$supplier_review);
 		}else{	
-			echo  apply_filters('albwppm_supplier_reviews_no_review',$supplier_review);
+			echo  apply_filters('rdm_supplier_reviews_no_review',$supplier_review);
 		}
 		
 		break;

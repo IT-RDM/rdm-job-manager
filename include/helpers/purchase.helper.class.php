@@ -51,7 +51,7 @@ class Rdm_Jobs_Purchase_Helpers{
 			} else {
 				
 				//existing supplier but no purchases associated with him
-				return apply_filters('albwppm_no_purchases_for_this_supplier',$purchasesAssociateWithSupplier ,'no_purchases_found');
+				return apply_filters('rdm_no_purchases_for_this_supplier',$purchasesAssociateWithSupplier ,'no_purchases_found');
 			}
 
 		}
@@ -559,7 +559,7 @@ class Rdm_Jobs_Purchase_Helpers{
 	 
 		
 	 
-		echo  apply_filters('albwppm_reports_purchases_page_found_purchases_title' , sprintf( _n( '<h3>Found  %s purchase </h3>', '<h3>Found  %s purchases </h3>', $purchases_found, 'simple-job-managment' ), $purchases_found ));
+		echo  apply_filters('rdm_reports_purchases_page_found_purchases_title' , sprintf( _n( '<h3>Found  %s purchase </h3>', '<h3>Found  %s purchases </h3>', $purchases_found, 'simple-job-managment' ), $purchases_found ));
 		
 		
 		//if we have at least one purchase ... show the table

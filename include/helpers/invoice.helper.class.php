@@ -51,7 +51,7 @@ class Rdm_Jobs_Invoice_Helpers{
 			} else {
 				
 				//existing client but no invoices associated with him
-				return apply_filters('albwppm_no_invoices_for_this_client',$invoicesAssociateWithClient ,'no_invoices_found');
+				return apply_filters('rdm_no_invoices_for_this_client',$invoicesAssociateWithClient ,'no_invoices_found');
 			}
 
 		}
@@ -559,7 +559,7 @@ class Rdm_Jobs_Invoice_Helpers{
 	 
 		
 	 
-		echo  apply_filters('albwppm_reports_invoices_page_found_invoices_title' , sprintf( _n( '<h3>Found  %s invoice </h3>', '<h3>Found  %s invoices </h3>', $invoices_found, 'simple-job-managment' ), $invoices_found ));
+		echo  apply_filters('rdm_reports_invoices_page_found_invoices_title' , sprintf( _n( '<h3>Found  %s invoice </h3>', '<h3>Found  %s invoices </h3>', $invoices_found, 'simple-job-managment' ), $invoices_found ));
 		
 		
 		//if we have at least one invoice ... show the table

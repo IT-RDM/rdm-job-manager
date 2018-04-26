@@ -341,7 +341,7 @@ class AT_Meta_Box {
 
       if (isset($field['group']) && $field['group'] == 'start'){
         $this->inGroup = true;
-        echo '<td><table class="form-table albwppm_table_for_grouped_fields"><tr>';
+        echo '<td><table class="form-table rdm_table_for_grouped_fields"><tr>';
       }
       
       // Call Separated methods for displaying each type of field.

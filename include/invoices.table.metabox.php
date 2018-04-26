@@ -77,21 +77,21 @@ class Rdm_Invoice_Table_Metabox {
 	function localize_scripts(){
 		
 		$translation_array = array(
-			'table_invoice_add_record_title' => apply_filters('albwppm_table_invoice_add_record_title',__('Add new item','simple-job-managment')),
-			'table_invoice_line_total'		 => apply_filters('albwppm_table_invoice_line_total_title',__('Line total','simple-job-managment')),
-			'table_invoice_line_quantity'	 => apply_filters('albwppm_table_invoice_line_quantity_title',__('Quantity','simple-job-managment')),
-			'table_invoice_line_price'	 	 => apply_filters('albwppm_table_invoice_line_price_title',__('Unit Price','simple-job-managment')),
-			'table_invoice_line_item'	 	 => apply_filters('albwppm_table_invoice_line_item_title',__('Item','simple-job-managment')),
-			'table_invoice_items_on_invoice_title'	 	 => apply_filters('albwppm_table_invoice_items_on_invoice_title',__('Items on invoice','simple-job-managment')),
-			'table_invoice_save_new_item_button_title'	 	 => apply_filters('albwppm_table_invoice_save_new_item_button_title',__('Save','simple-job-managment')),
-			'table_invoice_cancel_new_item_button_title'	 	 => apply_filters('albwppm_table_invoice_cancel_new_item_button_title',__('Cancel','simple-job-managment')),
-			'table_invoice_edit_item_popup_title'	 	 => apply_filters('albwppm_table_invoice_edit_item_popup_title',__('Edit item','simple-job-managment')),
-			'table_invoice_delete_item_popup_title_are_you_sure'	 	 => apply_filters('albwppm_table_invoice_delete_item_popup_title_are_you_sure',__('Are you sure','simple-job-managment')),
-			'table_invoice_delete_item_confirmation_text'	 	 => apply_filters('albwppm_table_invoice_delete_item_confirmation_text',__('This item will be deleted','simple-job-managment')),
-			'table_invoice_delete_item_button_text'	 	 => apply_filters('albwppm_table_invoice_delete_item_button_text',__('Delete','simple-job-managment')),
-			'table_invoice_no_data_available'	 	 => apply_filters('albwppm_table_invoice_no_data_available',__('No data available','simple-job-managment')),
-			'table_invoice_loading_records'	 	 => apply_filters('albwppm_table_invoice_loading_records',__('Loading records','simple-job-managment')),
-			'table_invoice_no_items_on_invoice'	 	 => apply_filters('albwppm_table_invoice_no_items_on_invoice',__('No items on invoice','simple-job-managment')),
+			'table_invoice_add_record_title' => apply_filters('rdm_table_invoice_add_record_title',__('Add new item','simple-job-managment')),
+			'table_invoice_line_total'		 => apply_filters('rdm_table_invoice_line_total_title',__('Line total','simple-job-managment')),
+			'table_invoice_line_quantity'	 => apply_filters('rdm_table_invoice_line_quantity_title',__('Quantity','simple-job-managment')),
+			'table_invoice_line_price'	 	 => apply_filters('rdm_table_invoice_line_price_title',__('Unit Price','simple-job-managment')),
+			'table_invoice_line_item'	 	 => apply_filters('rdm_table_invoice_line_item_title',__('Item','simple-job-managment')),
+			'table_invoice_items_on_invoice_title'	 	 => apply_filters('rdm_table_invoice_items_on_invoice_title',__('Items on invoice','simple-job-managment')),
+			'table_invoice_save_new_item_button_title'	 	 => apply_filters('rdm_table_invoice_save_new_item_button_title',__('Save','simple-job-managment')),
+			'table_invoice_cancel_new_item_button_title'	 	 => apply_filters('rdm_table_invoice_cancel_new_item_button_title',__('Cancel','simple-job-managment')),
+			'table_invoice_edit_item_popup_title'	 	 => apply_filters('rdm_table_invoice_edit_item_popup_title',__('Edit item','simple-job-managment')),
+			'table_invoice_delete_item_popup_title_are_you_sure'	 	 => apply_filters('rdm_table_invoice_delete_item_popup_title_are_you_sure',__('Are you sure','simple-job-managment')),
+			'table_invoice_delete_item_confirmation_text'	 	 => apply_filters('rdm_table_invoice_delete_item_confirmation_text',__('This item will be deleted','simple-job-managment')),
+			'table_invoice_delete_item_button_text'	 	 => apply_filters('rdm_table_invoice_delete_item_button_text',__('Delete','simple-job-managment')),
+			'table_invoice_no_data_available'	 	 => apply_filters('rdm_table_invoice_no_data_available',__('No data available','simple-job-managment')),
+			'table_invoice_loading_records'	 	 => apply_filters('rdm_table_invoice_loading_records',__('Loading records','simple-job-managment')),
+			'table_invoice_no_items_on_invoice'	 	 => apply_filters('rdm_table_invoice_no_items_on_invoice',__('No items on invoice','simple-job-managment')),
 		);
 
 		wp_localize_script( 'rdm-job-invoice-page', 'albwppm', $translation_array );
@@ -741,16 +741,16 @@ class Rdm_Invoice_Table_Metabox {
 									
 									<tr>
 										<td class="at-field" style="vertical-align: top;" >
-											<div><?php echo apply_filters('albwppm_invoice_cpt_single_private_notes_label',__('Invoice Private Notes','simple-job-managment')); ?></div>
+											<div><?php echo apply_filters('rdm_invoice_cpt_single_private_notes_label',__('Invoice Private Notes','simple-job-managment')); ?></div>
 											<textarea name="invoice_specific_personal_notes" id="invoice_specific_personal_notes" style="width:100%" rows="5"><?php echo $invoice_personal_note;?></textarea>
 										</td>
 
 										<td class="at-field" style="vertical-align: top;" colspan="2" >
-											<div> <?php echo apply_filters('albwppm_invoice_cpt_single_public_notes_label',__('Invoice public notes (visible on invoice)','simple-job-managment'));?> </div>
+											<div> <?php echo apply_filters('rdm_invoice_cpt_single_public_notes_label',__('Invoice public notes (visible on invoice)','simple-job-managment'));?> </div>
 											<textarea name="invoice_specific_public_notes" id="invoice_specific_public_notes" style="width:100%"  rows="5"><?php echo $invoice_specific_terms; ?></textarea>
 											<div>
 												
-												<input type="checkbox" name="rdm_show_general_invoice_terms_also" id="rdm_show_general_invoice_terms_also" <?php echo $invoice_show_default_terms;?> ><?php echo apply_filters('albwppm_invoice_cpt_single_show_general_terms_also_label',__('Show general terms also','simple-job-managment'));?>
+												<input type="checkbox" name="rdm_show_general_invoice_terms_also" id="rdm_show_general_invoice_terms_also" <?php echo $invoice_show_default_terms;?> ><?php echo apply_filters('rdm_invoice_cpt_single_show_general_terms_also_label',__('Show general terms also','simple-job-managment'));?>
 											</div>
 										</td>										
 
@@ -758,21 +758,21 @@ class Rdm_Invoice_Table_Metabox {
 
 									<tr>
 										<td class="at-field" style="vertical-align: top;" >
-											<div> <?php echo apply_filters('albwppm_invoice_cpt_single_invoice_status_label',__('Invoice status','simple-job-managment'));?> </div>
+											<div> <?php echo apply_filters('rdm_invoice_cpt_single_invoice_status_label',__('Invoice status','simple-job-managment'));?> </div>
 											<select class="at-posts-select" name="rdm_jobs_invoices_status_field_id" id="rdm_jobs_invoices_status_field_id">
-												<option value="unpaid" 		<?php selected($invoice_status,'unpaid');?> ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_status_unpaid_dropdown_option_text',__('Unpaid','simple-job-managment'));?></option>
-												<option value="paid"  		<?php selected($invoice_status,'paid');?> ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_status_paid_dropdown_option_text',__('Paid','simple-job-managment'));?></option>
-												<option value="overdue" 	<?php selected($invoice_status,'overdue');?> ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_status_overdue_dropdown_option_text',__('Overdue','simple-job-managment'));?></option>
-												<option value="cancelled"  	<?php selected($invoice_status,'cancelled');?> ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_status_cancelled_dropdown_option_text',__('Cancelled','simple-job-managment'));?></option>
+												<option value="unpaid" 		<?php selected($invoice_status,'unpaid');?> ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_status_unpaid_dropdown_option_text',__('Unpaid','simple-job-managment'));?></option>
+												<option value="paid"  		<?php selected($invoice_status,'paid');?> ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_status_paid_dropdown_option_text',__('Paid','simple-job-managment'));?></option>
+												<option value="overdue" 	<?php selected($invoice_status,'overdue');?> ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_status_overdue_dropdown_option_text',__('Overdue','simple-job-managment'));?></option>
+												<option value="cancelled"  	<?php selected($invoice_status,'cancelled');?> ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_status_cancelled_dropdown_option_text',__('Cancelled','simple-job-managment'));?></option>
 											</select>
 										</td>
 										
 										<td class="at-field"  style="vertical-align: top;" >
-											<div><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_to_be_paid_by_date_label',__('To be paid by date','simple-job-managment'));?></div>
+											<div><?php echo apply_filters('rdm_invoice_cpt_single_invoice_to_be_paid_by_date_label',__('To be paid by date','simple-job-managment'));?></div>
 											<input type="text" name="rdm_invoice_to_be_paid_by_date_field_id" id="rdm_invoice_to_be_paid_by_date_field_id" rel="d MM, yy" value="<?php echo $invoice_to_be_paid_on;?>" size="30">
 										</td>			
 										<td class="at-field"  style="vertical-align: top;" >
-											<div> <?php echo apply_filters('albwppm_invoice_cpt_single_invoice_paid_date_label',__('Paid Date','simple-job-managment'));?> </div>
+											<div> <?php echo apply_filters('rdm_invoice_cpt_single_invoice_paid_date_label',__('Paid Date','simple-job-managment'));?> </div>
 											<input type="text" name="rdm_invoice_paid_date_field_id" id="rdm_invoice_paid_date_field_id"  value="<?php echo $invoice_paid_on;?>" size="30">
 										</td>											
 									</tr>
@@ -780,11 +780,11 @@ class Rdm_Invoice_Table_Metabox {
 									<tr>
 										<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_invoices_client_field_id"><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_client_label',__('Client','simple-job-managment'));?> </label>
+												<label for="rdm_jobs_invoices_client_field_id"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_client_label',__('Client','simple-job-managment'));?> </label>
 											</div>
 		
 											<select class="at-posts-select" name="rdm_jobs_invoices_client_field_id" id="rdm_jobs_invoices_client_field_id">
-												<option value="-1"><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_client_no_client_selected_option_text',__('No client selected','simple-job-managment'));?></option>
+												<option value="-1"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_client_no_client_selected_option_text',__('No client selected','simple-job-managment'));?></option>
 												<?php
 													//get all clients
 													$get_all_clients_params =	array(
@@ -834,7 +834,7 @@ class Rdm_Invoice_Table_Metabox {
 										
 										<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_invoices_Job_list"><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_related_to_Job_label',__('Related to job','simple-job-managment'));?></label>
+												<label for="rdm_jobs_invoices_Job_list"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_related_to_Job_label',__('Related to job','simple-job-managment'));?></label>
 											</div>
 
 											<span  id="rdm_jobs_invoices_Job_list" ></span>
@@ -866,16 +866,16 @@ class Rdm_Invoice_Table_Metabox {
 										<td class="at-field" valign="top" >
 										
 											<div>
-												<div class="rdm_discount_title"><span > <?php echo apply_filters('albwppm_invoice_cpt_single_invoice_discount_label',__('Discount','simple-job-managment'));?> </span> </div>
+												<div class="rdm_discount_title"><span > <?php echo apply_filters('rdm_invoice_cpt_single_invoice_discount_label',__('Discount','simple-job-managment'));?> </span> </div>
 												
 												<div class="rdm_discount_form">
 												
 													<input type="text" name="invoice_discount_value" class="rdm_invoice_discount_fields" id="invoice_discount_value"  value="<?php echo Rdm_Invoice_Table_Metabox::get_vat_or_discount('discountValue') ;?>">
 												
 													<select name="invoice_discount_type" id="invoice_discount_type"  class="rdm_invoice_discount_fields" >
-														<option value="none" 	<?php selected( Rdm_Invoice_Table_Metabox::get_vat_or_discount('discountType') ,'0' );?> ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_discount_none_option_text',__('None','simple-job-managment'));?></option>
-														<option value="percent" <?php selected( Rdm_Invoice_Table_Metabox::get_vat_or_discount('discountType') , 'percent');?> ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_discount_percent_option_text',__('Percent','simple-job-managment'));?></option>
-														<option value="amount" 	<?php selected( Rdm_Invoice_Table_Metabox::get_vat_or_discount('discountType') , 'amount' );?> ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_discount_amount_option_text',__('Amount','simple-job-managment'));?></option>
+														<option value="none" 	<?php selected( Rdm_Invoice_Table_Metabox::get_vat_or_discount('discountType') ,'0' );?> ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_discount_none_option_text',__('None','simple-job-managment'));?></option>
+														<option value="percent" <?php selected( Rdm_Invoice_Table_Metabox::get_vat_or_discount('discountType') , 'percent');?> ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_discount_percent_option_text',__('Percent','simple-job-managment'));?></option>
+														<option value="amount" 	<?php selected( Rdm_Invoice_Table_Metabox::get_vat_or_discount('discountType') , 'amount' );?> ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_discount_amount_option_text',__('Amount','simple-job-managment'));?></option>
 													</select>
 													
 												</div>
@@ -885,7 +885,7 @@ class Rdm_Invoice_Table_Metabox {
 											
 											<div>
 												<div class="rdm_vat_title">
-													<span ><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_vat_label',__('VAT','simple-job-managment'));?> </span>    
+													<span ><?php echo apply_filters('rdm_invoice_cpt_single_invoice_vat_label',__('VAT','simple-job-managment'));?> </span>    
 												</div>
 
 												<div class="rdm_vat_form">
@@ -897,7 +897,7 @@ class Rdm_Invoice_Table_Metabox {
 											</div>
 											
 											<div style="display:none">
-												<p><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_total_label',__('VAT','simple-job-managment'));?> <span id="totalInvoiceCost">0</span> </p>
+												<p><?php echo apply_filters('rdm_invoice_cpt_single_invoice_total_label',__('VAT','simple-job-managment'));?> <span id="totalInvoiceCost">0</span> </p>
 											</div>
 											
 										</td>
@@ -907,7 +907,7 @@ class Rdm_Invoice_Table_Metabox {
 										<td class="at-field" colspan="3" valign="top" style="vertical-align: top;">
 												<div>
 													<div class="rdm_vat_title">
-														<span > <?php echo apply_filters('albwppm_invoice_cpt_single_invoice_currency_label',__('Currency','simple-job-managment'));?> </span>    
+														<span > <?php echo apply_filters('rdm_invoice_cpt_single_invoice_currency_label',__('Currency','simple-job-managment'));?> </span>    
 													</div>
 													<div class="rdm_vat_form">
 														<input type="text" name="invoice_currency"  class="rdm_invoice_discount_fields" id="invoice_currency"  value="<?php echo $invoice_currency ;?>"> 
@@ -916,12 +916,12 @@ class Rdm_Invoice_Table_Metabox {
 												</div>
 												<div>
 													<div class="rdm_vat_title">
-														<span > <?php echo apply_filters('albwppm_invoice_cpt_single_invoice_currency_position_label',__('Currency Position','simple-job-managment'));?> </span>    
+														<span > <?php echo apply_filters('rdm_invoice_cpt_single_invoice_currency_position_label',__('Currency Position','simple-job-managment'));?> </span>    
 													</div>
 													<div class="rdm_vat_form">
 														<select  name="invoice_currency_position" id="invoice_currency_position">
-															<option <?php selected( $invoice_currency_position, 'left'); ?>   value="left"><?php  echo apply_filters('albwppm_invoice_cpt_single_invoice_currency_position_left_of_price_option_text',__('Left of price','simple-job-managment'));?> </option >
-															<option  <?php selected(  $invoice_currency_position, 'right'); ?>    value="right"><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_currency_position_right_of_price_option_text',__('Right of price','simple-job-managment'));?> </option>
+															<option <?php selected( $invoice_currency_position, 'left'); ?>   value="left"><?php  echo apply_filters('rdm_invoice_cpt_single_invoice_currency_position_left_of_price_option_text',__('Left of price','simple-job-managment'));?> </option >
+															<option  <?php selected(  $invoice_currency_position, 'right'); ?>    value="right"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_currency_position_right_of_price_option_text',__('Right of price','simple-job-managment'));?> </option>
 													</select>
 													</div>
 													<div class="rdm_clear"></div>
@@ -934,19 +934,19 @@ class Rdm_Invoice_Table_Metabox {
 									
 									<tr>
 										<td class="at-field" valign="top" colspan="3">
-												<input type="button" value="<?php echo apply_filters('albwppm_invoice_cpt_single_invoice_apply_vat_discount_button_text',__('1. Apply VAT and discount','simple-job-managment'));?>" class="button button-primary button-large rdm_invoice_page_buttons" id="rdm_apply_vat_btn">
+												<input type="button" value="<?php echo apply_filters('rdm_invoice_cpt_single_invoice_apply_vat_discount_button_text',__('1. Apply VAT and discount','simple-job-managment'));?>" class="button button-primary button-large rdm_invoice_page_buttons" id="rdm_apply_vat_btn">
 												
-												<input type="button" id="rdm_preview_invoice" value="<?php echo apply_filters('albwppm_invoice_cpt_single_invoice_generate_invoice_button_text',__('Generate Invoice','simple-job-managment')) ?>" class="button button-primary button-large rdm_invoice_page_buttons">
+												<input type="button" id="rdm_preview_invoice" value="<?php echo apply_filters('rdm_invoice_cpt_single_invoice_generate_invoice_button_text',__('Generate Invoice','simple-job-managment')) ?>" class="button button-primary button-large rdm_invoice_page_buttons">
 												
 												
 												<form method="post">
-													<input type="submit" id="rdm_jobs_download_invoice" name="rdm_jobs_download_invoice" value="<?php echo apply_filters('albwppm_invoice_cpt_single_invoice_download_invoice_button_text',__('3.Download Invoice','simple-job-managment'));?>" class="button button-primary button-large rdm_invoice_page_buttons">
+													<input type="submit" id="rdm_jobs_download_invoice" name="rdm_jobs_download_invoice" value="<?php echo apply_filters('rdm_invoice_cpt_single_invoice_download_invoice_button_text',__('3.Download Invoice','simple-job-managment'));?>" class="button button-primary button-large rdm_invoice_page_buttons">
 												</form>
 												
 												<span class="rdm_apply_vat_loader rdm_loading_ajax"><?php echo __('Loading','simple-job-managment') ?></span>
 												
 												
-												<?php do_action('albwppm_before_invoice_preview'); ?>
+												<?php do_action('rdm_before_invoice_preview'); ?>
 												
 												<div id="htmlForPdf"></div> 
 												
@@ -957,7 +957,7 @@ class Rdm_Invoice_Table_Metabox {
 										<td class="at-field" valign="top" colspan="3">
 											
 											
-												<span class="invoice_preview_text"><?php echo apply_filters('albwppm_invoice_cpt_single_invoice_pdf_invoice_preview_label',__('PDF Invoice Preview','simple-job-managment'));?></span>
+												<span class="invoice_preview_text"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_pdf_invoice_preview_label',__('PDF Invoice Preview','simple-job-managment'));?></span>
 											
 												<div id="rdm_pdf_preview_in_browser"></div> 
 											
@@ -1074,7 +1074,7 @@ class Rdm_Invoice_Table_Metabox {
 	*/
 	public function get_client_info($invoiceID,$what){
 	
-		$no_client_found = apply_filters('albwppm_invoice_cpt_single_invoice_no_client_found_label',__('No Client Found','simple-job-managment'));
+		$no_client_found = apply_filters('rdm_invoice_cpt_single_invoice_no_client_found_label',__('No Client Found','simple-job-managment'));
 	
 		$client_id = get_post_meta($invoiceID,'rdm_jobs_invoices_client_field_id',true);
 		
@@ -1154,7 +1154,7 @@ class Rdm_Invoice_Table_Metabox {
 		
 		}
 		
-		return apply_filters('albwppm_invoice_cpt_single_invoice_format_price_and_currency',$this->get_currency($invoice_id) . ' ' . $price, $this->get_currency($invoice_id) , $price);
+		return apply_filters('rdm_invoice_cpt_single_invoice_format_price_and_currency',$this->get_currency($invoice_id) . ' ' . $price, $this->get_currency($invoice_id) , $price);
 	}
 	
 	/*
@@ -1376,7 +1376,7 @@ class Rdm_Invoice_Table_Metabox {
 			
 			if($saved_pdf_base64){
 
-				$filename= apply_filters('albwppm_download_pdf_file_name', 'Invoice_'.$invoice_id.'.pdf' ,$invoice_id);
+				$filename= apply_filters('rdm_download_pdf_file_name', 'Invoice_'.$invoice_id.'.pdf' ,$invoice_id);
 				header('Content-type: application/pdf');
 				header('Content-disposition: attachment; filename="'.$filename.'"');
 				echo base64_decode($saved_pdf_base64); 

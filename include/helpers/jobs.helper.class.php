@@ -11,7 +11,7 @@ class Rdm_Jobs_Job_Helpers{
 
 		switch($status){
 			case 'Job_status_not_set':
-				$JobStatusToDisplay = apply_filters('albwppm_single_Job_status_not_set','Not Set');
+				$JobStatusToDisplay = apply_filters('rdm_single_Job_status_not_set','Not Set');
 				break;
 			
 			case 'Job_status_lead':
@@ -46,7 +46,7 @@ class Rdm_Jobs_Job_Helpers{
 	
 		if($clientid && ( $clientid > 0)){
 			
-			$JobsAssociateWithClient= apply_filters('albwppm_no_Jobs_from_this_client_yet',__('No Jobs','simple-job-managment'));
+			$JobsAssociateWithClient= apply_filters('rdm_no_Jobs_from_this_client_yet',__('No Jobs','simple-job-managment'));
 			
 			//get all jobs for this client
 			$get_Jobs_for_clients_params =array(
@@ -87,7 +87,7 @@ class Rdm_Jobs_Job_Helpers{
 			
 			} else{
 				//existing client but no jobs associated with him
-				$JobsAssociateWithClient= apply_filters('albwppm_no_Jobs_from_this_client_yet','No jobs','no_Jobs_found_for_client');
+				$JobsAssociateWithClient= apply_filters('rdm_no_Jobs_from_this_client_yet','No jobs','no_Jobs_found_for_client');
 			}
 
 			return $JobsAssociateWithClient;
@@ -109,7 +109,7 @@ class Rdm_Jobs_Job_Helpers{
 
 		switch($status){
 			case 'Purchase_status_not_set':
-			$PurchaseStatusToDisplay = apply_filters('albwppm_single_Purchase_status_not_set','Not Set');
+			$PurchaseStatusToDisplay = apply_filters('rdm_single_Purchase_status_not_set','Not Set');
 				break;
 			
 			case 'Purchase_status_sent':
@@ -143,7 +143,7 @@ class Rdm_Jobs_Job_Helpers{
 	
 		if($supplierid && ( $supplierid > 0)){
 			
-			$JobsAssociateWithSupplier= apply_filters('albwppm_no_Jobs_from_this_supplier_yet',__('No Jobs','simple-job-managment'));
+			$JobsAssociateWithSupplier= apply_filters('rdm_no_Jobs_from_this_supplier_yet',__('No Jobs','simple-job-managment'));
 			
 			//get all purchases for this supplier
 			$get_Jobs_for_suppliers_params =array(
@@ -184,7 +184,7 @@ class Rdm_Jobs_Job_Helpers{
 			
 			} else{
 				//existing supplier but no jobs associated with him
-				$JobsAssociateWithSupplier= apply_filters('albwppm_no_Jobs_from_this_supplier_yet','No jobs','no_Job_found_for_supplier');
+				$JobsAssociateWithSupplier= apply_filters('rdm_no_Jobs_from_this_supplier_yet','No jobs','no_Job_found_for_supplier');
 			}
 
 			return $JobsAssociateWithSupplier;
@@ -724,7 +724,7 @@ class Rdm_Jobs_Job_Helpers{
 		$Jobs_found = sizeof($results_all_Jobs) ; 
 
 
-		echo  apply_filters('albwppm_reports_Job_page_found_Jobs_title' , sprintf( _n( '<h3>Found  %s job </h3>', '<h3>Found  %s jobs </h3>', $Jobs_found, 'simple-job-managment' ), $Jobs_found ));
+		echo  apply_filters('rdm_reports_Job_page_found_Jobs_title' , sprintf( _n( '<h3>Found  %s job </h3>', '<h3>Found  %s jobs </h3>', $Jobs_found, 'simple-job-managment' ), $Jobs_found ));
 		
 		//if we have at least one job ... show the table
 		if($Jobs_found>=1){
@@ -732,7 +732,7 @@ class Rdm_Jobs_Job_Helpers{
 			?>
 			<div style="padding: 20px;">
 			
-			<table class="wp-list-table widefat fixed posts albwppm_reports_Job_page">
+			<table class="wp-list-table widefat fixed posts rdm_reports_Job_page">
 				<thead>
 					<tr>
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">

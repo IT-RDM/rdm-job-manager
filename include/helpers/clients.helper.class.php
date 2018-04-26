@@ -392,7 +392,7 @@ class Rdm_Jobs_Clients_Helpers{
 		$results_all_clients = $query_all_clients->query($default_args);			
 		$clients_found = sizeof($results_all_clients); 
 		
-		echo  apply_filters('albwppm_reports_clients_page_found_clients_title' , sprintf( _n( '<h3>Found  %s client </h3>', '<h3>Found  %s clients </h3>', $clients_found, 'simple-job-managment' ), $clients_found ));
+		echo  apply_filters('rdm_reports_clients_page_found_clients_title' , sprintf( _n( '<h3>Found  %s client </h3>', '<h3>Found  %s clients </h3>', $clients_found, 'simple-job-managment' ), $clients_found ));
 
 		
 		//if we have at least one client ... show the table
