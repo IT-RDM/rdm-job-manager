@@ -29,10 +29,10 @@ function rdm_notify_supplier($ID, $post )  {
         // lets cc in the head just because we can 
         $headers[] = '';
 
-        // The data of the invoice/pdf are stored on DB and are base64 encoded
-        // So just get that data from DB , decode it using base64 , and you have the invoice data 
+        // The data of the purchase/pdf are stored on DB and are base64 encoded
+        // So just get that data from DB , decode it using base64 , and you have the purchase data 
 
-        // Method how to add attachments to wp_mail from codex
+        // Add attachments to wp_mail from codex
         // $attachments = array( WP_CONTENT_DIR . '/uploads/file_to_attach.zip' ); 
         
     

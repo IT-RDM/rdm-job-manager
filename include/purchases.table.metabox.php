@@ -1414,6 +1414,38 @@ class Rdm_Purchase_Table_Metabox {
 		}
 
 	}
+
+/* 
+* Notify Supplier
+*/
+	public function rdm_job_purchase_pdf_email() {
+		
+		if(isset($_POST['post_ID'])){
+			if($_POST['post_ID'] <= 0){
+				return;
+			}else{
+			$purchase_id = (int)$_POST['post_ID'];
+		}
+	}
+
+	if ( isset($_POST['rdm_jobs_submit_purchase']) ){
+
+		$saved_pdf_base64 = get_post_meta($purchase_id,'rdm_jobs_purchases_pdf_base64',true);
+
+		$saved_pdf_base64= $this->maybe_get_existing_pdf_data($purchase_id);
+	
+		if($saved_pdf_base64){
+			
+			$filename	=	apply_filters('rdm_submit_pdf_file_name', 'Purchase_'.$purchase_id.'.pdf' ,$purchase_id);
+			header('Content-type: application/pdf');
+			header('Content-disposition: attachment; filename="'.$filename.'"');
+			echo base64_decode($saved_pdf_base64); 
+			exit();
+		}
+
+	}
+	}
+
 } //end class
 
 //Start it all 

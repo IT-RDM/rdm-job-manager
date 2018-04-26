@@ -54,8 +54,8 @@ jQuery(document).ready(function() {
      jQuery("#rdm_supplier_phone_field_id").val(""), 
      jQuery("#rdm_supplier_mobile_field_id").val(""))
     }), rdm_jobs_functions = [], rdm_jobs_functions.disable_purchase_buttons = function() {
-     jQuery("input#rdm_apply_vat_btn,#rdm_preview_purchase,#rdm_jobs_download_purchase").attr("disabled", "disabled")
+     jQuery("input#rdm_apply_vat_btn,#rdm_preview_purchase,#rdm_jobs_download_purchase,#rdm_jobs_submit_purchase_to_supplier").attr("disabled", "disabled")
     }, rdm_jobs_functions.enable_purchase_buttons = function() {
-     jQuery("input#rdm_apply_vat_btn,#rdm_preview_purchase,#rdm_jobs_download_purchase").removeAttr("disabled")
+     jQuery("input#rdm_apply_vat_btn,#rdm_preview_purchase,#rdm_jobs_download_purchase,#rdm_jobs_submit_purchase_to_supplier").removeAttr("disabled")
     }
    });
