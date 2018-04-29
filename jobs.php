@@ -3,7 +3,7 @@
 Plugin Name: RDM Job Manager
 Description: RDM jobs management plugin 
 Author: Rdm
-Version: 1.0.0
+Version: 1.0.1
 Text Domain: rdm-job-manager
 Domain Path: /languages
 */
