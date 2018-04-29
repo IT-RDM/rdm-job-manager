@@ -5,23 +5,23 @@ Requires at least: 3.8.1
 Tested up to: 4.9.5
 Stabe tag: 
 
-Manage jobs , clients , suppliers, tasks , create invoices, purchase orders in PDF . Reports about jobs , clients , tasks , invoices, 
+Manage jobs , clients , suppliers, processes , create invoices, purchase orders in PDF . Reports about jobs , clients , processes , invoices, 
 
 == Description ==
 
-Lets you manage jobs , clients , tasks , create invoices in PDF. Reports about jobs , clients , tasks , invoices
+Lets you manage jobs , clients , processes , create invoices in PDF. Reports about jobs , clients , processes , invoices
 
 = Features =
 
 * Client management
 * Job management
 * Associate clients with existing worpdpress accounts
-* Task management
-* Associate tasks to jobs
+* Process management
+* Associate processes to jobs
 * Generate invoices in PDF
 * Add custom items on invoice
 * Jobs reports
-* Task reports
+* Process reports
 * Client reports
 
 <h4>Documentation </h4> [Docs](http://rdmweb.com/documentation/wordpress_Job_management/)
@@ -52,7 +52,7 @@ You can check the provided file in order to see what options you can use
 
 1. Client edit page
 2. Job edit page
-3. Task edit page
+3. Process edit page
 4. Invoice edit page
 5. Client report page
 6. Settings page 
