@@ -16,11 +16,12 @@ class Rdm_Jobs_Reports_Page{
 	static function admin_tabs($current=NULL){
 	
 		$my_plugin_tabs = array(
-			'rdm-job-Reports&tab=overview' => __('Overview','simple-job-managment'),
-			'rdm-job-Reports&tab=jobs' => __('Jobs','simple-job-managment'),
-			'rdm-job-Reports&tab=clients' => __('Clients','simple-job-managment'),
-			'rdm-job-Reports&tab=invoices' => __('Invoices','simple-job-managment'),
-
+			'rdm-job-Reports&tab=overview' => __('Overview','rdm-job-manager'),
+			'rdm-job-Reports&tab=jobs' => __('Jobs','rdm-job-manager'),
+			'rdm-job-Reports&tab=clients' => __('Clients','rdm-job-manager'),
+			'rdm-job-Reports&tab=invoices' => __('Invoices','rdm-job-manager'),
+			'rdm-job-Reports&tab=suppliers' => __('Suppliers','rdm-job-manager'),
+			'rdm-job-Reports&tab=purchases' => __('Purchases','rdm-job-manager'),
 		);
 
 	
@@ -64,6 +65,14 @@ class Rdm_Jobs_Reports_Page{
 				
 			case 'invoices' :
 				$include_tab_content = 'invoices_tab_content.php';
+				break;		
+			
+			case 'suppliers' :
+				$include_tab_content = 'suppliers_tab_content.php';
+				break;	
+				
+			case 'purchases' :
+				$include_tab_content = 'purchases_tab_content.php';
 				break;		
 			
 			default :

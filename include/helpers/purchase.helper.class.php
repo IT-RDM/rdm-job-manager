@@ -9,7 +9,7 @@ class Rdm_Jobs_Purchase_Helpers{
 		if($supplierid && ( $supplierid > 0)){
 			//echo $supplierid;
 			
-			$purchasesAssociateWithSupplier = __('No Purchases','simple-job-managment');
+			$purchasesAssociateWithSupplier = __('No Purchases','rdm-job-manager');
 
 			//get all purchases for this supplier
 			$get_purchases_for_suppliers_params =array(
@@ -315,17 +315,17 @@ class Rdm_Jobs_Purchase_Helpers{
 	static function get_purchase_meta_value_by_purchase_id($id,$meta=''){
 		
 		if($id=='' || $meta == ''){
-			return __('Not Set','simple-job-managment');	
+			return __('Not Set','rdm-job-manager');	
 		}
 
 		$meta_value = get_post_meta($id,$meta,true);
 		
 		if($meta_value=='not_set'){
-			return __('Not Set','simple-job-managment');
+			return __('Not Set','rdm-job-manager');
 		}
 		
 		
-		return ($meta_value) ? $meta_value : __('Not Set','simple-job-managment');
+		return ($meta_value) ? $meta_value : __('Not Set','rdm-job-manager');
 		
 	}
 	
@@ -335,10 +335,10 @@ class Rdm_Jobs_Purchase_Helpers{
 	static function get_purchase_notes_value_by_purchase_id($id,$meta=''){
 		
 		if($id=='' || $meta == ''){
-			return __('Not Set','simple-job-managment');
+			return __('Not Set','rdm-job-manager');
 		}
 		
-		$value_to_return = __('Not Set','simple-job-managment');
+		$value_to_return = __('Not Set','rdm-job-manager');
 
 		$meta_value_array = get_post_meta($id,'_rdm_purchase_notes',true);
 		
@@ -360,10 +360,10 @@ class Rdm_Jobs_Purchase_Helpers{
 	static function get_purchase_discount_and_value_by_purchase_id($id,$meta=''){
 		
 		if($id=='' || $meta == ''){
-			return __('Not Set','simple-job-managment');
+			return __('Not Set','rdm-job-manager');
 		}
 		
-		$value_to_return = __('Not Set','simple-job-managment');
+		$value_to_return = __('Not Set','rdm-job-manager');
 
 		$meta_value_array = get_post_meta($id,'_purchase_discount_and_vat',true);
 		
@@ -460,11 +460,11 @@ class Rdm_Jobs_Purchase_Helpers{
 		}
 		
 		?><select  name="rdm_purchase_status_for_report_page">
-			<option value=""><?php echo __('All','simple-job-managment');?></option>
-			<option value="unpaid" <?php echo ($selected == 'unpaid') ? ' selected = "selected" ' : ''; ?>><?php echo __('Unpaid','simple-job-managment') ?></option>
-			<option value="paid" <?php echo ($selected == 'paid') ? ' selected = "selected" ' : ''; ?>><?php echo __('Paid','simple-job-managment') ?></option>
-			<option value="overdue" <?php echo ($selected == 'overdue') ? ' selected = "selected" ' : ''; ?>><?php echo __('Overdue','simple-job-managment') ?></option>
-			<option value="cancelled" <?php echo ($selected == 'cancelled') ? ' selected = "selected" ' : ''; ?>><?php echo __('Cancelled','simple-job-managment') ?></option>
+			<option value=""><?php echo __('All','rdm-job-manager');?></option>
+			<option value="unpaid" <?php echo ($selected == 'unpaid') ? ' selected = "selected" ' : ''; ?>><?php echo __('Unpaid','rdm-job-manager') ?></option>
+			<option value="paid" <?php echo ($selected == 'paid') ? ' selected = "selected" ' : ''; ?>><?php echo __('Paid','rdm-job-manager') ?></option>
+			<option value="overdue" <?php echo ($selected == 'overdue') ? ' selected = "selected" ' : ''; ?>><?php echo __('Overdue','rdm-job-manager') ?></option>
+			<option value="cancelled" <?php echo ($selected == 'cancelled') ? ' selected = "selected" ' : ''; ?>><?php echo __('Cancelled','rdm-job-manager') ?></option>
 		</select>
 		
 		<?php
@@ -559,7 +559,7 @@ class Rdm_Jobs_Purchase_Helpers{
 	 
 		
 	 
-		echo  apply_filters('rdm_reports_purchases_page_found_purchases_title' , sprintf( _n( '<h3>Found  %s purchase </h3>', '<h3>Found  %s purchases </h3>', $purchases_found, 'simple-job-managment' ), $purchases_found ));
+		echo  apply_filters('rdm_reports_purchases_page_found_purchases_title' , sprintf( _n( '<h3>Found  %s purchase </h3>', '<h3>Found  %s purchases </h3>', $purchases_found, 'rdm-job-manager' ), $purchases_found ));
 		
 		
 		//if we have at least one purchase ... show the table
@@ -573,22 +573,22 @@ class Rdm_Jobs_Purchase_Helpers{
 					<tr>
 	
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Title','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Title','rdm-job-manager') ?></strong></span></a>
 						</th>		
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Status','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Status','rdm-job-manager') ?></strong></span></a>
 						</th>	
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Amount','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Amount','rdm-job-manager') ?></strong></span></a>
 						</th>							
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('To be paid by','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('To be paid by','rdm-job-manager') ?></strong></span></a>
 						</th>	
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Paid on','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Paid on','rdm-job-manager') ?></strong></span></a>
 						</th>							
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Supplier','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Supplier','rdm-job-manager') ?></strong></span></a>
 						</th>		
 									
 						
@@ -598,22 +598,22 @@ class Rdm_Jobs_Purchase_Helpers{
 					<tr>
 	
 						<th scope="col"  class="manage-column column-title sortable desc" style="width: 3em;">
-							<a ><span><strong><?php echo __('Title','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Title','rdm-job-manager') ?></strong></span></a>
 						</th>		
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Status','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Status','rdm-job-manager') ?></strong></span></a>
 						</th>	
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Amount','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Amount','rdm-job-manager') ?></strong></span></a>
 						</th>						
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('To be paid by','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('To be paid by','rdm-job-manager') ?></strong></span></a>
 						</th>		
 						<th scope="col"  class="check-column manage-column column-title sortable desc " style="padding-top:0px;width: 3em;">
-							<a ><span><strong><?php echo __('Paid on','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Paid on','rdm-job-manager') ?></strong></span></a>
 						</th>							
 						<th scope="col"  class="manage-column column-title sortable desc" style="width: 3em;">
-							<a ><span><strong><?php echo __('Supplier','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Supplier','rdm-job-manager') ?></strong></span></a>
 						</th>	
 							
 			

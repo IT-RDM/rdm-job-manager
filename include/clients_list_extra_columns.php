@@ -4,7 +4,7 @@ switch ( $column ) {
 	
 	case 'rdm_jobs_client_reviews':
 	
-		$client_review = __('No reviews','simple-job-managment');
+		$client_review = __('No reviews','rdm-job-manager');
 		$total_stars ='';
 		
 		$client_reviews_meta= get_post_meta($post_id,'rdm_client_review_field',true);
@@ -31,7 +31,7 @@ switch ( $column ) {
 				break;		
 				
 			case 'client_no_review_set':
-				$client_review = __('No reviews','simple-job-managment');
+				$client_review = __('No reviews','rdm-job-manager');
 				break;					
 		}
 		

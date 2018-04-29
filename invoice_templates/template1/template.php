@@ -37,7 +37,7 @@
 			<tr>
 				<td > &nbsp; </td>
 				<td class="invoice_id"> 
-					<?php echo apply_filters('rdm_invoice_pdf_invoice_id',__('Invoice','simple-job-managment') .' '.$invoice_id, $invoice_id); ?>
+					<?php echo apply_filters('rdm_invoice_pdf_invoice_id',__('Invoice','rdm-job-manager') .' '.$invoice_id, $invoice_id); ?>
 				</td>
 			</tr>
 		</table>
@@ -46,10 +46,10 @@
 		<table class="order_items">
 			<thead>
 				<tr>
-					<td class="description_title"> <?php echo apply_filters('rdm_invoice_pdf_description_table_header',__('Description','simple-job-managment')); ?></td>
-					<td> <?php echo apply_filters('rdm_invoice_pdf_price_table_header',__('Price','simple-job-managment')); ?> </td>
-					<td> <?php echo apply_filters('rdm_invoice_pdf_quantity_table_header',__('Quantity','simple-job-managment')); ?> </td>
-					<td> <?php echo apply_filters('rdm_invoice_pdf_total_table_header',__('Total','simple-job-managment')); ?> </td>
+					<td class="description_title"> <?php echo apply_filters('rdm_invoice_pdf_description_table_header',__('Description','rdm-job-manager')); ?></td>
+					<td> <?php echo apply_filters('rdm_invoice_pdf_price_table_header',__('Price','rdm-job-manager')); ?> </td>
+					<td> <?php echo apply_filters('rdm_invoice_pdf_quantity_table_header',__('Quantity','rdm-job-manager')); ?> </td>
+					<td> <?php echo apply_filters('rdm_invoice_pdf_total_table_header',__('Total','rdm-job-manager')); ?> </td>
 				</tr>	
 			</thead>
 			<tbody>
@@ -69,7 +69,7 @@
 						<td class="no-borders"> </td>
 
 						<?php if($subtotal!=''){ ?>
-							<td colspan="2" class="subtotal_title"> <?php echo apply_filters('rdm_invoice_pdf_subtotal_table_header',__('Subtotal','simple-job-managment')); ?> </td>
+							<td colspan="2" class="subtotal_title"> <?php echo apply_filters('rdm_invoice_pdf_subtotal_table_header',__('Subtotal','rdm-job-manager')); ?> </td>
 							<td><?php echo apply_filters('rdm_invoice_pdf_subtotal_value',$subtotal); ?> </td>
 						<?php } ?>
 					</tr>	
@@ -78,7 +78,7 @@
 				<?php if($discount!=''){ ?>
 					<tr>
 						<td class="no-borders"> &nbsp; </td>
-						<td colspan="2"  class="discount_title"> <?php echo apply_filters('rdm_invoice_pdf_discount_table_header',__('Discount','simple-job-managment')); ?> </td>
+						<td colspan="2"  class="discount_title"> <?php echo apply_filters('rdm_invoice_pdf_discount_table_header',__('Discount','rdm-job-manager')); ?> </td>
 						<td><?php echo apply_filters('rdm_invoice_pdf_discount_value',$discount); ?>  </td>
 					</tr>	
 				<?php } ?>	
@@ -86,7 +86,7 @@
 				<?php if($subtotal_after_discount !=''){ ?>
 					<tr>
 						<td class="no-borders"> &nbsp; </td>
-						<td colspan="2"  class="subtotal_after_discount_title"> <?php echo apply_filters('rdm_invoice_pdf_subtotal_after_discount_table_header',__('Subtotal after discount','simple-job-managment')); ?> </td>
+						<td colspan="2"  class="subtotal_after_discount_title"> <?php echo apply_filters('rdm_invoice_pdf_subtotal_after_discount_table_header',__('Subtotal after discount','rdm-job-manager')); ?> </td>
 						<td> <?php echo apply_filters('rdm_invoice_pdf_subtotal_after_discount_value',$subtotal_after_discount); ?>  </td>
 					</tr>	
 				<?php } ?>
@@ -94,7 +94,7 @@
 				<?php if($vat!=''){ ?>
 					<tr>
 						<td class="no-borders"> &nbsp; </td>
-						<td colspan="2"  class="vat_title"> <?php echo apply_filters('rdm_invoice_pdf_vat_table_header',__('VAT','simple-job-managment')); ?> </td>
+						<td colspan="2"  class="vat_title"> <?php echo apply_filters('rdm_invoice_pdf_vat_table_header',__('VAT','rdm-job-manager')); ?> </td>
 						<td><?php echo apply_filters('rdm_invoice_pdf_vat_value',$vat); ?> </td>
 					</tr>	
 				<?php } ?>
@@ -111,7 +111,7 @@
 					<?php if($total!=''){ ?>
 						<tr >
 							<td class="no-borders"> &nbsp; </td>
-							<td colspan="2"  class="balance_due_title"> <?php echo apply_filters('rdm_invoice_pdf_balance_header',__('Balance','simple-job-managment')); ?>  </td>
+							<td colspan="2"  class="balance_due_title"> <?php echo apply_filters('rdm_invoice_pdf_balance_header',__('Balance','rdm-job-manager')); ?>  </td>
 							
 							<td> <?php echo $total ; ?>  </td>
 						</tr>	
@@ -122,7 +122,7 @@
 
 		<?php if($invoice_specific_terms!=''){ ?>
 			<div > 
-				<span class="invoice_specific_terms_title">  <?php echo apply_filters('rdm_invoice_pdf_specific_terms_header',__('Specific terms','simple-job-managment')); ?>   </span>
+				<span class="invoice_specific_terms_title">  <?php echo apply_filters('rdm_invoice_pdf_specific_terms_header',__('Specific terms','rdm-job-manager')); ?>   </span>
 				<?php echo apply_filters('rdm_invoice_pdf_specific_terms',$invoice_specific_terms); ?>
 			
 			</div>
@@ -130,7 +130,7 @@
 
 		<?php if($invoice_general_terms_and_conditions!=''){ ?>
 			<div > 
-				<span class="invoice_general_terms_title">  <?php echo apply_filters('rdm_invoice_pdf_general_terms_header',__('General terms','simple-job-managment')); ?>  </span>
+				<span class="invoice_general_terms_title">  <?php echo apply_filters('rdm_invoice_pdf_general_terms_header',__('General terms','rdm-job-manager')); ?>  </span>
 				<?php echo apply_filters('rdm_invoice_pdf_general_terms',$invoice_general_terms_and_conditions); ?>
 				
 			</div>
@@ -146,15 +146,15 @@
 			<?php } ?>
 			
 			<?php if($company_email!=''){ ?>
-				<span class="company_email_title"><?php echo apply_filters('rdm_invoice_pdf_email_footer_header',__('Email','simple-job-managment')); ?> </span><?php echo $company_email; ?>
+				<span class="company_email_title"><?php echo apply_filters('rdm_invoice_pdf_email_footer_header',__('Email','rdm-job-manager')); ?> </span><?php echo $company_email; ?>
 			<?php } ?>
 			
 			<?php if($company_website!=''){ ?>
-				<span class="company_website_title"><?php echo apply_filters('rdm_invoice_pdf_email_website_header',__('Web','simple-job-managment')); ?> </span><?php echo $company_website; ?> 
+				<span class="company_website_title"><?php echo apply_filters('rdm_invoice_pdf_email_website_header',__('Web','rdm-job-manager')); ?> </span><?php echo $company_website; ?> 
 			<?php } ?>
 			
 			<?php if($company_mobile!=''){ ?>
-				<span class="company_mobile_title"><?php echo apply_filters('rdm_invoice_pdf_email_mobile_header',__('Mobile','simple-job-managment')); ?> </span><?php echo $company_mobile; ?> 
+				<span class="company_mobile_title"><?php echo apply_filters('rdm_invoice_pdf_email_mobile_header',__('Mobile','rdm-job-manager')); ?> </span><?php echo $company_mobile; ?> 
 			<?php } ?>
 		</div>
 

@@ -19,7 +19,7 @@ $prefix_clients = 'rdm_client_';
 
 	$clients_info_config = array(
 		'id'             => 'clients_meta_box',          // meta box id, unique per meta box
-		'title'          => apply_filters('rdm_clients_cpt_personal_information_metabox_title',__('Personal Information','simple-job-managment')),          // meta box title
+		'title'          => apply_filters('rdm_clients_cpt_personal_information_metabox_title',__('Personal Information','rdm-job-manager')),          // meta box title
 		'pages'          => array('rdm_client'),      // post types, accept custom post types as well, default is array('post'); optional
 		'context'        => 'normal',            // where the meta box appear: normal (default), advanced, side; optional
 		'priority'       => 'high',            // order of meta box: high (default), low; optional
@@ -32,7 +32,7 @@ $prefix_clients = 'rdm_client_';
 
 	//Associate client to existing WP account
 
-		$getUserFromWpArray['dont_associate'] = apply_filters('rdm_client_cpt_associate_with_user_dropdown_dont_associate_option_text',__('Dont Associate','simple-job-managment'));
+		$getUserFromWpArray['dont_associate'] = apply_filters('rdm_client_cpt_associate_with_user_dropdown_dont_associate_option_text',__('Dont Associate','rdm-job-manager'));
 		
 		$getAllWpUsers = get_users( 'orderby=nicename' );
 
@@ -44,7 +44,7 @@ $prefix_clients = 'rdm_client_';
 										$prefix_clients.'asociate_with_existing_wp_account_field',
 										$getUserFromWpArray,
 										array(
-											'name'=>  apply_filters('rdm_client_cpt_associate_with_existing_wp_account_dropdown_label',__('Associate with existing WordPress account','simple-job-managment')), 
+											'name'=>  apply_filters('rdm_client_cpt_associate_with_existing_wp_account_dropdown_label',__('Associate with existing WordPress account','rdm-job-manager')), 
 											'std'=> array(
 														'dont_associate'
 													),
@@ -60,7 +60,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_first_name_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> apply_filters('rdm_single_client_cpt_first_name_label_text',__('First name','simple-job-managment')),
+				'name' 	=> apply_filters('rdm_single_client_cpt_first_name_label_text',__('First name','rdm-job-manager')),
 				'group' => 'start',
 				'class'	=> 'rdm_text_input',
 			)
@@ -69,7 +69,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_middle_name_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_middle_name_label_text',__('Middle name','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_middle_name_label_text',__('Middle name','rdm-job-manager')),
 				'class'	=> 'rdm_text_input',
 			)
 		),		
@@ -77,7 +77,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_last_name_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_last_name_label_text',__('Last name','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_last_name_label_text',__('Last name','rdm-job-manager')),
 				'group' => 	'end',			
 				'class'	=> 'rdm_text_input',				
 			)
@@ -88,7 +88,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_email_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_email_label_text',__('Email','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_email_label_text',__('Email','rdm-job-manager')),
 				'group' => 	'start',
 				'class'	=> 'rdm_text_input',
 			)
@@ -97,7 +97,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_phone_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_phone_label_text',__('Phone','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_phone_label_text',__('Phone','rdm-job-manager')),
 				'class'	=> 'rdm_text_input',
 				
 			)
@@ -106,7 +106,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_mobile_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_mobile_label_text',__('Mobile','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_mobile_label_text',__('Mobile','rdm-job-manager')),
 				'group' => 	'end',	
 				'class'	=> 'rdm_text_input',
 			)
@@ -117,7 +117,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_address_field_id',
 			'type' 		=> 'textarea',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_address_label_text',__('Address','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_address_label_text',__('Address','rdm-job-manager')),
 				'class'	=> 'rdm_textarea_input',
 			)
 		),
@@ -127,7 +127,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_skype_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_skype_label_text',__('Skype','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_skype_label_text',__('Skype','rdm-job-manager')),
 				'group' => 	'start',
 				'class'	=> 'rdm_text_input',				
 			)
@@ -136,7 +136,7 @@ $prefix_clients = 'rdm_client_';
 			'id'		=> 'rdm_client_facebook_field_id',
 			'type' 		=> 'text',
 			'options' 	=> array(
-				'name' 	=> 	apply_filters('rdm_single_client_cpt_facebook_label_text',__('Facebook','simple-job-managment')),
+				'name' 	=> 	apply_filters('rdm_single_client_cpt_facebook_label_text',__('Facebook','rdm-job-manager')),
 				'class'	=> 'rdm_text_input',				
 				
 			)
@@ -180,7 +180,7 @@ $prefix_clients = 'rdm_client_';
 
 	$clients_Job_config = array(
 		'id'             => 'clients_Job_meta_box',          // meta box id, unique per meta box
-		'title'          => apply_filters('rdm_clients_cpt_Jobs_metabox_title',__('Client Jobs','simple-job-managment')),          // meta box title
+		'title'          => apply_filters('rdm_clients_cpt_Jobs_metabox_title',__('Client Jobs','rdm-job-manager')),          // meta box title
 		'pages'          => array('rdm_client'),      // post types, accept custom post types as well, default is array('post'); optional
 		'context'        => 'side',            // where the meta box appear: normal (default), advanced, side; optional
 		'priority'       => 'high',            // order of meta box: high (default), low; optional
@@ -213,7 +213,7 @@ $prefix_clients = 'rdm_client_';
 */
 	$clients_invoices_config = array(
 		'id'             => 'clients_invoices_meta_box',          // meta box id, unique per meta box
-		'title'          => apply_filters('rdm_clients_cpt_invoices_metabox_title',__('Client Invoices','simple-job-managment')),          // meta box title
+		'title'          => apply_filters('rdm_clients_cpt_invoices_metabox_title',__('Client Invoices','rdm-job-manager')),          // meta box title
 		'pages'          => array('rdm_client'),      // post types, accept custom post types as well, default is array('post'); optional
 		'context'        => 'side',            // where the meta box appear: normal (default), advanced, side; optional
 		'priority'       => 'low',            // order of meta box: high (default), low; optional
@@ -247,7 +247,7 @@ $prefix_clients = 'rdm_client_';
 
 	$clients_review_config = array(
 		'id'             => 'clients_review_meta_box',        
-		'title'          => apply_filters('rdm_clients_cpt_reviews_metabox_title',__('Client Review','simple-job-managment')),         
+		'title'          => apply_filters('rdm_clients_cpt_reviews_metabox_title',__('Client Review','rdm-job-manager')),         
 		'pages'          => array('rdm_client'),    
 		'context'        => 'side',          
 		'priority'       => 'low',          
@@ -259,7 +259,7 @@ $prefix_clients = 'rdm_client_';
 
 	$clients_reviews_metabox =  new AT_Meta_Box($clients_review_config);
 	$clients_reviews_metabox->addSelect($prefix_clients.'review_field',array(
-					'client_no_review_set'	=>	apply_filters('rdm_client_reviews_dropdown_review_default_text',__('No reviews','simple-job-managment')) , 
+					'client_no_review_set'	=>	apply_filters('rdm_client_reviews_dropdown_review_default_text',__('No reviews','rdm-job-manager')) , 
 					'client_review_1_star'	=>	apply_filters('rdm_client_reviews_dropdown_one_star_text','1 star'),
 					'client_review_2_star'	=>	apply_filters('rdm_client_reviews_dropdown_two_star_text','2 stars'),
 					'client_review_3_star'	=>	apply_filters('rdm_client_reviews_dropdown_three_star_text','3 stars'),

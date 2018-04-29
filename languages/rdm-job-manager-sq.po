@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Job-Id-Version: Simple Job Manager\n"
+"Job-Id-Version: RDM Job Manager\n"
 "POT-Creation-Date: 2016-02-29 02:04+0100\n"
 "PO-Revision-Date: 2016-02-29 02:04+0100\n"
 "Last-Translator: \n"
@@ -142,7 +142,7 @@ msgid "No Client found"
 msgstr "Nuk u gjet asnje klient"
 
 #: include/clients.cpt.php:17 include/invoices.cpt.php:17
-#: include/jobs.cpt.php:17 include/tasks.cpt.php:17
+#: include/jobs.cpt.php:17 include/processes.cpt.php:17
 msgid "Not found in Trash"
 msgstr "Nuk u gjet ne kosh"
 
@@ -308,8 +308,8 @@ msgid "Overdue"
 msgstr "Kaluar afati"
 
 #: include/helpers/invoice.helper.class.php:467
-#: include/invoices.table.metabox.php:766 include/tasks.metabox.php:57
-#: include/tasks_list_extra_columns.php:36
+#: include/invoices.table.metabox.php:766 include/processes.metabox.php:57
+#: include/processes_list_extra_columns.php:36
 msgid "Cancelled"
 msgstr "Anulluar"
 
@@ -360,8 +360,8 @@ msgstr "Paguar me"
 msgid "Lead"
 msgstr "Lead"
 
-#: include/helpers/jobs.helper.class.php:22 include/tasks.metabox.php:55
-#: include/tasks_list_extra_columns.php:32
+#: include/helpers/jobs.helper.class.php:22 include/processes.metabox.php:55
+#: include/processes_list_extra_columns.php:32
 msgid "On Hold"
 msgstr "Ne pritje"
 
@@ -374,15 +374,15 @@ msgstr "Ne pritje te pershtypjeve"
 
 #: include/helpers/jobs.helper.class.php:30
 #: include/helpers/jobs.helper.class.php:312
-#: include/jobs.metabox.php:88 include/tasks.metabox.php:54
-#: include/tasks_list_extra_columns.php:41
+#: include/jobs.metabox.php:88 include/processes.metabox.php:54
+#: include/processes_list_extra_columns.php:41
 msgid "Ongoing"
 msgstr "Ne vazhdim"
 
 #: include/helpers/jobs.helper.class.php:34
 #: include/helpers/jobs.helper.class.php:315
-#: include/jobs.metabox.php:91 include/tasks.metabox.php:56
-#: include/tasks_list_extra_columns.php:45
+#: include/jobs.metabox.php:91 include/processes.metabox.php:56
+#: include/processes_list_extra_columns.php:45
 msgid "Completed"
 msgstr "Kompletuar"
 
@@ -446,7 +446,7 @@ msgstr "Prioriteti"
 #: include/helpers/jobs.helper.class.php:663
 #: include/helpers/jobs.helper.class.php:698
 #: include/helpers/reports_pages/Jobs_tab_content.php:39
-#: include/jobs.metabox.php:65 include/tasks.metabox.php:40
+#: include/jobs.metabox.php:65 include/processes.metabox.php:40
 msgid "Start Date"
 msgstr "Data fillimit"
 
@@ -512,23 +512,23 @@ msgid "Status not set"
 msgstr "Statusi nuk eshte caktuar"
 
 #: include/helpers/reports_pages/overview_tab_content.php:58
-msgid "Completed Tasks"
+msgid "Completed Processes"
 msgstr "Punet e mbaruara"
 
 #: include/helpers/reports_pages/overview_tab_content.php:62
-msgid "Total Tasks"
+msgid "Total Processes"
 msgstr "Punet total"
 
 #: include/helpers/reports_pages/overview_tab_content.php:68
-msgid "Completed tasks"
+msgid "Completed processes"
 msgstr "Punet e mbaruara"
 
 #: include/helpers/reports_pages/overview_tab_content.php:74
-msgid "Ongoing Tasks"
+msgid "Ongoing Processes"
 msgstr "Punet ne vazhdim"
 
 #: include/helpers/reports_pages/overview_tab_content.php:86
-msgid "Tasks not started"
+msgid "Processes not started"
 msgstr "Punet e panisura"
 
 #: include/helpers/reports_pages/overview_tab_content.php:95
@@ -565,7 +565,7 @@ msgid "Jobs Tab"
 msgstr "Projekte"
 
 #: include/helpers/reports_pages/Jobs_tab_content.php:45
-#: include/tasks.metabox.php:46
+#: include/processes.metabox.php:46
 msgid "End Date"
 msgstr "Data mbarimit"
 
@@ -636,16 +636,16 @@ msgstr "Asnje klient i zgjedhur"
 msgid "Related to job"
 msgstr "Ne lidhje me projektin"
 
-#: include/invoices.metabox.php:50 include/tasks.metabox.php:34
+#: include/invoices.metabox.php:50 include/processes.metabox.php:34
 msgid "No job selected"
 msgstr "Asnje projekt i zgjedhur"
 
 #: include/invoices.metabox.php:60
-msgid "Related to task"
+msgid "Related to process"
 msgstr "Ne lidhje me punen"
 
 #: include/invoices.metabox.php:61
-msgid "No task selected"
+msgid "No process selected"
 msgstr "Asnje pune e zgjedhur"
 
 #: include/invoices.table.metabox.php:80
@@ -896,82 +896,82 @@ msgid "Job Priority"
 msgstr "Prioriteti projektit"
 
 #: include/jobs.metabox.php:154 include/jobs.metabox.php:164
-msgid "Job Tasks"
+msgid "Job Processes"
 msgstr "Punet e projektit"
 
-#: include/tasks.cpt.php:5
+#: include/processes.cpt.php:5
 msgctxt "Post Type General Name"
-msgid "Task"
+msgid "Process"
 msgstr ""
 
-#: include/tasks.cpt.php:6
+#: include/processes.cpt.php:6
 msgctxt "Post Type Singular Name"
-msgid "Task"
+msgid "Process"
 msgstr ""
 
-#: include/tasks.cpt.php:7 include/tasks.cpt.php:9 include/tasks.cpt.php:22
+#: include/processes.cpt.php:7 include/processes.cpt.php:9 include/processes.cpt.php:22
 #: jobs.php:281
-msgid "Tasks"
+msgid "Processes"
 msgstr "Punet"
 
-#: include/tasks.cpt.php:8
-msgid "Parent Task :"
+#: include/processes.cpt.php:8
+msgid "Parent Process :"
 msgstr ""
 
-#: include/tasks.cpt.php:10
-msgid "View Task"
+#: include/processes.cpt.php:10
+msgid "View Process"
 msgstr "Shiko punen"
 
-#: include/tasks.cpt.php:11 include/tasks.cpt.php:12
-msgid "Add Task"
+#: include/processes.cpt.php:11 include/processes.cpt.php:12
+msgid "Add Process"
 msgstr "Shto pune"
 
-#: include/tasks.cpt.php:13
-msgid "Edit Task"
+#: include/processes.cpt.php:13
+msgid "Edit Process"
 msgstr "Ndrysho punen"
 
-#: include/tasks.cpt.php:14
-msgid "Update Task"
+#: include/processes.cpt.php:14
+msgid "Update Process"
 msgstr "Përditëso punen"
 
-#: include/tasks.cpt.php:15
-msgid "Search Task"
+#: include/processes.cpt.php:15
+msgid "Search Process"
 msgstr "Kërko punen"
 
-#: include/tasks.cpt.php:16
-msgid "No Task found"
+#: include/processes.cpt.php:16
+msgid "No Process found"
 msgstr "Nuk u gjet asnje pune"
 
-#: include/tasks.cpt.php:21
-msgid "rdm_Task"
+#: include/processes.cpt.php:21
+msgid "rdm_Process"
 msgstr ""
 
-#: include/tasks.metabox.php:16
-msgid "Task Infos"
+#: include/processes.metabox.php:16
+msgid "Process Infos"
 msgstr "Infot e punes"
 
-#: include/tasks.metabox.php:33
+#: include/processes.metabox.php:33
 msgid "Associate to job"
 msgstr "Bashkangjitja nje projekti"
 
-#: include/tasks.metabox.php:53 include/tasks_list_extra_columns.php:28
+#: include/processes.metabox.php:53 include/processes_list_extra_columns.php:28
 msgid "Not Started"
 msgstr "Ska nisur"
 
-#: include/tasks.metabox.php:60 jobs.php:297
-msgid "Task Status"
+#: include/processes.metabox.php:60 jobs.php:297
+msgid "Process Status"
 msgstr "Statusi punes"
 
-#: include/tasks.metabox.php:68
+#: include/processes.metabox.php:68
 msgid "File Description"
 msgstr "Pershkrimi i filet"
 
-#: include/tasks.metabox.php:74
-msgid "Add task file"
+#: include/processes.metabox.php:74
+msgid "Add process file"
 msgstr "Shto nje file"
 
-#: include/tasks.metabox.php:81
-msgid "Task Files"
+#: include/processes.metabox.php:81
+msgid "Process Files"
 msgstr "Filet e punes"
 
 #: invoice_templates/template1/template.php:40
@@ -1049,11 +1049,11 @@ msgid "Earning"
 msgstr "Fitimi"
 
 #: jobs.php:295
-msgid "Task"
+msgid "Process"
 msgstr "Pune"
 
 #: jobs.php:296
-msgid "Task Deadline"
+msgid "Process Deadline"
 msgstr "Deadline i punes"
 
 #: jobs.php:313
@@ -1061,7 +1061,7 @@ msgid "Reviews"
 msgstr "Pershtypje"
 
 #. Plugin Name of the plugin/theme
-msgid "Simple Job Manager"
+msgid "RDM Job Manager"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
