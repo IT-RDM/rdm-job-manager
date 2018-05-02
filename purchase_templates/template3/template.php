@@ -147,15 +147,15 @@
 			<?php } ?>
 			
 			<?php if($company_email!=''){ ?>
-				<span class="company_email_title"><?php echo apply_filters('rdm_purchase_pdf_email_footer_header',__('Email','simple-job-managment')); ?> </span><?php echo $company_email; ?>
+				<span class="company_email_title"><?php echo apply_filters('rdm_purchase_pdf_email_footer_header',__('Email','simple-job-managment')); ?> </span><?php echo $company_email; ?> |
 			<?php } ?>
 			
 			<?php if($company_website!=''){ ?>
-				<span class="company_website_title"><?php echo apply_filters('rdm_purchase_pdf_email_website_header',__('Web','simple-job-managment')); ?> </span><?php echo $company_website; ?> 
+				<span class="company_website_title"><?php echo apply_filters('rdm_purchase_pdf_email_website_header',__('Web','simple-job-managment')); ?> </span><?php echo $company_website; ?> |
 			<?php } ?>
 			
 			<?php if($company_mobile!=''){ ?>
-				<span class="company_mobile_title"><?php echo apply_filters('rdm_purchase_pdf_email_mobile_header',__('Mobile','simple-job-managment')); ?> </span><?php echo $company_mobile; ?> 
+				<span class="company_mobile_title"><?php echo apply_filters('rdm_purchase_pdf_email_mobile_header',__('Phone','simple-job-managment')); ?> </span><?php echo $company_mobile; ?> 
 			<?php } ?>
 		</div>
 
