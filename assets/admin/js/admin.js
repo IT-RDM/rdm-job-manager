@@ -59,8 +59,7 @@ jQuery(document).ready(function($) {
      jQuery("input#rdm_apply_vat_btn,#rdm_preview_invoice,#rdm_jobs_download_invoice").prop('disabled', false)
     }
 
-
-   /* Javascript for purchases 
+/* Javascript for purchases 
  */
 if ("dont_associate" != jQuery("select[name='rdm_supplier_asociate_with_existing_wp_account_field'] option:selected").val()) {
     var valueFromWPUserTable = '<p class="valueFromWpUser">' + rdmJobsadmin.value_from_wp_user + '</span>';
