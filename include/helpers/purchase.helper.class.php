@@ -512,11 +512,11 @@ class Rdm_Jobs_Purchase_Helpers{
 
 
 		//check if supplier is set
-		if(isset($_POST['rdm_jobs_reports_JobTab_suppliers_list']) && $_POST['rdm_jobs_reports_JobTab_suppliers_list']>0){
+		if(isset($_POST['rdm_jobs_reports_jobTab_suppliers_list']) && $_POST['rdm_jobs_reports_jobTab_suppliers_list']>0){
 
 			$prep_supplier = array(
 							'key' => 'rdm_jobs_purchases_supplier_field_id' , 
-							'value' => $_POST['rdm_jobs_reports_JobTab_suppliers_list'] , 
+							'value' => $_POST['rdm_jobs_reports_jobTab_suppliers_list'] , 
 							'compare' => '='
 							); 
 
@@ -526,15 +526,15 @@ class Rdm_Jobs_Purchase_Helpers{
 		
 		
 		//check if job is set
-		if(isset($_POST['rdm_jobs_purchases_Job_field_id']) && $_POST['rdm_jobs_purchases_Job_field_id']>0){
+		if(isset($_POST['rdm_jobs_purchases_job_field_id']) && $_POST['rdm_jobs_purchases_job_field_id']>0){
 
-			$prep_Job = array(
-							'key' => 'rdm_jobs_purchases_Job_field_id' , 
-							'value' => $_POST['rdm_jobs_purchases_Job_field_id'] , 
+			$prep_job = array(
+							'key' => 'rdm_jobs_purchases_job_field_id' , 
+							'value' => $_POST['rdm_jobs_purchases_job_field_id'] , 
 							'compare' => '='
 							); 
 
-			array_push( $default_args['meta_query'], $prep_Job);
+			array_push( $default_args['meta_query'], $prep_job);
 			
 		}		
 		

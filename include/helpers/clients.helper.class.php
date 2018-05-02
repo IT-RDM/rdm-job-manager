@@ -62,9 +62,9 @@ class Rdm_Jobs_Clients_Helpers{
 	static function get_all_as_dropdown(){
 	
 		//check if we have a selected client 
-		$selected_client = (isset($_POST['rdm_jobs_reports_JobTab_clients_list']) && $_POST['rdm_jobs_reports_JobTab_clients_list'] > 0 ) ? $_POST['rdm_jobs_reports_JobTab_clients_list'] : '';
+		$selected_client = (isset($_POST['rdm_jobs_reports_jobTab_clients_list']) && $_POST['rdm_jobs_reports_jobTab_clients_list'] > 0 ) ? $_POST['rdm_jobs_reports_jobTab_clients_list'] : '';
 	
-		$start_of_dropdown = '<select name="rdm_jobs_reports_JobTab_clients_list">';
+		$start_of_dropdown = '<select name="rdm_jobs_reports_jobTab_clients_list">';
 		$end_of_dropdown = '</select>';
 		$dropdown_options ='<option value="-1">'. __('All','rdm-job-manager').'</option>';
 	
@@ -296,9 +296,9 @@ class Rdm_Jobs_Clients_Helpers{
 	
 		//A client was selected on the client username dropdown
 		//get the CPT that has that ID
-		if(isset($_POST['rdm_jobs_reports_JobTab_clients_list']) && $_POST['rdm_jobs_reports_JobTab_clients_list']!='-1'){
+		if(isset($_POST['rdm_jobs_reports_jobTab_clients_list']) && $_POST['rdm_jobs_reports_jobTab_clients_list']!='-1'){
 
-			$default_args['p'] = $_POST['rdm_jobs_reports_JobTab_clients_list'];
+			$default_args['p'] = $_POST['rdm_jobs_reports_jobTab_clients_list'];
 			
 		}
 		

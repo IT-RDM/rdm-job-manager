@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(function($) {
     function updateTotalPurchaseValue(data) {
      var hiddenArrayForPDF = [];
      hiddenArrayForPDF.discount = 0, hiddenArrayForPDF.vat = 0;

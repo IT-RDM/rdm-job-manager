@@ -705,7 +705,7 @@ class Rdm_Invoice_Table_Metabox {
 		
 		<script type="text/javascript">
 
-			jQuery(document).ready(function() {
+			jQuery(document).ready(function($) {
 				jQuery('#rdm_invoice_paid_date_field_id , #rdm_invoice_to_be_paid_by_date_field_id').datepicker({
 				});
 			});
@@ -963,7 +963,7 @@ class Rdm_Invoice_Table_Metabox {
 											
 												
 													<script>
-															jQuery(document).ready(function () {
+															jQuery(document).ready(function ($) {
 
 																	//Check if we have already an invoice in DB
 																	<?php

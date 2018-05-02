@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(function($) {
     if ("dont_associate" != jQuery("select[name='rdm_client_asociate_with_existing_wp_account_field'] option:selected").val()) {
      var valueFromWPUserTable = '<p class="valueFromWpUser">' + rdmJobsadmin.value_from_wp_user + '</span>';
      jQuery("#rdm_client_first_name_field_id").attr("readonly", "readonly"), 
@@ -50,7 +50,9 @@ jQuery(document).ready(function() {
      jQuery("#rdm_client_phone_field_id").val(""), 
      jQuery("#rdm_client_mobile_field_id").val(""))
     }), 
-    rdm_jobs_functions = [],rdm_jobs_functions.disable_invoice_buttons = function() {
+    rdm_jobs_functions = [],
+
+    rdm_jobs_functions.disable_invoice_buttons = function() {
      jQuery("input#rdm_apply_vat_btn,#rdm_preview_invoice,#rdm_jobs_download_invoice").prop('disabled', true)
     }, 
     rdm_jobs_functions.enable_invoice_buttons = function() {
@@ -119,4 +121,5 @@ if ("dont_associate" != jQuery("select[name='rdm_supplier_asociate_with_existing
     rdm_jobs_functions.enable_purchase_buttons = function() {
     jQuery("input#rdm_apply_vat_btn,#rdm_preview_purchase,#rdm_jobs_submit_purchase,#rdm_jobs_submit_purchase_to_supplier").prop("disabled", false)
    }
+
    });

@@ -708,7 +708,7 @@ class Rdm_Purchase_Table_Metabox {
 		
 		<script type="text/javascript">
 
-			jQuery(document).ready(function() {
+			jQuery(document).ready(function($) {
 				jQuery('#rdm_purchase_paid_date_field_id , #rdm_purchase_to_be_paid_by_date_field_id').datepicker({
 				});
 			});
@@ -1031,7 +1031,7 @@ class Rdm_Purchase_Table_Metabox {
 																				
 																			},
 																			success: function (data) {
-																					jQuery('#rdm_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,'+data+'"></iframe>');
+																					jQuery('#rdm_pdf_preview_in_browser').html('<iframe style="width:100%;height:600px" src="data:application/pdf;base64,'+data+'"></iframe>');
 																					
 																					rdm_jobs_functions.enable_purchase_buttons();
 																			},
