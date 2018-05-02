@@ -18,7 +18,7 @@ if( isset( $_POST[Rdm_Jobs_Settings_Option_Page::get_class_meta_name()] ) ) {
 	$opts_array['company_address'] 						= (isset($_POST['company_address'])) ? esc_textarea ($_POST['company_address']) : '';
 	$opts_array['company_email'] 						= (isset($_POST['company_email'])) ? sanitize_text_field($_POST['company_email']) : '';
 	$opts_array['company_website'] 						= (isset($_POST['company_website'])) ? sanitize_text_field($_POST['company_website']) : '';
-	$opts_array['company_mobile'] 						= (isset($_POST['company_mobile'])) ? sanitize_text_field($_POST['company_mobile']) : '';
+	$opts_array['company_phone'] 						= (isset($_POST['company_phone'])) ? sanitize_text_field($_POST['company_phone']) : '';
 	$opts_array['invoice_terms'] 						= (isset($_POST['invoice_terms'])) ? esc_textarea($_POST['invoice_terms']) : '';
 	$opts_array['invoice_default_vat'] 					= (isset($_POST['invoice_default_vat'])) ? sanitize_text_field($_POST['invoice_default_vat']) : '';
 	$opts_array['invoice_default_currency'] 			= (isset($_POST['invoice_default_currency'])) ? sanitize_text_field($_POST['invoice_default_currency']) : '';
@@ -74,7 +74,7 @@ if( isset( $_POST[Rdm_Jobs_Settings_Option_Page::get_class_meta_name()] ) ) {
 			<tr valign="top">
 				<th scope="row"><?php echo __('Company Mobile','rdm-job-manager') ?></th>
 				<td  colspan="3">
-					<input type="text" name="company_mobile" value="<?php echo Rdm_Jobs_Settings_Option_Page::get('company_mobile');?>">
+					<input type="text" name="company_phone" value="<?php echo Rdm_Jobs_Settings_Option_Page::get('company_phone');?>">
 				</td>
 			</tr>			
 			

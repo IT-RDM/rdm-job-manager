@@ -1213,7 +1213,7 @@ class Rdm_Invoice_Table_Metabox {
 		
 		$company_website = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_website'));
 		
-		$company_mobile = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_mobile'));
+		$company_phone = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_phone'));
 		
 		//Client infos
 		$client_first_name 	= $this->get_client_info($invoice_id,'first_name');
