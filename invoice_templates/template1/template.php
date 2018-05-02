@@ -154,7 +154,7 @@
 			<?php } ?>
 			
 			<?php if($company_mobile!=''){ ?>
-				<span class="company_mobile_title"><?php echo apply_filters('rdm_invoice_pdf_email_mobile_header',__('Mobile','rdm-job-manager')); ?> </span><?php echo $company_mobile; ?> 
+				<span class="company_mobile_title"><?php echo apply_filters('rdm_invoice_pdf_email_mobile_header',__('Phone','rdm-job-manager')); ?> </span><?php echo $company_mobile; ?> 
 			<?php } ?>
 		</div>
 
