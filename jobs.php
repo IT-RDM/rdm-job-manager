@@ -76,7 +76,7 @@ class Rdm_Job_Management {
 		add_action( 'wp_ajax_update_supplier_infos_if_associated_ajax', array( $this, 'update_supplier_infos_if_associated_ajax'));
 		
 		//add admin css
-		add_action('admin_enqueue_scripts', array($this,'simple_Job_managment_admin_css'));
+		add_action('admin_enqueue_scripts', array($this,'rdm_Job_manager_admin_css'));
 
 		//add admin js
 		add_action('in_admin_footer', array($this,'admin_footer'));
@@ -163,7 +163,7 @@ class Rdm_Job_Management {
 	/*
 	* Admin Scripts,Styles
 	*/
-	public function simple_Job_managment_admin_css(){
+	public function rdm_Job_manager_admin_css(){
 		
 		global $pagenow, $typenow;
 		
@@ -248,7 +248,7 @@ class Rdm_Job_Management {
 		remove_post_type_support( 'rdm_invoice', 'editor' );
 		remove_post_type_support( 'rdm_purchase', 'editor' );
 
-		do_action('simple_Job_managment_add_new_cpt');
+		do_action('rdm_Job_manager_add_new_cpt');
 	}	
 	
 	//Remove "Add Job" from admin menu
