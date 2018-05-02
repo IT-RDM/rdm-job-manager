@@ -147,17 +147,6 @@
 			<?php } ?>
 			
 			<?php if($company_email!=''){ ?>
-<<<<<<< HEAD
-				<span class="company_email_title"><?php echo apply_filters('rdm_purchase_pdf_email_footer_header',__('Email','simple-job-managment')); ?> </span><?php echo $company_email; ?> |
-			<?php } ?>
-			
-			<?php if($company_website!=''){ ?>
-				<span class="company_website_title"><?php echo apply_filters('rdm_purchase_pdf_email_website_header',__('Web','simple-job-managment')); ?> </span><?php echo $company_website; ?> |
-			<?php } ?>
-			
-			<?php if($company_mobile!=''){ ?>
-				<span class="company_mobile_title"><?php echo apply_filters('rdm_purchase_pdf_email_mobile_header',__('Phone','simple-job-managment')); ?> </span><?php echo $company_mobile; ?> 
-=======
 				<span class="company_email_title"><?php echo apply_filters('rdm_purchase_pdf_email_footer_header',__('Email','rdm-job-manager')); ?> </span><?php echo $company_email; ?>
 			<?php } ?>
 			
@@ -167,7 +156,6 @@
 			
 			<?php if($company_mobile!=''){ ?>
 				<span class="company_mobile_title"><?php echo apply_filters('rdm_purchase_pdf_email_mobile_header',__('Mobile','rdm-job-manager')); ?> </span><?php echo $company_mobile; ?> 
->>>>>>> 9b71b66a1db35e85a1bb55f7785ad89d3d24d917
 			<?php } ?>
 		</div>
 
