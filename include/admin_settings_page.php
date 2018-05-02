@@ -72,7 +72,7 @@ if( isset( $_POST[Rdm_Jobs_Settings_Option_Page::get_class_meta_name()] ) ) {
 			</tr>		
 
 			<tr valign="top">
-				<th scope="row"><?php echo __('Company Mobile','rdm-job-manager') ?></th>
+				<th scope="row"><?php echo __('Company Phone','rdm-job-manager') ?></th>
 				<td  colspan="3">
 					<input type="text" name="company_phone" value="<?php echo Rdm_Jobs_Settings_Option_Page::get('company_phone');?>">
 				</td>
