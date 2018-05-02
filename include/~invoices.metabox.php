@@ -11,12 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	
 /*
-* List all clients,job, tasks
+* List all clients,job, processes
 */
 
 	$list_all_clients_info_config = array(
 		'id'             	=> 	'all_clients_meta_box',          // meta box id, unique per meta box
-		'title'          	=> 	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_title',__('Prepare Invoices','simple-job-managment')), // meta box title
+		'title'          	=> 	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_title',__('Prepare Invoices','rdm-job-manager')), // meta box title
 		'pages'          	=> 	array('rdm_invoice'),      // post types, accept custom post types as well, default is array('post'); optional
 		'context'        	=> 	'normal',            // where the meta box appear: normal (default), advanced, side; optional
 		'priority'       	=> 	'high',            // order of meta box: high (default), low; optional
@@ -27,15 +27,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 	$all_clients_info_metabox =  new AT_Meta_Box($list_all_clients_info_config);
 
-	//Associate invoice to client,job task
+	//Associate invoice to client,job process
 	$all_clients_info_metabox->addPosts($prefix_invoices.'client_field_id',
 										array(
 											'post_type' =>	'rdm_client',
 											'args' 		=> 	array('orderby' => 'title', 'order' => 'ASC')
 										),
 										array(
-											'name'			=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_send_to_client_label',__('Send to client','simple-job-managment')),
-											'emptylabel'	=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_send_to_client_no_client_selected_option',__('No client selected','simple-job-managment')),
+											'name'			=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_send_to_client_label',__('Send to client','rdm-job-manager')),
+											'emptylabel'	=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_send_to_client_no_client_selected_option',__('No client selected','rdm-job-manager')),
 											'group' 		=> 'start'
 										)
 									);
@@ -46,19 +46,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'args' 			=>	array('orderby' => 'title', 'order' => 'DESC')
 										),
 										array(
-											'name'			=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_Job_label',__('Related to job','simple-job-managment')),
-											'emptylabel'	=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_Job_no_Job_selected',__('No job selected','simple-job-managment')),
+											'name'			=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_Job_label',__('Related to job','rdm-job-manager')),
+											'emptylabel'	=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_Job_no_Job_selected',__('No job selected','rdm-job-manager')),
 										)
 									);
 	
-	$all_clients_info_metabox->addPosts($prefix_invoices.'task_field_id',
+	$all_clients_info_metabox->addPosts($prefix_invoices.'process_field_id',
 										array(
-											'post_type' => 'rdm_task',
+											'post_type' => 'rdm_process',
 											'args' 		=> array('orderby' => 'title', 'order' => 'DESC')
 										),
 										array(
-											'name'			=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_task_label',__('Related to task','simple-job-managment')),
-											'emptylabel'	=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_Job_no_task_selected',__('No task selected','simple-job-managment')),
+											'name'			=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_process_label',__('Related to process','rdm-job-manager')),
+											'emptylabel'	=>	apply_filters('rdm_invoices_cpt_invoice_infos_metabox_related_to_Job_no_process_selected',__('No process selected','rdm-job-manager')),
 											'group' 		=>	'end'
 										)
 									);	

@@ -4,86 +4,86 @@
 
 
 /*
-* Returns Task Status as bullets
+* Returns Process Status as bullets
 */
-function rdm_get_human_task_status_by_meta_value_as_bullet($status){
+function rdm_get_human_process_status_by_meta_value_as_bullet($status){
 
-	$taskStatusToDisplay = 'Not Set';
+	$processStatusToDisplay = 'Not Set';
 
 	
 	switch ($status){
 		
-		case 'task_status_cancelled':
-			$taskStatusToDisplay = '<span class="rdm_generic_bullet_cancelled ">X</span>';
+		case 'process_status_cancelled':
+			$processStatusToDisplay = '<span class="rdm_generic_bullet_cancelled ">X</span>';
 			break;
 	
-		case 'task_status_not_started':
-			$taskStatusToDisplay = '<span class="rdm_generic_bullet_not_started"></span>';
+		case 'process_status_not_started':
+			$processStatusToDisplay = '<span class="rdm_generic_bullet_not_started"></span>';
 			break;
 		
-		case 'task_status_ongoing':
-			$taskStatusToDisplay =  '<span class="rdm_generic_bullet_ongoing"></span>';
+		case 'process_status_ongoing':
+			$processStatusToDisplay =  '<span class="rdm_generic_bullet_ongoing"></span>';
 			break;
 		
-		case 'task_status_finished':
-			$taskStatusToDisplay =  '<span class="rdm_generic_bullet_finished"></span>';
+		case 'process_status_finished':
+			$processStatusToDisplay =  '<span class="rdm_generic_bullet_finished"></span>';
 			break;
 		
-		case 'task_status_onhold':
-			$taskStatusToDisplay =  '<span class="rdm_generic_bullet_onhold"></span>';
+		case 'process_status_onhold':
+			$processStatusToDisplay =  '<span class="rdm_generic_bullet_onhold"></span>';
 			break;			
 	}
 
-	return $taskStatusToDisplay ;
+	return $processStatusToDisplay ;
 }
 
 
 
 /*
-* ECHO Task status as LI bullets
+* ECHO Process status as LI bullets
 */
-function tasks_for_Job_as_bullets($JobID){
-			//get all tasks for this post 
-			$get_task_for_Job_params =array(
+function processes_for_Job_as_bullets($JobID){
+			//get all processes for this post 
+			$get_process_for_Job_params =array(
 				'showposts'=>-1,
-				'post_type' => 'rdm_task',
+				'post_type' => 'rdm_process',
 				'post_status' => 'publish',
-				'meta_key'=>'rdm_task_for_Job_field',
+				'meta_key'=>'rdm_process_for_Job_field',
 				'meta_value'=> $JobID
 			);
-			$query_task_of_Job = new WP_Query();
-			$results_tasks_for_Job = $query_task_of_Job->query($get_task_for_Job_params);
+			$query_process_of_Job = new WP_Query();
+			$results_processes_for_Job = $query_process_of_Job->query($get_process_for_Job_params);
 		
-			//if we have a task
-			if(sizeof($results_tasks_for_Job) >= 1 ){
+			//if we have a process
+			if(sizeof($results_processes_for_Job) >= 1 ){
 				
 			
-				foreach($results_tasks_for_Job as $single_task_for_Job){
+				foreach($results_processes_for_Job as $single_process_for_Job){
 				
-					$task_id	 = $single_task_for_Job->ID ;
-					$task_status_meta = get_post_meta($single_task_for_Job->ID,'rdm_task_status_task_field',true);
+					$process_id	 = $single_process_for_Job->ID ;
+					$process_status_meta = get_post_meta($single_process_for_Job->ID,'rdm_process_status_process_field',true);
 					
 
-						if ($task_status_meta == 'task_status_not_started'){
-							echo apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_task_not_started',rdm_get_human_task_status_by_meta_value_as_bullet('task_status_not_started').'<a href="'.get_edit_post_link($task_id).'"  title="Task not Started" > # ' . $task_id .' </a> <div></div>',$JobID,$task_id , $task_status_meta );
+						if ($process_status_meta == 'process_status_not_started'){
+							echo apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_not_started',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_not_started').'<a href="'.get_edit_post_link($process_id).'"  title="Process not Started" > # ' . $process_id .' </a> <div></div>',$JobID,$process_id , $process_status_meta );
 							
-						}elseif ($task_status_meta == 'task_status_ongoing'){
+						}elseif ($process_status_meta == 'process_status_ongoing'){
 							
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_task_ongoing',rdm_get_human_task_status_by_meta_value_as_bullet('task_status_ongoing').'<a href="'.get_edit_post_link($task_id).'" title="Task ongoing"> # ' . $task_id .' </a>  <br>',$JobID,$task_id , $task_status_meta);
+							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_ongoing',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_ongoing').'<a href="'.get_edit_post_link($process_id).'" title="Process ongoing"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
-						}elseif ($task_status_meta == 'task_status_finished'){
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_task_finished',rdm_get_human_task_status_by_meta_value_as_bullet('task_status_finished').'<a href="'.get_edit_post_link($task_id).'" title="Task finished"> # ' . $task_id .' </a>  <br>',$JobID,$task_id , $task_status_meta);
+						}elseif ($process_status_meta == 'process_status_finished'){
+							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_finished',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_finished').'<a href="'.get_edit_post_link($process_id).'" title="Process finished"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
-						}elseif ($task_status_meta == 'task_status_cancelled'){
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_task_cancelled',rdm_get_human_task_status_by_meta_value_as_bullet('task_status_cancelled').'<a href="'.get_edit_post_link($task_id).'" title="Task cancelled"> # ' . $task_id .' </a>  <br>',$JobID,$task_id , $task_status_meta);
+						}elseif ($process_status_meta == 'process_status_cancelled'){
+							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_cancelled',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_cancelled').'<a href="'.get_edit_post_link($process_id).'" title="Process cancelled"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
-						}elseif ($task_status_meta == 'task_status_onhold'){
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_task_onhold',rdm_get_human_task_status_by_meta_value_as_bullet('task_status_onhold').'<a href="'.get_edit_post_link($task_id).'" title="Task onhold"> # ' . $task_id .' </a>  <br>',$JobID,$task_id , $task_status_meta);
+						}elseif ($process_status_meta == 'process_status_onhold'){
+							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_onhold',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_onhold').'<a href="'.get_edit_post_link($process_id).'" title="Process onhold"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
 						}else{
 							
-							//unexpected task status ... return plain edit link for task
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_task_unexpected_status','<a href="'.get_edit_post_link($task_id).'" title="Task status unknown"> # ' . $task_id .' </a>  <br>',$JobID,$task_id , $task_status_meta);
+							//unexpected process status ... return plain edit link for process
+							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_unexpected_status','<a href="'.get_edit_post_link($process_id).'" title="Process status unknown"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 						}						
 
 				}

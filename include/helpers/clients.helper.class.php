@@ -9,7 +9,7 @@ class Rdm_Jobs_Clients_Helpers{
 		if($clientid && ( $clientid > 0)){
 			//echo $clientid;
 			
-			$invoiceStatusToDisplay = __('Not Set','simple-job-managment');
+			$invoiceStatusToDisplay = __('Not Set','rdm-job-manager');
 
 			//get all jobs for this client
 			$get_invoices_for_clients_params =array(
@@ -38,7 +38,7 @@ class Rdm_Jobs_Clients_Helpers{
 					
 						$invoiceStatus = get_post_meta($single_invoice_for_client->ID , '_rdm_invoice_notes', true);
 
-						$invoiceStatusToDisplay = (isset($invoiceStatus['status'])) ? ucfirst($invoiceStatus['status']) :  __('Not Set','simple-job-managment');
+						$invoiceStatusToDisplay = (isset($invoiceStatus['status'])) ? ucfirst($invoiceStatus['status']) :  __('Not Set','rdm-job-manager');
 					}
 					
 					$invoicesAssociateWithClient.= ' ' . $invoiceStatusToDisplay ;
@@ -66,7 +66,7 @@ class Rdm_Jobs_Clients_Helpers{
 	
 		$start_of_dropdown = '<select name="rdm_jobs_reports_JobTab_clients_list">';
 		$end_of_dropdown = '</select>';
-		$dropdown_options ='<option value="-1">'. __('All','simple-job-managment').'</option>';
+		$dropdown_options ='<option value="-1">'. __('All','rdm-job-manager').'</option>';
 	
 		//if we have at least a client
 		if(self::get_all() > 0 ){
@@ -250,7 +250,7 @@ class Rdm_Jobs_Clients_Helpers{
 			return 'Not Set';	
 		}
 		
-		return ($meta_value) ? $meta_value :  __('Not Set','simple-job-managment');
+		return ($meta_value) ? $meta_value :  __('Not Set','rdm-job-manager');
 		
 	}
 	
@@ -392,7 +392,7 @@ class Rdm_Jobs_Clients_Helpers{
 		$results_all_clients = $query_all_clients->query($default_args);			
 		$clients_found = sizeof($results_all_clients); 
 		
-		echo  apply_filters('rdm_reports_clients_page_found_clients_title' , sprintf( _n( '<h3>Found  %s client </h3>', '<h3>Found  %s clients </h3>', $clients_found, 'simple-job-managment' ), $clients_found ));
+		echo  apply_filters('rdm_reports_clients_page_found_clients_title' , sprintf( _n( '<h3>Found  %s client </h3>', '<h3>Found  %s clients </h3>', $clients_found, 'rdm-job-manager' ), $clients_found ));
 
 		
 		//if we have at least one client ... show the table
@@ -408,28 +408,28 @@ class Rdm_Jobs_Clients_Helpers{
 							<a ><span><strong>ID</strong></span></a>
 						</th>					
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Client','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Client','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Name','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Name','rdm-job-manager') ?></strong></span></a>
 						</th>			
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Surname','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Surname','rdm-job-manager') ?></strong></span></a>
 						</th>							
 						
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Email','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Email','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Phone','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Phone','rdm-job-manager') ?></strong></span></a>
 						</th>	
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Mobile','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Mobile','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Skype','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Skype','rdm-job-manager') ?></strong></span></a>
 						</th>
 							
 						
@@ -441,27 +441,27 @@ class Rdm_Jobs_Clients_Helpers{
 							<a ><span><strong>ID</strong></span></a>
 						</th>						
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Client','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Client','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Name','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Name','rdm-job-manager') ?></strong></span></a>
 						</th>					
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Surname','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Surname','rdm-job-manager') ?></strong></span></a>
 						</th>			
 						
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Email','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Email','rdm-job-manager') ?></strong></span></a>
 						</th>		
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Phone','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Phone','rdm-job-manager') ?></strong></span></a>
 						</th>		
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Mobile','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Mobile','rdm-job-manager') ?></strong></span></a>
 						</th>	
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Skype','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Skype','rdm-job-manager') ?></strong></span></a>
 						</th>							
 
 					</tr>

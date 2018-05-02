@@ -8,13 +8,13 @@ switch ( $column ) {
 		if(isset($purchase_total_meta['purchase_subtotal'])){
 			echo Rdm_Jobs_Invoice_Helpers::calculate_total($post_id,$purchase_total_meta['purchase_subtotal']);
 		}else{
-			 __('Not Set','simple-job-managment');
+			 __('Not Set','rdm-job-manager');
 		}
 		break;
 		
 	case 'rdm_jobs_purchase_status':
 		$purchase_status_date_meta = get_post_meta($post_id,'_rdm_purchase_notes',true);
-		echo  (isset($purchase_status_date_meta['status'])) ? ucfirst($purchase_status_date_meta['status']) :  __('Not Set','simple-job-managment');
+		echo  (isset($purchase_status_date_meta['status'])) ? ucfirst($purchase_status_date_meta['status']) :  __('Not Set','rdm-job-manager');
 		
 		break;
 		
@@ -23,7 +23,7 @@ switch ( $column ) {
 		if($supplier_id){
 			echo '<a href="'.get_edit_post_link($supplier_id).'">' . get_the_title($supplier_id) . '</a>';
 		}else{
-			 __('Not Set','simple-job-managment');
+			 __('Not Set','rdm-job-manager');
 		}
 		break;
 		

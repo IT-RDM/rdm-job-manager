@@ -21,8 +21,8 @@ switch ( $column ) {
 		echo apply_filters('rdm_Jobs_cpt_list_post_table_Job_estimate_value',$estimate_value, $post_id);
 		break;
 	
-	case 'get_tasks_for_Job':
-		tasks_for_Job_as_bullets($post_id);
+	case 'get_processes_for_Job':
+		processes_for_Job_as_bullets($post_id);
 		break;
 	
 	case 'status':

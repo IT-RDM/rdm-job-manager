@@ -1,21 +1,21 @@
 <?php
 /*
-Plugin Name: Simple Job Manager
-Description: Simple jobs management plugin based
+Plugin Name: RDM Job Manager
+Description: RDM jobs management plugin 
 Author: Rdm
-Version: 1.0.0
-Text Domain: simple-job-managment
+Version: 1.0.1
+Text Domain: rdm-job-manager
 Domain Path: /languages
 */
 
 add_action('plugins_loaded', 'rdm_load_textdomain');
 function rdm_load_textdomain() {
-    load_plugin_textdomain( 'simple-job-managment', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
+    load_plugin_textdomain( 'rdm-job-manager', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
 }
 
 class Rdm_Job_Management {
 
-	private $plugin_slug ='simple-job-managment';
+	private $plugin_slug ='rdm-job-manager';
 	private $singular_cpt_name = 'Job';
 	private $plural_cpt_name = 'Jobs';
 	private static $instance = null;
@@ -50,8 +50,8 @@ class Rdm_Job_Management {
 		add_action( 'manage_edit-rdm_job_columns' , array($this,'add_Job_custom_columns'), 10, 2 );
 	
 		//add custom columns to TASK
-		add_action( 'manage_posts_custom_column' , array($this,'show_task_custom_columns'), 10, 2 );
-		add_action( 'manage_edit-rdm_task_columns' , array($this,'add_task_custom_columns'), 10, 2 );	
+		add_action( 'manage_posts_custom_column' , array($this,'show_process_custom_columns'), 10, 2 );
+		add_action( 'manage_edit-rdm_process_columns' , array($this,'add_process_custom_columns'), 10, 2 );	
 		
 		//add custom columns to CLIENTS
 		add_action( 'manage_posts_custom_column' , array($this,'show_clients_custom_columns'), 10, 2 );
@@ -111,7 +111,7 @@ class Rdm_Job_Management {
 		
 		global $post;
 		
-		if( $post->post_type == 'rdm_job' ||  $post->post_type == 'rdm_task'  ||  $post->post_type == 'rdm_client'  ||  $post->post_type == 'rdm_invoice' ||  $post->post_type == 'rdm_supplier'  ||  $post->post_type == 'rdm_purchase'  ) {
+		if( $post->post_type == 'rdm_job' ||  $post->post_type == 'rdm_process'  ||  $post->post_type == 'rdm_client'  ||  $post->post_type == 'rdm_invoice' ||  $post->post_type == 'rdm_supplier'  ||  $post->post_type == 'rdm_purchase'  ) {
 			
 			unset($actions['inline hide-if-no-js']);
 			
@@ -132,14 +132,14 @@ class Rdm_Job_Management {
 	function admin_footer(){
 	
 		global $pagenow, $typenow;
-		if( $typenow=='rdm_invoice' || $typenow =='rdm_job' || $typenow == 'rdm_task' || $typenow == 'rdm_client'  || $typenow == 'rdm_supplier' || $typenow=='rdm_purchase'){
+		if( $typenow=='rdm_invoice' || $typenow =='rdm_job' || $typenow == 'rdm_process' || $typenow == 'rdm_client'  || $typenow == 'rdm_supplier' || $typenow=='rdm_purchase'){
 			
 			
 			wp_register_script( 'rdm-jobs-admin-script', $this->get_plugin_url() . 'assets/admin/js/admin.js' );
 
 			// Localize the script with new data
 			$translation_array = array(
-				'value_from_wp_user' => __( 'Value From Wordpress Account', 'simple-job-managment' ),
+				'value_from_wp_user' => __( 'Value From Wordpress Account', 'rdm-job-manager' ),
 				
 			);
 			wp_localize_script( 'rdm-jobs-admin-script', 'rdmJobsadmin', $translation_array );
@@ -167,12 +167,12 @@ class Rdm_Job_Management {
 		
 		global $pagenow, $typenow;
 		
-		if( $typenow=='rdm_invoice' || $typenow =='rdm_job' || $typenow == 'rdm_task' || $typenow == 'rdm_client' || $typenow == 'rdm_supplier' || $typenow == 'rdm_purchase' ){
-			wp_enqueue_style('simple-job-managment-circular_admin', $this->get_plugin_url().'assets/admin/css/Jobs_admin.css');
+		if( $typenow=='rdm_invoice' || $typenow =='rdm_job' || $typenow == 'rdm_process' || $typenow == 'rdm_client' || $typenow == 'rdm_supplier' || $typenow == 'rdm_purchase' ){
+			wp_enqueue_style('rdm-job-manager-circular_admin', $this->get_plugin_url().'assets/admin/css/Jobs_admin.css');
 		}
 		 
-		wp_register_script('simple-job-managment-circular-diagram',$this->get_plugin_url().'assets/circle-diagram/js/circle-progress.js' ,array( 'jquery' ) );
-		wp_register_style('simple-job-managment-circular-diagram',$this->get_plugin_url().'assets/circle-diagram/css/style.css' );
+		wp_register_script('rdm-job-manager-circular-diagram',$this->get_plugin_url().'assets/circle-diagram/js/circle-progress.js' ,array( 'jquery' ) );
+		wp_register_style('rdm-job-manager-circular-diagram',$this->get_plugin_url().'assets/circle-diagram/css/style.css' );
 	}
 	
 	/*
@@ -232,7 +232,7 @@ class Rdm_Job_Management {
 
 				
 		require_once('include/jobs.cpt.php');
-		require_once('include/tasks.cpt.php');
+		require_once('include/processes.cpt.php');
 		require_once('include/clients.cpt.php');
 		require_once('include/invoices.cpt.php');		
 		require_once('include/suppliers.cpt.php');
@@ -240,7 +240,7 @@ class Rdm_Job_Management {
 		
 		/*
 		$jobs 	= new Rdm_Register_CPT('Job','Jobs');
-		$tasks 		= new Rdm_Register_CPT('Task','Tasks','edit.php?post_type=rdm_job');
+		$processes 		= new Rdm_Register_CPT('Process','Processes','edit.php?post_type=rdm_job');
 		$clients 	= new Rdm_Register_CPT('Client','Clients','edit.php?post_type=rdm_job');
 		$invoices 	= new Rdm_Register_CPT('Invoice','Invoices','edit.php?post_type=rdm_job');
 		*/
@@ -257,10 +257,10 @@ class Rdm_Job_Management {
 		remove_submenu_page('edit.php?post_type=rdm_job', 'post-new.php?post_type=rdm_job');
 		
 		//Add "Reports" as submenu to job
-		add_submenu_page( 'edit.php?post_type=rdm_job', __('Reports','simple-job-managment'),  __('Reports','simple-job-managment'), 'manage_options', 'rdm-job-Reports', array($this,'reports_submenu_page_callback' ));		
+		add_submenu_page( 'edit.php?post_type=rdm_job', __('Reports','rdm-job-manager'),  __('Reports','rdm-job-manager'), 'manage_options', 'rdm-job-Reports', array($this,'reports_submenu_page_callback' ));		
 		
 		//Add "Settings" as submenu to job
-		add_submenu_page( 'edit.php?post_type=rdm_job',  __('Settings','simple-job-managment'),  __('Settings','simple-job-managment'), 'manage_options', 'rdm-job-settings', array($this,'settings_submenu_page_callback' ));
+		add_submenu_page( 'edit.php?post_type=rdm_job',  __('Settings','rdm-job-manager'),  __('Settings','rdm-job-manager'), 'manage_options', 'rdm-job-settings', array($this,'settings_submenu_page_callback' ));
 
 	}	
 	
@@ -277,8 +277,8 @@ class Rdm_Job_Management {
 			//Jobs metaboxes
 			require_once('include/jobs.metabox.php');
 
-			//Task metaboxes
-			require_once('include/tasks.metabox.php');
+			//Process metaboxes
+			require_once('include/processes.metabox.php');
 			
 			//Clients metaboxes
 			require_once('include/clients.metabox.php');
@@ -306,8 +306,8 @@ class Rdm_Job_Management {
 	}
 	
 	//Show additional columns on TASK list
-	function show_task_custom_columns( $column, $post_id ) {
-		require('include/tasks_list_extra_columns.php');		
+	function show_process_custom_columns( $column, $post_id ) {
+		require('include/processes_list_extra_columns.php');		
 	}	
 
 	//Show additional columns on CLIENTS list
@@ -322,12 +322,12 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 					=	apply_filters('rdm_Jobs_cpt_list_post_table_header_Job_text',__('Job','simple-job-managment'));
-		$columns['deadline'] 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_deadline_text',__('Deadline','simple-job-managment'));
-		$columns['status'] 	 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_status_text',__('Status','simple-job-managment'));
-		$columns['get_tasks_for_Job'] 	=	apply_filters('rdm_Jobs_cpt_list_post_table_header_tasks_text',__('Tasks','simple-job-managment'));
-		$columns['client']	 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_client_text',__('Client','simple-job-managment'));
-		$columns['earnings'] 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_earning_text',__('Earning','simple-job-managment'));
+		$columns['title'] 					=	apply_filters('rdm_Jobs_cpt_list_post_table_header_Job_text',__('Job','rdm-job-manager'));
+		$columns['deadline'] 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_deadline_text',__('Deadline','rdm-job-manager'));
+		$columns['status'] 	 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_status_text',__('Status','rdm-job-manager'));
+		$columns['get_processes_for_Job'] 	=	apply_filters('rdm_Jobs_cpt_list_post_table_header_processes_text',__('Processes','rdm-job-manager'));
+		$columns['client']	 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_client_text',__('Client','rdm-job-manager'));
+		$columns['earnings'] 				=	apply_filters('rdm_Jobs_cpt_list_post_table_header_earning_text',__('Earning','rdm-job-manager'));
 
 		return apply_filters('rdm_Jobs_cpt_list_post_table_header_array',$columns);
 		
@@ -335,16 +335,16 @@ class Rdm_Job_Management {
 	}
 
 	
-	function add_task_custom_columns($columns){
+	function add_process_custom_columns($columns){
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 				= 	apply_filters('rdm_task_cpt_list_post_table_header_task_title_text',__('Task','simple-job-managment'));
-		$columns['task_deadline'] 		= 	apply_filters('rdm_task_cpt_list_post_table_header_task_deadline_text',__('Task Deadline','simple-job-managment'));
-		$columns['task_status'] 		= 	apply_filters('rdm_task_cpt_list_post_table_header_task_status_text',__('Task Status','simple-job-managment'));
-		$columns['task_for_Job']	= 	apply_filters('rdm_task_cpt_list_post_table_header_task_Job_text',__('Job','simple-job-managment'));
+		$columns['title'] 				= 	apply_filters('rdm_process_cpt_list_post_table_header_process_title_text',__('Process','rdm-job-manager'));
+		$columns['process_deadline'] 		= 	apply_filters('rdm_process_cpt_list_post_table_header_process_deadline_text',__('Process Deadline','rdm-job-manager'));
+		$columns['process_status'] 		= 	apply_filters('rdm_process_cpt_list_post_table_header_process_status_text',__('Process Status','rdm-job-manager'));
+		$columns['process_for_Job']	= 	apply_filters('rdm_process_cpt_list_post_table_header_process_Job_text',__('Job','rdm-job-manager'));
 		
-		return apply_filters('rdm_tasks_cpt_list_post_table_header_array',$columns);
+		return apply_filters('rdm_processes_cpt_list_post_table_header_array',$columns);
 
 	}
 	
@@ -354,10 +354,10 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);	
 	
-		$columns['title'] 								=	apply_filters('rdm_clients_cpt_list_post_table_header_client_name',__('Client','simple-job-managment'));
-		$columns['rdm_jobs_client_Jobs'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_Jobs',__('Jobs','simple-job-managment'));
-		$columns['rdm_jobs_client_invoices'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_invoices',__('Invoices','simple-job-managment'));
-		$columns['rdm_jobs_client_reviews'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_reviews',__('Reviews','simple-job-managment'));		
+		$columns['title'] 								=	apply_filters('rdm_clients_cpt_list_post_table_header_client_name',__('Client','rdm-job-manager'));
+		$columns['rdm_jobs_client_Jobs'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_Jobs',__('Jobs','rdm-job-manager'));
+		$columns['rdm_jobs_client_invoices'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_invoices',__('Invoices','rdm-job-manager'));
+		$columns['rdm_jobs_client_reviews'] 	=	apply_filters('rdm_clients_cpt_list_post_table_header_reviews',__('Reviews','rdm-job-manager'));		
 		
 		return apply_filters('rdm_clients_cpt_list_post_table_header_array',$columns);
 
@@ -373,10 +373,10 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 								=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_name',__('Invoice','simple-job-managment'));
-		$columns['rdm_jobs_invoice_total'] 				=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_total',__('Total','simple-job-managment'));
-		$columns['rdm_jobs_invoice_status'] 			=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_status',__('Status','simple-job-managment'));
-		$columns['rdm_jobs_invoice_for_client'] 		=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_client_name',__('Client','simple-job-managment'));
+		$columns['title'] 								=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_name',__('Invoice','rdm-job-manager'));
+		$columns['rdm_jobs_invoice_total'] 				=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_total',__('Total','rdm-job-manager'));
+		$columns['rdm_jobs_invoice_status'] 			=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_status',__('Status','rdm-job-manager'));
+		$columns['rdm_jobs_invoice_for_client'] 		=	apply_filters('rdm_invoice_cpt_list_post_table_header_invoice_client_name',__('Client','rdm-job-manager'));
 
 		return $columns;	
 	}
@@ -387,10 +387,10 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);	
 	
-		$columns['title'] 								=	apply_filters('rdm_suppliers_cpt_list_post_table_header_supplier_name',__('Supplier','simple-job-managment'));
-		$columns['rdm_jobs_supplier_Jobs'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_Jobs',__('Jobs','simple-job-managment'));
-		$columns['rdm_jobs_supplier_purchases'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_purchases',__('Purchases','simple-job-managment'));
-		$columns['rdm_jobs_supplier_reviews'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_reviews',__('Reviews','simple-job-managment'));		
+		$columns['title'] 								=	apply_filters('rdm_suppliers_cpt_list_post_table_header_supplier_name',__('Supplier','rdm-job-manager'));
+		$columns['rdm_jobs_supplier_Jobs'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_Jobs',__('Jobs','rdm-job-manager'));
+		$columns['rdm_jobs_supplier_purchases'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_purchases',__('Purchases','rdm-job-manager'));
+		$columns['rdm_jobs_supplier_reviews'] 	=	apply_filters('rdm_suppliers_cpt_list_post_table_header_reviews',__('Reviews','rdm-job-manager'));		
 		
 		return apply_filters('rdm_suppliers_cpt_list_post_table_header_array',$columns);
 
@@ -405,10 +405,10 @@ class Rdm_Job_Management {
 		//remove default WP date column
 		unset($columns['date']);
 		
-		$columns['title'] 										=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_name',__('Purchase','simple-job-managment'));
-		$columns['rdm_jobs_purchase_total'] 			=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_total',__('Total','simple-job-managment'));
-		$columns['rdm_jobs_purchase_status'] 			=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_status',__('Status','simple-job-managment'));
-		$columns['rdm_jobs_purchase_for_supplier'] 		=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_client_name',__('Supplier','simple-job-managment'));
+		$columns['title'] 										=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_name',__('Purchase','rdm-job-manager'));
+		$columns['rdm_jobs_purchase_total'] 			=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_total',__('Total','rdm-job-manager'));
+		$columns['rdm_jobs_purchase_status'] 			=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_status',__('Status','rdm-job-manager'));
+		$columns['rdm_jobs_purchase_for_supplier'] 		=	apply_filters('rdm_purchase_cpt_list_post_table_header_purchase_client_name',__('Supplier','rdm-job-manager'));
 
 		return $columns;	
 	}
@@ -423,7 +423,7 @@ class Rdm_Job_Management {
 		require_once('include/helpers/purchase.helper.class.php');
 		require_once('include/helpers/suppliers.helper.class.php');
 
-		require_once('include/helpers/tasks.helper.class.php');
+		require_once('include/helpers/processes.helper.class.php');
 		require_once('include/admin_reports_page.php');
 
 	}

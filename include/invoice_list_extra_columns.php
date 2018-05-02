@@ -8,13 +8,13 @@ switch ( $column ) {
 		if(isset($invoice_total_meta['invoice_subtotal'])){
 			echo Rdm_Jobs_Invoice_Helpers::calculate_total($post_id,$invoice_total_meta['invoice_subtotal']);
 		}else{
-			 __('Not Set','simple-job-managment');
+			 __('Not Set','rdm-job-manager');
 		}
 		break;
 		
 	case 'rdm_jobs_invoice_status':
 		$invoice_status_date_meta = get_post_meta($post_id,'_rdm_invoice_notes',true);
-		echo  (isset($invoice_status_date_meta['status'])) ? ucfirst($invoice_status_date_meta['status']) :  __('Not Set','simple-job-managment');
+		echo  (isset($invoice_status_date_meta['status'])) ? ucfirst($invoice_status_date_meta['status']) :  __('Not Set','rdm-job-manager');
 		
 		break;
 		
@@ -23,7 +23,7 @@ switch ( $column ) {
 		if($client_id){
 			echo '<a href="'.get_edit_post_link($client_id).'">' . get_the_title($client_id) . '</a>';
 		}else{
-			 __('Not Set','simple-job-managment');
+			 __('Not Set','rdm-job-manager');
 		}
 		break;
 		

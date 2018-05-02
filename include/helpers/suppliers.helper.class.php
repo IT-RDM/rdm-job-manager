@@ -9,7 +9,7 @@ class Rdm_Jobs_Suppliers_Helpers{
 		if($supplierid && ( $supplierid > 0)){
 			//echo $supplierid;
 			
-			$purchaseStatusToDisplay = __('Not Set','simple-job-managment');
+			$purchaseStatusToDisplay = __('Not Set','rdm-job-manager');
 
 			//get all jobs for this supplier
 			$get_purchases_for_suppliers_params =array(
@@ -38,7 +38,7 @@ class Rdm_Jobs_Suppliers_Helpers{
 					
 						$purchaseStatus = get_post_meta($single_purchase_for_supplier->ID , '_rdm_purchase_notes', true);
 
-						$purchaseStatusToDisplay = (isset($purchaseStatus['status'])) ? ucfirst($purchaseStatus['status']) :  __('Not Set','simple-job-managment');
+						$purchaseStatusToDisplay = (isset($purchaseStatus['status'])) ? ucfirst($purchaseStatus['status']) :  __('Not Set','rdm-job-manager');
 					}
 					
 					$purchasesAssociateWithSupplier.= ' ' . $purchaseStatusToDisplay ;
@@ -66,7 +66,7 @@ class Rdm_Jobs_Suppliers_Helpers{
 	
 		$start_of_dropdown = '<select name="rdm_jobs_reports_JobTab_suppliers_list">';
 		$end_of_dropdown = '</select>';
-		$dropdown_options ='<option value="-1">'. __('All','simple-job-managment').'</option>';
+		$dropdown_options ='<option value="-1">'. __('All','rdm-job-manager').'</option>';
 	
 		//if we have at least a supplier
 		if(self::get_all() > 0 ){
@@ -250,7 +250,7 @@ class Rdm_Jobs_Suppliers_Helpers{
 			return 'Not Set';	
 		}
 		
-		return ($meta_value) ? $meta_value :  __('Not Set','simple-job-managment');
+		return ($meta_value) ? $meta_value :  __('Not Set','rdm-job-manager');
 		
 	}
 	
@@ -392,7 +392,7 @@ class Rdm_Jobs_Suppliers_Helpers{
 		$results_all_suppliers = $query_all_suppliers->query($default_args);			
 		$suppliers_found = sizeof($results_all_suppliers); 
 		
-		echo  apply_filters('rdm_reports_suppliers_page_found_suppliers_title' , sprintf( _n( '<h3>Found  %s supplier </h3>', '<h3>Found  %s suppliers </h3>', $suppliers_found, 'simple-job-managment' ), $suppliers_found ));
+		echo  apply_filters('rdm_reports_suppliers_page_found_suppliers_title' , sprintf( _n( '<h3>Found  %s supplier </h3>', '<h3>Found  %s suppliers </h3>', $suppliers_found, 'rdm-job-manager' ), $suppliers_found ));
 
 		
 		//if we have at least one supplier ... show the table
@@ -408,28 +408,28 @@ class Rdm_Jobs_Suppliers_Helpers{
 							<a ><span><strong>ID</strong></span></a>
 						</th>					
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Supplier','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Supplier','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Name','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Name','rdm-job-manager') ?></strong></span></a>
 						</th>			
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Surname','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Surname','rdm-job-manager') ?></strong></span></a>
 						</th>							
 						
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Email','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Email','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Phone','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Phone','rdm-job-manager') ?></strong></span></a>
 						</th>	
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Mobile','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Mobile','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Skype','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Skype','rdm-job-manager') ?></strong></span></a>
 						</th>
 							
 						
@@ -441,27 +441,27 @@ class Rdm_Jobs_Suppliers_Helpers{
 							<a ><span><strong>ID</strong></span></a>
 						</th>						
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Supplier','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Supplier','rdm-job-manager') ?></strong></span></a>
 						</th>
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Name','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Name','rdm-job-manager') ?></strong></span></a>
 						</th>					
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Surname','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Surname','rdm-job-manager') ?></strong></span></a>
 						</th>			
 						
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Email','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Email','rdm-job-manager') ?></strong></span></a>
 						</th>		
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Phone','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Phone','rdm-job-manager') ?></strong></span></a>
 						</th>		
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Mobile','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Mobile','rdm-job-manager') ?></strong></span></a>
 						</th>	
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a ><span><strong><?php echo __('Skype','simple-job-managment') ?></strong></span></a>
+							<a ><span><strong><?php echo __('Skype','rdm-job-manager') ?></strong></span></a>
 						</th>							
 
 					</tr>

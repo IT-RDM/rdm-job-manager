@@ -15,23 +15,23 @@ class Rdm_Jobs_Job_Helpers{
 				break;
 			
 			case 'Job_status_lead':
-				$JobStatusToDisplay = __('Lead','simple-job-managment');
+				$JobStatusToDisplay = __('Lead','rdm-job-manager');
 				break;
 				
 			case 'Job_status_on_hold':
-				$JobStatusToDisplay = __('On Hold','simple-job-managment');
+				$JobStatusToDisplay = __('On Hold','rdm-job-manager');
 				break;
 
 			case 'Job_status_waiting_feedback':
-				$JobStatusToDisplay = __('Awaiting Feedback','simple-job-managment');
+				$JobStatusToDisplay = __('Awaiting Feedback','rdm-job-manager');
 				break;			
 			
 			case 'Job_status_ongoing':
-				$JobStatusToDisplay = __('Ongoing','simple-job-managment');
+				$JobStatusToDisplay = __('Ongoing','rdm-job-manager');
 				break;
 				
 			case 'Job_status_finished':
-				$JobStatusToDisplay = __('Completed','simple-job-managment');
+				$JobStatusToDisplay = __('Completed','rdm-job-manager');
 				break;					
 				
 		}
@@ -46,7 +46,7 @@ class Rdm_Jobs_Job_Helpers{
 	
 		if($clientid && ( $clientid > 0)){
 			
-			$JobsAssociateWithClient= apply_filters('rdm_no_Jobs_from_this_client_yet',__('No Jobs','simple-job-managment'));
+			$JobsAssociateWithClient= apply_filters('rdm_no_Jobs_from_this_client_yet',__('No Jobs','rdm-job-manager'));
 			
 			//get all jobs for this client
 			$get_Jobs_for_clients_params =array(
@@ -113,23 +113,23 @@ class Rdm_Jobs_Job_Helpers{
 				break;
 			
 			case 'Purchase_status_sent':
-			$PurchaseStatusToDisplay = __('Sent','simple-job-managment');
+			$PurchaseStatusToDisplay = __('Sent','rdm-job-manager');
 				break;
 				
 			case 'Purchase_status_on_hold':
-			$PurchaseStatusToDisplay = __('On Hold','simple-job-managment');
+			$PurchaseStatusToDisplay = __('On Hold','rdm-job-manager');
 				break;
 
 			case 'Purchase_status_waiting_confirmation':
-			$PurchaseStatusToDisplay = __('Awaiting Confirmation','simple-job-managment');
+			$PurchaseStatusToDisplay = __('Awaiting Confirmation','rdm-job-manager');
 				break;			
 			
 			case 'Purchase_status_progress':
-			$PurchaseStatusToDisplay = __('In Progress','simple-job-managment');
+			$PurchaseStatusToDisplay = __('In Progress','rdm-job-manager');
 				break;
 				
 			case 'Purchase_status_completed':
-			$PurchaseStatusToDisplay = __('Completed','simple-job-managment');
+			$PurchaseStatusToDisplay = __('Completed','rdm-job-manager');
 				break;					
 				
 		}
@@ -143,7 +143,7 @@ class Rdm_Jobs_Job_Helpers{
 	
 		if($supplierid && ( $supplierid > 0)){
 			
-			$JobsAssociateWithSupplier= apply_filters('rdm_no_Jobs_from_this_supplier_yet',__('No Jobs','simple-job-managment'));
+			$JobsAssociateWithSupplier= apply_filters('rdm_no_Jobs_from_this_supplier_yet',__('No Jobs','rdm-job-manager'));
 			
 			//get all purchases for this supplier
 			$get_Jobs_for_suppliers_params =array(
@@ -343,23 +343,23 @@ class Rdm_Jobs_Job_Helpers{
 		switch ($priority){
 		
 			case 'Job_priority_not_set':
-				$return = __('Not Set','simple-job-managment');;
+				$return = __('Not Set','rdm-job-manager');;
 				break;
 				
 			case 'Job_priority_low':
-				$return = __('Low','simple-job-managment');
+				$return = __('Low','rdm-job-manager');
 				break;
 				
 			case 'Job_priority_normal':
-				$return = __('Normal','simple-job-managment');
+				$return = __('Normal','rdm-job-manager');
 				break;
 				
 			case 'Job_priority_high':
-				$return = __('High','simple-job-managment');
+				$return = __('High','rdm-job-manager');
 				break;	
 
 			default :
-				$return = __('Not Set','simple-job-managment'); 
+				$return = __('Not Set','rdm-job-manager'); 
 		}
 		
 		return $return;
@@ -383,7 +383,7 @@ class Rdm_Jobs_Job_Helpers{
 		if($return_date > 0){
 			return $return_date;
 		}else{
-			return __('Not Set','simple-job-managment');
+			return __('Not Set','rdm-job-manager');
 		}
 	
 	}
@@ -403,13 +403,13 @@ class Rdm_Jobs_Job_Helpers{
 		}
 		
 		?><select name="rdm_job_status_field">
-			<option  value="" <?php echo ($selected == '') ? ' selected = "selected" ' : ''; ?> ><?php echo  __('All','simple-job-managment'); ?></option>
-			<option value="Job_status_not_set" <?php echo ($selected == 'Job_status_not_set') ? ' selected = "selected" ' : ''; ?> ><?php  echo  __('Not set','simple-job-managment'); ?></option>
-			<option value="Job_status_lead" <?php echo ($selected == 'Job_status_lead') ? ' selected = "selected" ' : ''; ?> ><?php echo   __('Lead','simple-job-managment'); ?></option>
-			<option value="Job_status_ongoing"  <?php echo ($selected == 'Job_status_ongoing') ? ' selected = "selected" ' : ''; ?> ><?php echo  __('Ongoing','simple-job-managment'); ?></option>
-			<option value="Job_status_on_hold" <?php echo ($selected == 'Job_status_on_hold') ? ' selected = "selected" ' : ''; ?> ><?php  echo  __('Lead','simple-job-managment'); ?></option>
-			<option value="Job_status_waiting_feedback" <?php echo ($selected == 'Job_status_waiting_feedback') ? ' selected = "selected" ' : ''; ?> ><?php  echo  __('Awaiting Feedback','simple-job-managment'); ?></option>
-			<option value="Job_status_finished" <?php echo ($selected == 'Job_status_finished') ? ' selected = "selected" ' : ''; ?> ><?php  echo   __('Completed','simple-job-managment'); ?></option>
+			<option  value="" <?php echo ($selected == '') ? ' selected = "selected" ' : ''; ?> ><?php echo  __('All','rdm-job-manager'); ?></option>
+			<option value="Job_status_not_set" <?php echo ($selected == 'Job_status_not_set') ? ' selected = "selected" ' : ''; ?> ><?php  echo  __('Not set','rdm-job-manager'); ?></option>
+			<option value="Job_status_lead" <?php echo ($selected == 'Job_status_lead') ? ' selected = "selected" ' : ''; ?> ><?php echo   __('Lead','rdm-job-manager'); ?></option>
+			<option value="Job_status_ongoing"  <?php echo ($selected == 'Job_status_ongoing') ? ' selected = "selected" ' : ''; ?> ><?php echo  __('Ongoing','rdm-job-manager'); ?></option>
+			<option value="Job_status_on_hold" <?php echo ($selected == 'Job_status_on_hold') ? ' selected = "selected" ' : ''; ?> ><?php  echo  __('Lead','rdm-job-manager'); ?></option>
+			<option value="Job_status_waiting_feedback" <?php echo ($selected == 'Job_status_waiting_feedback') ? ' selected = "selected" ' : ''; ?> ><?php  echo  __('Awaiting Feedback','rdm-job-manager'); ?></option>
+			<option value="Job_status_finished" <?php echo ($selected == 'Job_status_finished') ? ' selected = "selected" ' : ''; ?> ><?php  echo   __('Completed','rdm-job-manager'); ?></option>
 		</select>
 		
 		<?php
@@ -432,10 +432,10 @@ class Rdm_Jobs_Job_Helpers{
 		
 		?><select name="rdm_job_priority_field">
 			<option value="">All</option>
-			<option value="Job_priority_not_set"  <?php echo ($selected == 'Job_priority_not_set') ? ' selected = "selected" ' : ''; ?> ><?php echo  __('Not Set','simple-job-managment'); ?></option>
-			<option value="Job_priority_low"  <?php echo ($selected == 'Job_priority_low') ? ' selected = "selected" ' : ''; ?> ><?php echo __('Low','simple-job-managment'); ?></option>
-			<option value="Job_priority_normal" <?php echo ($selected == 'Job_priority_normal') ? ' selected = "selected" ' : ''; ?> ><?php echo __('Normal','simple-job-managment'); ?></option>
-			<option value="Job_priority_high" <?php echo ($selected == 'Job_priority_high') ? ' selected = "selected" ' : ''; ?> ><?php echo __('High','simple-job-managment'); ?></option>
+			<option value="Job_priority_not_set"  <?php echo ($selected == 'Job_priority_not_set') ? ' selected = "selected" ' : ''; ?> ><?php echo  __('Not Set','rdm-job-manager'); ?></option>
+			<option value="Job_priority_low"  <?php echo ($selected == 'Job_priority_low') ? ' selected = "selected" ' : ''; ?> ><?php echo __('Low','rdm-job-manager'); ?></option>
+			<option value="Job_priority_normal" <?php echo ($selected == 'Job_priority_normal') ? ' selected = "selected" ' : ''; ?> ><?php echo __('Normal','rdm-job-manager'); ?></option>
+			<option value="Job_priority_high" <?php echo ($selected == 'Job_priority_high') ? ' selected = "selected" ' : ''; ?> ><?php echo __('High','rdm-job-manager'); ?></option>
 		</select>
 		
 		<?php
@@ -535,10 +535,10 @@ class Rdm_Jobs_Job_Helpers{
 		?>
 		<div class="rdm_input_header">
 		<select name="rdm_job_<?php echo $select_name;?>_before_exactly_after" id="rdm_<?php echo $select_name;?>_before_exactly_after">
-			<option value="0" <?php echo ($selected == '0') ? ' selected = "selected" ' : ''; ?>> <?php echo __('All','simple-job-managment'); ?> </option>
-			<option value="before" <?php echo ($selected == 'before') ? ' selected = "selected" ' : ''; ?>> <?php echo __('Before','simple-job-managment'); ?> </option>
-			<option value="exactly" <?php echo ($selected == 'exactly') ? ' selected = "selected" ' : ''; ?>> <?php echo __('Exactly','simple-job-managment'); ?> </option>
-			<option value="after" <?php echo ($selected == 'after') ? ' selected = "selected" ' : ''; ?>> <?php echo __('After','simple-job-managment'); ?> </option>
+			<option value="0" <?php echo ($selected == '0') ? ' selected = "selected" ' : ''; ?>> <?php echo __('All','rdm-job-manager'); ?> </option>
+			<option value="before" <?php echo ($selected == 'before') ? ' selected = "selected" ' : ''; ?>> <?php echo __('Before','rdm-job-manager'); ?> </option>
+			<option value="exactly" <?php echo ($selected == 'exactly') ? ' selected = "selected" ' : ''; ?>> <?php echo __('Exactly','rdm-job-manager'); ?> </option>
+			<option value="after" <?php echo ($selected == 'after') ? ' selected = "selected" ' : ''; ?>> <?php echo __('After','rdm-job-manager'); ?> </option>
 		</select>
 		</div>
 		<input type="text" name="rdm_job_<?php echo $select_name;?>_field_id" placeholder="dd-mm-yyyy" value="<?php echo $selected_value;?>">
@@ -724,7 +724,7 @@ class Rdm_Jobs_Job_Helpers{
 		$Jobs_found = sizeof($results_all_Jobs) ; 
 
 
-		echo  apply_filters('rdm_reports_Job_page_found_Jobs_title' , sprintf( _n( '<h3>Found  %s job </h3>', '<h3>Found  %s jobs </h3>', $Jobs_found, 'simple-job-managment' ), $Jobs_found ));
+		echo  apply_filters('rdm_reports_Job_page_found_Jobs_title' , sprintf( _n( '<h3>Found  %s job </h3>', '<h3>Found  %s jobs </h3>', $Jobs_found, 'rdm-job-manager' ), $Jobs_found ));
 		
 		//if we have at least one job ... show the table
 		if($Jobs_found>=1){
@@ -739,31 +739,31 @@ class Rdm_Jobs_Job_Helpers{
 							<a class="table_header_text_link"><span><strong>ID</strong></span></a>
 						</th>					
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo __('Title','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Title','rdm-job-manager'); ?></strong></span></a>
 						</th>
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo __('Client','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Client','rdm-job-manager'); ?></strong></span></a>
 						</th>			
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo  __('Progress','simple-job-managment'); ?> %</strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo  __('Progress','rdm-job-manager'); ?> %</strong></span></a>
 						</th>							
 						
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo __('Status','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Status','rdm-job-manager'); ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php  echo __('Priority','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php  echo __('Priority','rdm-job-manager'); ?></strong></span></a>
 						</th>	
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo  __('Start Date','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo  __('Start Date','rdm-job-manager'); ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo  __('Target end date','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo  __('Target end date','rdm-job-manager'); ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo __('Actual end date','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Actual end date','rdm-job-manager'); ?></strong></span></a>
 						</th>						
 						
 					</tr>
@@ -774,31 +774,31 @@ class Rdm_Jobs_Job_Helpers{
 							<a class="table_header_text_link"><span><strong>ID</strong></span></a>
 						</th>						
 						<th scope="col"  class="manage-column column-title sortable desc">
-							<a class="table_header_text_link"><span><strong><?php echo __('Title','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Title','rdm-job-manager'); ?></strong></span></a>
 						</th>
 						<th scope="col"  class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo __('Client','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Client','rdm-job-manager'); ?></strong></span></a>
 						</th>					
 
 						<th scope="col" class="manage-column column-title sortable desc">
-							<a class="table_header_text_link"><span><strong><?php echo  __('Progress','simple-job-managment'); ?> %</strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo  __('Progress','rdm-job-manager'); ?> %</strong></span></a>
 						</th>							
 						
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php  echo __('Status','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php  echo __('Status','rdm-job-manager'); ?></strong></span></a>
 						</th>			
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo  __('Priority','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo  __('Priority','rdm-job-manager'); ?></strong></span></a>
 						</th>	
 
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo  __('Start Date','simple-job-managment'); ?> </strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo  __('Start Date','rdm-job-manager'); ?> </strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo __('Target end date','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Target end date','rdm-job-manager'); ?></strong></span></a>
 						</th>
 						<th scope="col" class="manage-column column-title sortable desc" >
-							<a class="table_header_text_link"><span><strong><?php echo __('Actual end date','simple-job-managment'); ?></strong></span></a>
+							<a class="table_header_text_link"><span><strong><?php echo __('Actual end date','rdm-job-manager'); ?></strong></span></a>
 						</th>	
 						
 					</tr>
