@@ -234,7 +234,7 @@ class Rdm_Job_Management {
 		require_once('include/jobs.cpt.php');
 		require_once('include/processes.cpt.php');
 		require_once('include/clients.cpt.php');
-		require_once('include/invoices.cpt.php');		
+		//require_once('include/invoices.cpt.php');		
 		require_once('include/suppliers.cpt.php');
 		require_once('include/purchases.cpt.php');	
 		
@@ -292,7 +292,7 @@ class Rdm_Job_Management {
 
 			//Invoices metaboxes
 			//require_once('include/invoices.metabox.php');
-			require_once('include/invoices.table.metabox.php');
+			//require_once('include/invoices.table.metabox.php');
 
 		} //end if is_admin
 		

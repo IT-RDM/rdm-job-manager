@@ -50,10 +50,8 @@ jQuery(document).ready(function($) {
      jQuery("#rdm_client_phone_field_id").val(""), 
      jQuery("#rdm_client_mobile_field_id").val(""))
     }), 
-    rdm_jobs_functions = [],
-
-    rdm_jobs_functions.disable_invoice_buttons = function() {
-     jQuery("input#rdm_apply_vat_btn,#rdm_preview_invoice,#rdm_jobs_download_invoice").prop('disabled', true)
+    rdm_jobs_functions = [],rdm_jobs_functions.disable_invoice_buttons = function() {
+    jQuery("input#rdm_apply_vat_btn,#rdm_preview_invoice,#rdm_jobs_download_invoice").prop('disabled', true)
     }, 
     rdm_jobs_functions.enable_invoice_buttons = function() {
      jQuery("input#rdm_apply_vat_btn,#rdm_preview_invoice,#rdm_jobs_download_invoice").prop('disabled', false)

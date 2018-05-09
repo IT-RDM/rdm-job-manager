@@ -46,7 +46,7 @@
 			<tr>
 				<td > &nbsp; </td>
 				<td class="purchase_id"> 
-					<?php echo apply_filters('rdm_purchase_pdf_purchase_id',__('Invoice','rdm-job-manager').' ' .$purchase_id, $purchase_id); ?>
+					<?php echo apply_filters('rdm_purchase_pdf_purchase_id',__('Purchase','rdm-job-manager').' ' .$purchase_id, $purchase_id); ?>
 				</td>
 			</tr>
 		</table>

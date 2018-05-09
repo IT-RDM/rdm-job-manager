@@ -147,8 +147,9 @@ class Rdm_Invoice_Table_Metabox {
 			
 			wp_enqueue_script('jquery-ui-datepicker');
 		
-			wp_enqueue_script( 'rdm-job-invoice-page', plugin_dir_url(dirname(__FILE__)) .'assets/admin/js/invoices.admin.min.js', array( 'jquery' ), null, false );
-			
+			//wp_enqueue_script( 'rdm-job-invoice-page', plugin_dir_url(dirname(__FILE__)) .'assets/admin/js/invoices.admin.min.js', array( 'jquery' ), null, false );
+			wp_enqueue_script( 'rdm-job-invoice-page', plugin_dir_url(dirname(__FILE__)) .'assets/admin/js/invoices.admin.js', array( 'jquery' ), null, false );
+
 			//jTable
 			wp_enqueue_script( 'rdm-job-invoice-jtable-jquery', plugin_dir_url(dirname(__FILE__)) .'assets/admin/jtable/jquery.jtable.js', array( 'jquery' ), null, true );	
 			wp_enqueue_style('rdm-job-invoice-jtable-css',  plugin_dir_url(dirname(__FILE__)) . 'assets/admin/jtable/jquery-ui.css', array(), null);
@@ -975,9 +976,9 @@ class Rdm_Invoice_Table_Metabox {
 																			<?php
 																		}
 																	?>
-																	jQuery('#rdm_preview_invoice').click(function () {
+																	jQuery('#rdm_preview_invoice').click(function ($) {
 																		
-																		rdm_jobs_functions.disable_invoice_buttons();
+																		rdm_jobs_s_functions.disable_invoice_buttons();
 																		
 																		var clientID = jQuery('#rdm_jobs_invoices_client_field_id').val();
 																		jQuery.ajax({
@@ -1000,7 +1001,7 @@ class Rdm_Invoice_Table_Metabox {
 																			success: function (data) {
 																					jQuery('#rdm_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,'+data+'"></iframe>');
 																					
-																					rdm_jobs_functions.enable_invoice_buttons();
+																					rdm_jobs_s_functions.enable_invoice_buttons();
 																			},
 																			error: function () {
 																					console.log('No PDF from server');		
