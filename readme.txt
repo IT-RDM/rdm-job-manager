@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: rdm
+Author:IT-RDM - Fabio P.
 Tags: job management
 Requires at least: 3.8.1
 Tested up to: 4.9.5
