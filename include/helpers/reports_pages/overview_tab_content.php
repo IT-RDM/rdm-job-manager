@@ -5,7 +5,7 @@
 			<tr valign="top">
 				
 				<td style="text-align:center">					
-					<p class="diagram_title"><?php  echo __('Completed Jobs','rdm-job-manager'); ?></p>
+					<p class="diagram_title"><?php  echo __('Completed jobs','rdm-job-manager'); ?></p>
 					<div class="rdm_jobs_diagram Jobs_progress"><strong></strong></div>	
 
 					<div class="breakdown_container">
@@ -200,11 +200,11 @@
 </div>
 
 <script>
-	jQuery(document).ready(function(){
+	jQuery(document).ready(function($){
 	
 		
 		//Jobs % report
-		jQuery('.rdm_jobs_reports_page .Jobs_progress').circleProgress({
+		jQuery('.rdm_jobs_reports_page .jobs_progress').circleProgress({
 			<?php if(Rdm_Jobs_Job_Helpers::get_all() > 0) { ?>
 				value: <?php echo (Rdm_Jobs_Job_Helpers::get_by_status('completed') / Rdm_Jobs_Job_Helpers::get_all()); ?>,
 			<?php } else { ?>

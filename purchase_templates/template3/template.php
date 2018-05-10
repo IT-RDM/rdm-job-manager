@@ -13,7 +13,7 @@
 						<?php echo apply_filters('rdm_purchase_pdf_company_logo',$company_logo); ?>
 
 						<div>	
-							<span class="company_name"><?php echo apply_filters('rdm_purchase_pdf_company_title',$company_name); ?></span>
+							<p><br><span class="company_name"><?php echo apply_filters('rdm_purchase_pdf_company_title',$company_name); ?></span></p>
 						</div>
 						
 						<div>	
@@ -38,7 +38,7 @@
 			<tr>
 				<td > &nbsp; </td>
 				<td class="purchase_id"> 
-					<?php echo apply_filters('rdm_purchase_pdf_purchase_id',__('Purchase','rdm-job-manager') .' '.$purchase_id, $purchase_id); ?>
+					<?php echo apply_filters('rdm_purchase_pdf_purchase_id',__('Purchase','rdm-job-manager') .' ID: '.$purchase_id, $purchase_id); ?>
 				</td>
 			</tr>
 		</table>
@@ -147,15 +147,15 @@
 			<?php } ?>
 			
 			<?php if($company_email!=''){ ?>
-				<span class="company_email_title"><?php echo apply_filters('rdm_purchase_pdf_email_footer_header',__('Email','rdm-job-manager')); ?> </span><?php echo $company_email; ?>
+				<span class="company_email_title"><?php echo apply_filters('rdm_purchase_pdf_email_footer_header',__('Email','rdm-job-manager')); ?> </span><?php echo $company_email; ?> |
 			<?php } ?>
 			
 			<?php if($company_website!=''){ ?>
-				<span class="company_website_title"><?php echo apply_filters('rdm_purchase_pdf_email_website_header',__('Web','rdm-job-manager')); ?> </span><?php echo $company_website; ?> 
+				<span class="company_website_title"><?php echo apply_filters('rdm_purchase_pdf_email_website_header',__('Web','rdm-job-manager')); ?> </span><?php echo $company_website; ?> |
 			<?php } ?>
 			
-			<?php if($company_mobile!=''){ ?>
-				<span class="company_mobile_title"><?php echo apply_filters('rdm_purchase_pdf_email_mobile_header',__('Mobile','rdm-job-manager')); ?> </span><?php echo $company_mobile; ?> 
+			<?php if($company_phone!=''){ ?>
+				<span class="company_phone_title"><?php echo apply_filters('rdm_purchase_pdf_email_mobile_header',__('Phone','rdm-job-manager')); ?> </span><?php echo $company_phone; ?> 
 			<?php } ?>
 		</div>
 

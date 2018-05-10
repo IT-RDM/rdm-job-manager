@@ -62,9 +62,9 @@ class Rdm_Jobs_Suppliers_Helpers{
 	static function get_all_as_dropdown(){
 	
 		//check if we have a selected supplier 
-		$selected_supplier = (isset($_POST['rdm_jobs_reports_JobTab_suppliers_list']) && $_POST['rdm_jobs_reports_JobTab_suppliers_list'] > 0 ) ? $_POST['rdm_jobs_reports_JobTab_suppliers_list'] : '';
+		$selected_supplier = (isset($_POST['rdm_jobs_reports_jobTab_suppliers_list']) && $_POST['rdm_jobs_reports_jobTab_suppliers_list'] > 0 ) ? $_POST['rdm_jobs_reports_jobTab_suppliers_list'] : '';
 	
-		$start_of_dropdown = '<select name="rdm_jobs_reports_JobTab_suppliers_list">';
+		$start_of_dropdown = '<select name="rdm_jobs_reports_jobTab_suppliers_list">';
 		$end_of_dropdown = '</select>';
 		$dropdown_options ='<option value="-1">'. __('All','rdm-job-manager').'</option>';
 	
@@ -296,9 +296,9 @@ class Rdm_Jobs_Suppliers_Helpers{
 	
 		//A supplier was selected on the supplier username dropdown
 		//get the CPT that has that ID
-		if(isset($_POST['rdm_jobs_reports_JobTab_suppliers_list']) && $_POST['rdm_jobs_reports_JobTab_suppliers_list']!='-1'){
+		if(isset($_POST['rdm_jobs_reports_jobTab_suppliers_list']) && $_POST['rdm_jobs_reports_jobTab_suppliers_list']!='-1'){
 
-			$default_args['p'] = $_POST['rdm_jobs_reports_JobTab_suppliers_list'];
+			$default_args['p'] = $_POST['rdm_jobs_reports_jobTab_suppliers_list'];
 			
 		}
 		

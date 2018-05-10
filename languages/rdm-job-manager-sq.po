@@ -60,7 +60,7 @@ msgid "Company Website"
 msgstr "Website Kompanise"
 
 #: include/admin_settings_page.php:72
-msgid "Company Mobile"
+msgid "Company Phone"
 msgstr "Celulari Kompanise"
 
 #: include/admin_settings_page.php:79

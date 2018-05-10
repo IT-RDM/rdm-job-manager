@@ -51,7 +51,7 @@ msgid "Company Website"
 msgstr ""
 
 #: include/admin_settings_page.php:72
-msgid "Company Mobile"
+msgid "Company Phone"
 msgstr ""
 
 #: include/admin_settings_page.php:79

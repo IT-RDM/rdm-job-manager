@@ -4,7 +4,7 @@
 		<table class="form-table rdm_jobs_reports_page">
 
 			<tr valign="top">
-				<td class="rdm_jobs_report_Jobs_tab_form">
+				<td class="rdm_jobs_report_jobs_tab_form">
 					<form method="post" >
 
 						<div>

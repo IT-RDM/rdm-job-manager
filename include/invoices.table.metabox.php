@@ -45,11 +45,11 @@ class Rdm_Invoice_Table_Metabox {
 		//get items for existing invoice
 		add_action( 'wp_ajax_rdm_job_items_for_invoice_ajax', array( $this, 'rdm_job_items_for_invoice_ajax'));
 		
-		//get items for existing invoice that have "is_Job=yes"
-		add_action( 'wp_ajax_get_Jobs_items_on_invoice_ajax', array( $this, 'get_Jobs_items_on_invoice_ajax'));		
+		//get items for existing invoice that have "is_job=yes"
+		add_action( 'wp_ajax_get_jobs_items_on_invoice_ajax', array( $this, 'get_jobs_items_on_invoice_ajax'));		
 		
 		//Get all jobs if a client is associated with invoice.
-		add_action( 'wp_ajax_get_and_check_Jobs_checkbox_list_ajax', array( $this, 'get_and_check_Jobs_checkbox_list_ajax'));		
+		add_action( 'wp_ajax_get_and_check_jobs_checkbox_list_ajax', array( $this, 'get_and_check_jobs_checkbox_list_ajax'));		
 		
 		//save invoice total,vat,discount
 		add_action( 'wp_ajax_rdm_job_invoice_save_vat_discount_ajax', array( $this, 'rdm_job_invoice_save_vat_discount_ajax'));
@@ -175,10 +175,10 @@ class Rdm_Invoice_Table_Metabox {
 
 			$clientID = (int) $_POST['clientID'];
 
-			//$JobsArray['found_any_Job'] = 'no';
+			//$jobsArray['found_any_job'] = 'no';
 			
 			//get all jobs for this client
-			$get_Jobs_for_clients_params =array(
+			$get_jobs_for_clients_params =array(
 				'showposts'=>-1,
 				'post_type' => 'rdm_job',
 				'post_status' => 'publish',
@@ -186,28 +186,28 @@ class Rdm_Invoice_Table_Metabox {
 				'meta_value'=> $clientID
 			);
 			
-			$query_Jobs_for_client = new WP_Query();
+			$query_jobs_for_client = new WP_Query();
 			
-			$results_Jobs_for_client = $query_Jobs_for_client->query($get_Jobs_for_clients_params);
+			$results_jobs_for_client = $query_jobs_for_client->query($get_jobs_for_clients_params);
 			
 			//if we have at least one job for this client
-			if(sizeof($results_Jobs_for_client)>=1){
+			if(sizeof($results_jobs_for_client)>=1){
 			
-				//$JobsArray['found_any_Job'] = 'yes';
+				//$jobsArray['found_any_job'] = 'yes';
 			
-				foreach($results_Jobs_for_client as $single_Job_for_client){
+				foreach($results_jobs_for_client as $single_job_for_client){
 					
-					$Job_price = get_post_meta($single_Job_for_client->ID,'rdm_job_estimate_field_id',true);
+					$job_price = get_post_meta($single_job_for_client->ID,'rdm_job_estimate_field_id',true);
 					
-					$JobsArray['Job_id']	= $single_Job_for_client->ID;
-					$JobsArray['Job_title']	= $single_Job_for_client->post_title;
-					$JobsArray['Job_price']	= $Job_price;
+					$jobsArray['job_id']	= $single_job_for_client->ID;
+					$jobsArray['job_title']	= $single_job_for_client->post_title;
+					$jobsArray['job_price']	= $job_price;
 					
-					$JobsArrayToReturn[] = $JobsArray;
+					$jobsArrayToReturn[] = $jobsArray;
 				}
 				
 				//return job id , job title 
-				die(json_encode($JobsArrayToReturn));
+				die(json_encode($jobsArrayToReturn));
 			
 			} //end sizeof			
 			
@@ -216,9 +216,9 @@ class Rdm_Invoice_Table_Metabox {
 		
 		
 		//job dropdown changed ... get processes for the selected job
-		if($_POST['whathappend']=='JobDropdownChanged'){
+		if($_POST['whathappend']=='jobDropdownChanged'){
 		
-			$JobID = (int) $_POST['JobID'];
+			$jobID = (int) $_POST['jobID'];
 
 			
 			//get all processes for this job
@@ -227,12 +227,12 @@ class Rdm_Invoice_Table_Metabox {
 				'post_type' => 'rdm_process',
 				'post_status' => 'publish',
 				'meta_key'=>'rdm_process_for_Job_field',
-				'meta_value'=> $JobID
+				'meta_value'=> $jobID
 			);
 			
-			$query_processes_of_Job = new WP_Query();
+			$query_processes_of_job = new WP_Query();
 			
-			$results_processes_for_Job = $query_processes_of_Job->query($get_processes_for_Jobs_params);
+			$results_processes_for_Job = $query_processes_of_job->query($get_processes_for_Jobs_params);
 			
 			//if we have at least one processes for this job
 			if(sizeof($results_processes_for_Job)>=1){
@@ -432,25 +432,25 @@ class Rdm_Invoice_Table_Metabox {
 	/*
 	* Returns all "job" items in a given invoice
 	*/
-	function get_Jobs_items_on_invoice_ajax($invoice_id){
+	function get_jobs_items_on_invoice_ajax($invoice_id){
 		
-		$list_of_Jobs_in_invoice = array();
-		$found_Jobs = 0;
+		$list_of_jobs_in_invoice = array();
+		$found_jobs = 0;
 		$response = array();
-		$return_Job_array = array();
+		$return_job_array = array();
 		
-		$find_Jobs_in_invoice_items = get_post_meta($invoice_id,'_items_on_invoice',true);
+		$find_jobs_in_invoice_items = get_post_meta($invoice_id,'_items_on_invoice',true);
 
-		if($find_Jobs_in_invoice_items){
-			foreach ($find_Jobs_in_invoice_items as $find_Jobs_in_invoice_item_single){
-				foreach($find_Jobs_in_invoice_item_single as $find_Jobs_in_invoice_item_single_data_key => $find_Jobs_in_invoice_item_single_data_value){
+		if($find_jobs_in_invoice_items){
+			foreach ($find_jobs_in_invoice_items as $find_jobs_in_invoice_item_single){
+				foreach($find_jobs_in_invoice_item_single as $find_jobs_in_invoice_item_single_data_key => $find_jobs_in_invoice_item_single_data_value){
 					
-					if(isset($find_Jobs_in_invoice_item_single_data_key)){
-						if($find_Jobs_in_invoice_item_single_data_key=='is_Job'){
-							$list_of_Jobs_in_invoice[]= $find_Jobs_in_invoice_item_single['invoiceRowId'];
-							//$list_of_Jobs_in_invoice['Job_title']= $find_Jobs_in_invoice_item_single['ItemName'];
-							//$list_of_Jobs_in_invoice['Job_price']= $find_Jobs_in_invoice_item_single['ItemTotalCost'];
-							$return_Job_array[] = $list_of_Jobs_in_invoice;
+					if(isset($find_jobs_in_invoice_item_single_data_key)){
+						if($find_jobs_in_invoice_item_single_data_key=='is_job'){
+							$list_of_jobs_in_invoice[]= $find_jobs_in_invoice_item_single['invoiceRowId'];
+							//$list_of_jobs_in_invoice['job_title']= $find_jobs_in_invoice_item_single['ItemName'];
+							//$list_of_jobs_in_invoice['job_price']= $find_jobs_in_invoice_item_single['ItemTotalCost'];
+							$return_job_array[] = $list_of_jobs_in_invoice;
 						}
 					}
 					
@@ -460,9 +460,9 @@ class Rdm_Invoice_Table_Metabox {
 		}
 
 		//if we have any "job" on invoice
-		if(count($list_of_Jobs_in_invoice) > 0){
+		if(count($list_of_jobs_in_invoice) > 0){
 			//return array of job id ... make values unique ... reset keys
-			return array_values(array_unique($list_of_Jobs_in_invoice));
+			return array_values(array_unique($list_of_jobs_in_invoice));
 		}
 
 		return false;
@@ -475,7 +475,7 @@ class Rdm_Invoice_Table_Metabox {
 	* Get all jobs for client on invoice if client is associated with invoice.
 	* Returns all jobs as checkbox for "related jobs" on "invoice" edit page
 	*/
-	function get_and_check_Jobs_checkbox_list_ajax(){
+	function get_and_check_jobs_checkbox_list_ajax(){
 
 			if(!isset( $_POST['clientID']) || !isset( $_POST['invoiceID'])){
 				die();
@@ -484,14 +484,14 @@ class Rdm_Invoice_Table_Metabox {
 			$clientID = (int) $_POST['clientID'];
 			$invoiceID = (int) $_POST['invoiceID'];
 			
-			$Jobs_on_invoice = array();
+			$jobs_on_invoice = array();
 			
 			if($invoiceID <= 0 || $clientID <= 0 ){
 				die();
 			}
 			
 			//get all jobs for this client
-				$get_Jobs_for_clients_params =array(
+				$get_jobs_for_clients_params =array(
 					'showposts'=>-1,
 					'post_type' => 'rdm_job',
 					'post_status' => 'publish',
@@ -501,38 +501,38 @@ class Rdm_Invoice_Table_Metabox {
 				
 				
 				
-				$query_Jobs_for_client = new WP_Query();
+				$query_jobs_for_client = new WP_Query();
 				
-				$results_Jobs_for_client = $query_Jobs_for_client->query($get_Jobs_for_clients_params);
+				$results_jobs_for_client = $query_jobs_for_client->query($get_jobs_for_clients_params);
 				
-				if(sizeof($results_Jobs_for_client)>=1){
+				if(sizeof($results_jobs_for_client)>=1){
 				
 					//we found jobs for client.Check if job is already on invoice
-					if($this->get_Jobs_items_on_invoice_ajax($invoiceID)){
-						$Jobs_on_invoice = $this->get_Jobs_items_on_invoice_ajax($invoiceID);
+					if($this->get_jobs_items_on_invoice_ajax($invoiceID)){
+						$jobs_on_invoice = $this->get_jobs_items_on_invoice_ajax($invoiceID);
 					}				
 				
-					foreach($results_Jobs_for_client as $single_Job_for_client){
+					foreach($results_jobs_for_client as $single_job_for_client){
 						
-						$Job_price = get_post_meta($single_Job_for_client->ID,'rdm_job_estimate_field_id',true);
+						$job_price = get_post_meta($single_job_for_client->ID,'rdm_job_estimate_field_id',true);
 						
-						$JobsArray['Job_id']	= $single_Job_for_client->ID;
-						$JobsArray['Job_title']	= $single_Job_for_client->post_title;
-						$JobsArray['Job_price']	= $Job_price;
+						$jobsArray['job_id']	= $single_job_for_client->ID;
+						$jobsArray['job_title']	= $single_job_for_client->post_title;
+						$jobsArray['job_price']	= $job_price;
 						
 						//if job is also on invoice
-						if(in_array($JobsArray['Job_id'],$Jobs_on_invoice)){
-							$JobsArray['is_on_invoice_already']	= 'yes';
+						if(in_array($jobsArray['job_id'],$jobs_on_invoice)){
+							$jobsArray['is_on_invoice_already']	= 'yes';
 						}else{
-							$JobsArray['is_on_invoice_already']	= 'no';
+							$jobsArray['is_on_invoice_already']	= 'no';
 						}
 						
-						$JobsArrayToReturn[] = $JobsArray;
+						$jobsArrayToReturn[] = $jobsArray;
 					}
 
-					//($JobsArrayToReturn);
-					//return job id , job title , Job_price
-					die(json_encode($JobsArrayToReturn));	
+					//($jobsArrayToReturn);
+					//return job id , job title , job_price
+					die(json_encode($jobsArrayToReturn));	
 					
 				} //end sizeof
 
@@ -705,7 +705,7 @@ class Rdm_Invoice_Table_Metabox {
 		
 		<script type="text/javascript">
 
-			jQuery(document).ready(function() {
+			jQuery(document).ready(function($) {
 				jQuery('#rdm_invoice_paid_date_field_id , #rdm_invoice_to_be_paid_by_date_field_id').datepicker({
 				});
 			});
@@ -822,10 +822,10 @@ class Rdm_Invoice_Table_Metabox {
 										<!-- 
 										<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_invoices_Job_field_id">Related to job </label>
+												<label for="rdm_jobs_invoices_job_field_id">Related to job </label>
 											</div>
 									
-											<select class="at-posts-select" name="rdm_jobs_invoices_Job_field_id" id="rdm_jobs_invoices_Job_field_id">
+											<select class="at-posts-select" name="rdm_jobs_invoices_job_field_id" id="rdm_jobs_invoices_job_field_id">
 												<option value="-1">No job selected</option>
 											</select>
 										</td>
@@ -834,10 +834,10 @@ class Rdm_Invoice_Table_Metabox {
 										
 										<td class="at-field" valign="top">
 											<div class="at-label">
-												<label for="rdm_jobs_invoices_Job_list"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_related_to_Job_label',__('Related to job','rdm-job-manager'));?></label>
+												<label for="rdm_jobs_invoices_job_list"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_related_to_job_label',__('Related to job','rdm-job-manager'));?></label>
 											</div>
 
-											<span  id="rdm_jobs_invoices_Job_list" ></span>
+											<span  id="rdm_jobs_invoices_job_list" ></span>
 											
 										</td>										
 										
@@ -963,7 +963,7 @@ class Rdm_Invoice_Table_Metabox {
 											
 												
 													<script>
-															jQuery(document).ready(function () {
+															jQuery(document).ready(function ($) {
 
 																	//Check if we have already an invoice in DB
 																	<?php
@@ -999,7 +999,7 @@ class Rdm_Invoice_Table_Metabox {
 																			success: function (data) {
 																					jQuery('#rdm_invoice_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,'+data+'"></iframe>');
 																					
-																					rdm_jobs_functions.enable_invoice_buttons();
+																					rdm_jobs_s_functions.enable_invoice_buttons();
 																			},
 																			error: function () {
 																					console.log('No PDF from server');		
@@ -1212,7 +1212,7 @@ class Rdm_Invoice_Table_Metabox {
 		
 		$company_website = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_website'));
 		
-		$company_mobile = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_mobile'));
+		$company_phone = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_phone'));
 		
 		//Client infos
 		$client_first_name 	= $this->get_client_info($invoice_id,'first_name');

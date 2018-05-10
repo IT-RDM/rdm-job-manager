@@ -464,7 +464,7 @@ class AT_Meta_Box {
     $js_code = str_replace("'","\"",$js_code);
     $js_code = str_replace("CurrentCounter","' + ".$counter." + '",$js_code);
     echo '<script>
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function($) {
           var '.$counter.' = '.$c.';
           jQuery("#add-'.$field['id'].'").live(\'click\', function() {
             '.$counter.' = '.$counter.' + 1;

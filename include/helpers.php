@@ -42,26 +42,26 @@ function rdm_get_human_process_status_by_meta_value_as_bullet($status){
 /*
 * ECHO Process status as LI bullets
 */
-function processes_for_Job_as_bullets($JobID){
+function processes_for_job_as_bullets($jobID){
 			//get all processes for this post 
-			$get_process_for_Job_params =array(
+			$get_process_for_job_params =array(
 				'showposts'=>-1,
 				'post_type' => 'rdm_process',
 				'post_status' => 'publish',
-				'meta_key'=>'rdm_process_for_Job_field',
-				'meta_value'=> $JobID
+				'meta_key'=>'rdm_process_for_job_field',
+				'meta_value'=> $jobID
 			);
-			$query_process_of_Job = new WP_Query();
-			$results_processes_for_Job = $query_process_of_Job->query($get_process_for_Job_params);
+			$query_process_of_job = new WP_Query();
+			$results_processes_for_job = $query_process_of_job->query($get_process_for_job_params);
 		
 			//if we have a process
-			if(sizeof($results_processes_for_Job) >= 1 ){
+			if(sizeof($results_processes_for_job) >= 1 ){
 				
 			
-				foreach($results_processes_for_Job as $single_process_for_Job){
+				foreach($results_processes_for_job as $single_process_for_job){
 				
-					$process_id	 = $single_process_for_Job->ID ;
-					$process_status_meta = get_post_meta($single_process_for_Job->ID,'rdm_process_status_process_field',true);
+					$process_id	 = $single_process_for_job->ID ;
+					$process_status_meta = get_post_meta($single_process_for_job->ID,'rdm_process_status_process_field',true);
 					
 
 						if ($process_status_meta == 'process_status_not_started'){
