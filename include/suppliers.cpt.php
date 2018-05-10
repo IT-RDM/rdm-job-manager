@@ -22,7 +22,7 @@
 		'description'         => __('Suppliers', 'rdm-job-manager' ),
 		'labels'              => $labels,
 		"supports" 			  => array( "title", "thumbnail" ),
-		'taxonomies'          => array( 'Job_taxonomy', 'product_brand' ),
+		'taxonomies'          => array( 'product_brand' ),
 		'hierarchical'        => false,
 		"rewrite" 			  => array( "slug" => "suppliers", "with_front" => true ),
 		'public'              => false,
@@ -37,6 +37,7 @@
 		'publicly_queryable'  => false,
 		'capability_type'     => 'post',
 		"map_meta_cap" => true,
+		
 		
 	);
 	register_post_type( 'rdm_supplier', $args );

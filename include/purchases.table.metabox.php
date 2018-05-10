@@ -66,10 +66,10 @@ class Rdm_Purchase_Table_Metabox {
 		//Download PDF
 		add_action( 'init',array($this,'rdm_job_purchase_pdf_download'));
 		
-		// Submit Purchase order to supplier
-		// Add filter and see function on line 1401
-		//add_action('init', array($this, 'rdm_job_purchase_pdf_email'));
-		//add_filter('wp_mail', 'rdm_notify_supplier');
+		//Send PDF
+		//add_action( 'init',array($this,'rdm_job_purchase_pdf_send'));
+		
+
 	}
 	
 	
@@ -708,7 +708,7 @@ class Rdm_Purchase_Table_Metabox {
 		
 		<script type="text/javascript">
 
-			jQuery(document).ready(function() {
+			jQuery(document).ready(function($) {
 				jQuery('#rdm_purchase_paid_date_field_id , #rdm_purchase_to_be_paid_by_date_field_id').datepicker({
 				});
 			});
@@ -823,30 +823,35 @@ class Rdm_Purchase_Table_Metabox {
 											</select>
 										</td>
 										
-										<!-- ==============================
-										= IT WORKS - Select the supplier user to email 
+								
+											
+									<!-- ==============================
+										= Select the supplier user to email 
 										==================================-->
-										<p>
-											<label for="rdm_supplier" class="prfx-row-title"><?php _e( 'Email to Supplier: ', 'rdm-job-manager' )?></label><br>
-											<select name="rdm_supplier" id="rdm_supplier">
+										<td class="at-field" valign="top">
+											<div class="at-label">
+												<label for="rdm_supplier" class="prfx-row-title"><?php _e( 'Email to Supplier: ', 'rdm-job-manager' )?></label><br>
+											</div>
+											<select class="at-posts-select" name="rdm_supplier" id="rdm_supplier">
 												<?php $args = array(
 													'role__in'	=>	'seller'
 												);
 
 												$users = get_users($args);
-												//$i = 0;
+												
 												// Array of WP_User objects.
 												foreach ( $users as $user ) {
+													
 													echo "<option value='".$user->user_email."' "; //<--here
 													if (isset($rdm_stored_meta['rdm_supplier']))
 														echo selected($rdm_stored_meta['rdm_supplier'][0], $user->user_email ); //<-- and here
-													echo ">" . esc_html( $user->display_name ) . "</option>";
+													echo ">" . esc_html( $user->user_email ) . "</option>";
 												}
 												?>
 											
 											</select>
 
-											</p>
+										</td>
 
 										<td class="at-field" valign="top">
 											<div class="at-label">
@@ -855,6 +860,7 @@ class Rdm_Purchase_Table_Metabox {
 									
 											<select class="at-posts-select" name="rdm_jobs_purchases_Job_field_id" id="rdm_jobs_purchases_Job_field_id">
 												<option value="-1">No job selected</option>
+
 											</select>
 										</td>
 										
@@ -971,8 +977,8 @@ class Rdm_Purchase_Table_Metabox {
 													<input type="submit" id="rdm_jobs_download_purchase" name="rdm_jobs_download_purchase" value="<?php echo apply_filters('rdm_purchase_cpt_single_purchase_download_purchase_button_text',__('3.Download Purchase','rdm-job-manager'));?>" class="button button-primary button-large rdm_purchase_page_buttons">
 												</form>
 
-												<form method="post" action="">
-													<input type="submit" id="rdm_jobs_submit_purchase" name="rdm_jobs_submit_purchase" value="<?php echo apply_filters('rdm_purchase_cpt_single_purchase_submit_purchase_button_text',__('4.Send Purchase','rdm-job-manager'));?>" class="button button-primary button-large rdm_purchase_page_buttons">
+												<form method="post">
+													<input type="submit" id="rdm_jobs_submit_purchase" name="rdm_jobs_submit_purchase" value="<?php echo apply_filters('rdm_purchase_cpt_single_purchase_submit_purchase_button_text',__('4.Send Purchase','rdm-job-manager'));?>" class="button button-primary button-large rdm_purchase_page_buttons disabled">
 												</form>
 												
 												
@@ -1031,7 +1037,7 @@ class Rdm_Purchase_Table_Metabox {
 																				
 																			},
 																			success: function (data) {
-																					jQuery('#rdm_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,'+data+'"></iframe>');
+																					jQuery('#rdm_pdf_preview_in_browser').html('<iframe style="width:100%;height:600px" src="data:application/pdf;base64,'+data+'"></iframe>');
 																					
 																					rdm_jobs_functions.enable_purchase_buttons();
 																			},
@@ -1243,7 +1249,7 @@ class Rdm_Purchase_Table_Metabox {
 		
 		$company_website = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_website'));
 		
-		$company_mobile = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_mobile'));
+		$company_phone = nl2br(Rdm_Jobs_Settings_Option_Page::get('company_phone'));
 		
 		//Supplier infos
 		$supplier_first_name 	= $this->get_supplier_info($purchase_id,'first_name');
@@ -1416,36 +1422,7 @@ class Rdm_Purchase_Table_Metabox {
 
 	}
 
-/* 
-* Notify Supplier
 
-	public function rdm_job_purchase_pdf_email() {
-		
-		if(isset($_POST['post_ID'])){
-			if($_POST['post_ID'] <= 0){
-				return;
-			}else{
-			$purchase_id = (int)$_POST['post_ID'];
-		}
-	}
-
-	if ( isset($_POST['rdm_jobs_submit_purchase']) ){
-
-		$saved_pdf_base64 = get_post_meta($purchase_id,'rdm_jobs_purchases_pdf_base64',true);
-
-		$saved_pdf_base64= $this->maybe_get_existing_pdf_data($purchase_id);
-	
-		if($saved_pdf_base64){
-			
-			$filename	=	apply_filters('rdm_submit_pdf_file_name', 'Purchase_'.$purchase_id.'.pdf' ,$purchase_id);
-			header('Content-type: application/pdf');
-			header('Content-disposition: attachment; filename="'.$filename.'"');
-			$attachment = base64_decode($saved_pdf_base64); 
-		//include( plugin_dir_path(__FILE__) . 'include/submit.purchase.to.supplier.php');
-}
-		
-	}
-	}*/
 
 } //end class
 

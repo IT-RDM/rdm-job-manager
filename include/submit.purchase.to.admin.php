@@ -1,4 +1,7 @@
 <?php  
+
+global $wpdb, $rdm_purchase;
+
 /*
 	* Email Purchase to Admin 
 	*/
@@ -21,16 +24,15 @@
 			return;
 		} 
  */
-
 		// Email headings 
 		$author 		= $post->post_author; /* Post author ID. */
 		$name 			= get_the_author_meta( 'display_name', $author );
         $email 			= get_the_author_meta( 'user_email', $author );
         $title 			= $post->post_title;
-		$subject 		= sprintf( 'A new purchase order: %s', $title . 'has been submitted. Contact details:' . $name, $email );
-		$message		=	'Here is a copy of your purchase order' . '?Download PDF link?'; 
+		$subject 		= sprintf( 'Purchase order: %s', $title . 'Submission success. ');
+		$message		=	'Hey Admin Here is a copy of your purchase order' . '?Download PDF link?'; 
 		$headers[]		=	'From: RDM Gregg purchases <info@rdmgregg.co.uk> ';
-		$attachments	=	'';
+        $attachments    =    '';   
 		
 		// Send email
         //$to[] = sprintf( '%s <%s>', $name, $email );

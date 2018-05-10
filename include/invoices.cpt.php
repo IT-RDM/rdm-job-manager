@@ -35,7 +35,7 @@
 		'has_archive'         => true,
 		'exclude_from_search' => true,
 		'publicly_queryable'  => false,
-		'capability_type'     => 'page',
+		'capability_type'     => 'post',
 		
 	);
 	register_post_type( 'rdm_invoice', $args );

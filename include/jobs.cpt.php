@@ -18,7 +18,7 @@
 	);
 
 	$args = array(
-		'label'               => __( 'rdm_Job', 'rdm-job-manager' ),
+		'label'               => __( 'rdm_job', 'rdm-job-manager' ),
 		'description'         => __('Jobs', 'rdm-job-manager' ),
 		'labels'              => $labels,
 		'supports'            => array(),

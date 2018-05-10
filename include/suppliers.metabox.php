@@ -206,39 +206,7 @@ $prefix_suppliers = 'rdm_supplier_';
 	$suppliers_Jobs_metabox->addParagraph('button_id',array('value' => $JobsAssociateWithSupplier));
 	
 	$suppliers_Jobs_metabox->Finish(); 
- /*
-* Client Jobs
-*/
 
-
-$clients_Job_config = array(
-	'id'             => 'clients_Job_meta_box',          // meta box id, unique per meta box
-	'title'          => apply_filters('rdm_clients_cpt_Jobs_metabox_title',__('Client Jobs','rdm-job-manager')),          // meta box title
-	'pages'          => array('rdm_client'),      // post types, accept custom post types as well, default is array('post'); optional
-	'context'        => 'side',            // where the meta box appear: normal (default), advanced, side; optional
-	'priority'       => 'high',            // order of meta box: high (default), low; optional
-	'fields'         => array(),            // list of meta fields (can be added by field arrays)
-	'local_images'   => false,          // Use local or hosted images (meta box images for add/remove)
-	'use_with_theme' => false          //change path if used with theme set to true, false for a plugin or anything else for a custom path(default false).
-);
-
-
-$JobsAssociateWithClient = apply_filters('rdm_no_Jobs_from_this_client_yet','No jobs','default_value');
-
-//If we have a client ID , look for existing jobs associated with client ID
-if(isset($_GET['post'])){
-
-	$postIDForJobs = $_GET['post'];
-
-	$JobsAssociateWithClient = Rdm_Jobs_Job_Helpers::get_Jobs_for_client_extra_columns($postIDForJobs);
-
-} //end if isset post id 
-
-$clients_Jobs_metabox =  new AT_Meta_Box($clients_Job_config);
-
-$clients_Jobs_metabox->addParagraph('button_id',array('value' => $JobsAssociateWithClient));
-
-$clients_Jobs_metabox->Finish();
  
 /*
 * Supplier Purchases 

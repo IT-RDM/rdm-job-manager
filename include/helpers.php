@@ -65,25 +65,25 @@ function processes_for_Job_as_bullets($JobID){
 					
 
 						if ($process_status_meta == 'process_status_not_started'){
-							echo apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_not_started',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_not_started').'<a href="'.get_edit_post_link($process_id).'"  title="Process not Started" > # ' . $process_id .' </a> <div></div>',$JobID,$process_id , $process_status_meta );
+							echo apply_filters('rdm_jobs_cpt_list_post_table_single_Job_process_not_started',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_not_started').'<a href="'.get_edit_post_link($process_id).'"  title="Process not Started" > # ' . $process_id .' </a> <div></div>',$JobID,$process_id , $process_status_meta );
 							
 						}elseif ($process_status_meta == 'process_status_ongoing'){
 							
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_ongoing',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_ongoing').'<a href="'.get_edit_post_link($process_id).'" title="Process ongoing"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
+							echo  apply_filters('rdm_jobs_cpt_list_post_table_single_Job_process_ongoing',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_ongoing').'<a href="'.get_edit_post_link($process_id).'" title="Process ongoing"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
 						}elseif ($process_status_meta == 'process_status_finished'){
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_finished',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_finished').'<a href="'.get_edit_post_link($process_id).'" title="Process finished"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
+							echo  apply_filters('rdm_jobs_cpt_list_post_table_single_Job_process_finished',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_finished').'<a href="'.get_edit_post_link($process_id).'" title="Process finished"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
 						}elseif ($process_status_meta == 'process_status_cancelled'){
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_cancelled',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_cancelled').'<a href="'.get_edit_post_link($process_id).'" title="Process cancelled"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
+							echo  apply_filters('rdm_jobs_cpt_list_post_table_single_Job_process_cancelled',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_cancelled').'<a href="'.get_edit_post_link($process_id).'" title="Process cancelled"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
 						}elseif ($process_status_meta == 'process_status_onhold'){
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_onhold',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_onhold').'<a href="'.get_edit_post_link($process_id).'" title="Process onhold"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
+							echo  apply_filters('rdm_jobs_cpt_list_post_table_single_Job_process_onhold',rdm_get_human_process_status_by_meta_value_as_bullet('process_status_onhold').'<a href="'.get_edit_post_link($process_id).'" title="Process onhold"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 							
 						}else{
 							
 							//unexpected process status ... return plain edit link for process
-							echo  apply_filters('rdm_Jobs_cpt_list_post_table_single_Job_process_unexpected_status','<a href="'.get_edit_post_link($process_id).'" title="Process status unknown"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
+							echo  apply_filters('rdm_jobs_cpt_list_post_table_single_Job_process_unexpected_status','<a href="'.get_edit_post_link($process_id).'" title="Process status unknown"> # ' . $process_id .' </a>  <br>',$JobID,$process_id , $process_status_meta);
 						}						
 
 				}

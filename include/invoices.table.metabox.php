@@ -147,7 +147,7 @@ class Rdm_Invoice_Table_Metabox {
 			
 			wp_enqueue_script('jquery-ui-datepicker');
 		
-			wp_enqueue_script( 'rdm-job-invoice-page', plugin_dir_url(dirname(__FILE__)) .'assets/admin/js/invoices.admin.min.js', array( 'jquery' ), null, false );
+			wp_enqueue_script( 'rdm-job-invoice-page', plugin_dir_url(dirname(__FILE__)) .'assets/admin/js/invoices.admin.js', array( 'jquery' ), null, false );
 			
 			//jTable
 			wp_enqueue_script( 'rdm-job-invoice-jtable-jquery', plugin_dir_url(dirname(__FILE__)) .'assets/admin/jtable/jquery.jtable.js', array( 'jquery' ), null, true );	
@@ -959,7 +959,7 @@ class Rdm_Invoice_Table_Metabox {
 											
 												<span class="invoice_preview_text"><?php echo apply_filters('rdm_invoice_cpt_single_invoice_pdf_invoice_preview_label',__('PDF Invoice Preview','rdm-job-manager'));?></span>
 											
-												<div id="rdm_pdf_preview_in_browser"></div> 
+												<div id="rdm_invoice_pdf_preview_in_browser"></div> 
 											
 												
 													<script>
@@ -970,13 +970,12 @@ class Rdm_Invoice_Table_Metabox {
 																		if(Rdm_Invoice_Table_Metabox::maybe_get_existing_pdf_data($post->ID)){
 																			?>
 																			
-																				jQuery('#rdm_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,<?php echo Rdm_Invoice_Table_Metabox::maybe_get_existing_pdf_data($post->ID) ?>"></iframe>');
+																				jQuery('#rdm_invoice_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,<?php echo Rdm_Invoice_Table_Metabox::maybe_get_existing_pdf_data($post->ID) ?>"></iframe>');
 																			
 																			<?php
 																		}
 																	?>
-																	jQuery('#rdm_preview_invoice').click(function () {
-																		
+																	jQuery('#rdm_preview_invoice').click(function  () {
 																		rdm_jobs_functions.disable_invoice_buttons();
 																		
 																		var clientID = jQuery('#rdm_jobs_invoices_client_field_id').val();
@@ -998,7 +997,7 @@ class Rdm_Invoice_Table_Metabox {
 																				
 																			},
 																			success: function (data) {
-																					jQuery('#rdm_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,'+data+'"></iframe>');
+																					jQuery('#rdm_invoice_pdf_preview_in_browser').html('<iframe style="width:100%;height:400px" src="data:application/pdf;base64,'+data+'"></iframe>');
 																					
 																					rdm_jobs_functions.enable_invoice_buttons();
 																			},

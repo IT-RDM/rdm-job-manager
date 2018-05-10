@@ -839,7 +839,7 @@ msgid "No Job found"
 msgstr ""
 
 #: include/jobs.cpt.php:21
-msgid "rdm_Job"
+msgid "rdm_job"
 msgstr ""
 
 #: include/jobs.metabox.php:16
